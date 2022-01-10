@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="None">
+  
+  <link rel="canonical" href="https://chemkg.github.io/linkml-rhea/">
+  <link rel="shortcut icon" href="img/favicon.ico">
+  <title>ALPHA linkml-rhea</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="css/theme.css" />
+  <link rel="stylesheet" href="css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Schema";
+    var mkdocs_page_input_path = "index.md";
+    var mkdocs_page_url = "/linkml-rhea/";
+  </script>
+  
+  <script src="js/jquery-2.1.1.min.js" defer></script>
+  <script src="js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2SYBSJVZ23"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-2SYBSJVZ23');
+  </script>
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="." class="icon icon-home"> ALPHA linkml-rhea</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="" href="home.md">Introduction</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href=".">Schema</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#classes">Classes</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#mixins">Mixins</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#slots">Slots</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#enums">Enums</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#subsets">Subsets</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#types">Types</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#built-in">Built in</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#defined">Defined</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="" href="credits.md">Credits</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href=".">ALPHA linkml-rhea</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Schema</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/chemkg/linkml-rhea/edit/master/docs/index.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="rhea-linkml-schema">rhea-linkml schema</h1>
+<p>Experimental alpha version of a rendering of Rhea as LinkML</p>
+<h3 id="classes">Classes</h3>
+<ul>
+<li><a href="Class/">Class</a></li>
+<li><a href="Compound.md">Compound</a> - A chemical compound<ul>
+<li><a href="GenericCompound/">GenericCompound</a> - A chemical compound whose complete chemical structure is not described. Have one or or more reactive part(s) with chemical structure(s).<ul>
+<li><a href="GenericPolynucleotide/">GenericPolynucleotide</a> - A generic compound that is a polynucleotide. Have one or or more reactive part(s) with chemical structure(s).</li>
+<li><a href="GenericPolypeptide/">GenericPolypeptide</a> - A generic compound that is a polypeptide. Have one or or more reactive part(s) with chemical structure(s).</li>
+</ul>
+</li>
+<li><a href="Polymer/">Polymer</a> - A chemical compound that is a polymer. Described by a polymerization index, and an underlying polymer from ChEBI.</li>
+<li><a href="SmallMolecule/">SmallMolecule</a> - A chemical compound that is a small molecule. A subclass of a given ChEBI chemical entity.</li>
+</ul>
+</li>
+<li><a href="Location.md">Location</a> - A location for a reaction participant.</li>
+<li><a href="Property/">Property</a></li>
+<li><a href="Reaction/">Reaction</a> - A chemical reaction, with unspecified direction.<ul>
+<li><a href="BidirectionalReaction.md">BidirectionalReaction</a> - A chemical reaction which can happen in one direction or the other, depending on the physiological conditions.</li>
+<li><a href="DirectionalReaction.md">DirectionalReaction</a> - A chemical reaction, with the direction specified by substrates and products.</li>
+</ul>
+</li>
+<li><a href="ReactionParticipant/">ReactionParticipant</a> - A reaction participant. Contained in a reaction side.</li>
+<li><a href="ReactionSide/">ReactionSide</a> - A reaction side in a chemical reaction. Contains one or more reaction participants.</li>
+<li><a href="ReactivePart.md">ReactivePart</a> - A reactive part in a generic compound, with a defined chemical structure. A subclass of a given ChEBI chemical entity.</li>
+</ul>
+<h3 id="mixins">Mixins</h3>
+<h3 id="slots">Slots</h3>
+<ul>
+<li><a href="accession/">accession</a></li>
+<li><a href="bidirectionalReaction/">bidirectionalReaction</a></li>
+<li><a href="charge/">charge</a></li>
+<li><a href="chebi/">chebi</a></li>
+<li><a href="citation/">citation</a></li>
+<li><a href="comment/">comment</a></li>
+<li><a href="compound/">compound</a></li>
+<li><a href="contains/">contains</a></li>
+<li><a href="contains1/">contains1</a></li>
+<li><a href="contains10/">contains10</a></li>
+<li><a href="contains11/">contains11</a></li>
+<li><a href="contains12/">contains12</a></li>
+<li><a href="contains13/">contains13</a></li>
+<li><a href="contains14/">contains14</a></li>
+<li><a href="contains16/">contains16</a></li>
+<li><a href="contains17/">contains17</a></li>
+<li><a href="contains18/">contains18</a></li>
+<li><a href="contains19/">contains19</a></li>
+<li><a href="contains2/">contains2</a></li>
+<li><a href="contains20/">contains20</a></li>
+<li><a href="contains21/">contains21</a></li>
+<li><a href="contains22/">contains22</a></li>
+<li><a href="contains24/">contains24</a></li>
+<li><a href="contains26/">contains26</a></li>
+<li><a href="contains27/">contains27</a></li>
+<li><a href="contains28/">contains28</a></li>
+<li><a href="contains2n/">contains2n</a></li>
+<li><a href="contains3/">contains3</a></li>
+<li><a href="contains32/">contains32</a></li>
+<li><a href="contains4/">contains4</a></li>
+<li><a href="contains40/">contains40</a></li>
+<li><a href="contains5/">contains5</a></li>
+<li><a href="contains6/">contains6</a></li>
+<li><a href="contains7/">contains7</a></li>
+<li><a href="contains8/">contains8</a></li>
+<li><a href="contains9/">contains9</a></li>
+<li><a href="containsN/">containsN</a></li>
+<li><a href="containsNminus1/">containsNminus1</a></li>
+<li><a href="containsNplus1/">containsNplus1</a></li>
+<li><a href="curatedOrder/">curatedOrder</a></li>
+<li><a href="directionalReaction/">directionalReaction</a></li>
+<li><a href="ec/">ec</a><ul>
+<li><a href="Reaction_ec/">Reaction➞ec</a> - EC is always specified for unspecified direction<ul>
+<li><a href="BidirectionalReaction_ec/">BidirectionalReaction➞ec</a> - EC is rarely/never specified for bidirectional</li>
+<li><a href="DirectionalReaction_ec/">DirectionalReaction➞ec</a> - EC is rarely/never specified for directional</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="equation/">equation</a></li>
+<li><a href="formula/">formula</a></li>
+<li><a href="htmlEquation/">htmlEquation</a></li>
+<li><a href="htmlName/">htmlName</a></li>
+<li><a href="id/">id</a></li>
+<li><a href="isChemicallyBalanced/">isChemicallyBalanced</a></li>
+<li><a href="isTransport/">isTransport</a></li>
+<li><a href="label/">label</a></li>
+<li><a href="location/">location</a></li>
+<li><a href="name/">name</a></li>
+<li><a href="polymerizationIndex/">polymerizationIndex</a></li>
+<li><a href="position/">position</a></li>
+<li><a href="products/">products</a></li>
+<li><a href="reactivePart/">reactivePart</a></li>
+<li><a href="seeAlso/">seeAlso</a></li>
+<li><a href="side/">side</a></li>
+<li><a href="status/">status</a></li>
+<li><a href="subClassOf/">subClassOf</a></li>
+<li><a href="substrates/">substrates</a></li>
+<li><a href="substratesOrProducts/">substratesOrProducts</a></li>
+<li><a href="transformableTo/">transformableTo</a></li>
+<li><a href="type/">type</a></li>
+<li><a href="underlyingChebi/">underlyingChebi</a></li>
+</ul>
+<h3 id="enums">Enums</h3>
+<ul>
+<li><a href="location_enum/">location_enum</a></li>
+<li><a href="polymerizationIndex_enum/">polymerizationIndex_enum</a></li>
+<li><a href="status_enum/">status_enum</a></li>
+</ul>
+<h3 id="subsets">Subsets</h3>
+<h3 id="types">Types</h3>
+<h4 id="built-in">Built in</h4>
+<ul>
+<li><strong>Bool</strong></li>
+<li><strong>Decimal</strong></li>
+<li><strong>ElementIdentifier</strong></li>
+<li><strong>NCName</strong></li>
+<li><strong>NodeIdentifier</strong></li>
+<li><strong>URI</strong></li>
+<li><strong>URIorCURIE</strong></li>
+<li><strong>XSDDate</strong></li>
+<li><strong>XSDDateTime</strong></li>
+<li><strong>XSDTime</strong></li>
+<li><strong>float</strong></li>
+<li><strong>int</strong></li>
+<li><strong>str</strong></li>
+</ul>
+<h4 id="defined">Defined</h4>
+<ul>
+<li><a href="types/CHEBIIdentifier/">CHEBIIdentifier</a>  (<a href="types/Uriorcurie/">Uriorcurie</a>) </li>
+<li><a href="types/Boolean/">Boolean</a>  (<strong>Bool</strong>)  - A binary (true or false) value</li>
+<li><a href="types/Date/">Date</a>  (<strong>XSDDate</strong>)  - a date (year, month and day) in an idealized calendar</li>
+<li><a href="types/Datetime/">Datetime</a>  (<strong>XSDDateTime</strong>)  - The combination of a date and time</li>
+<li><a href="types/Decimal/">Decimal</a>  (<strong>Decimal</strong>)  - A real number with arbitrary precision that conforms to the xsd:decimal specification</li>
+<li><a href="types/Double/">Double</a>  (<strong>float</strong>)  - A real number that conforms to the xsd:double specification</li>
+<li><a href="types/Float/">Float</a>  (<strong>float</strong>)  - A real number that conforms to the xsd:float specification</li>
+<li><a href="types/Integer/">Integer</a>  (<strong>int</strong>)  - An integer</li>
+<li><a href="types/Ncname/">Ncname</a>  (<strong>NCName</strong>)  - Prefix part of CURIE</li>
+<li><a href="types/Nodeidentifier/">Nodeidentifier</a>  (<strong>NodeIdentifier</strong>)  - A URI, CURIE or BNODE that represents a node in a model.</li>
+<li><a href="types/Objectidentifier/">Objectidentifier</a>  (<strong>ElementIdentifier</strong>)  - A URI or CURIE that represents an object in the model.</li>
+<li><a href="types/String/">String</a>  (<strong>str</strong>)  - A character string</li>
+<li><a href="types/Time/">Time</a>  (<strong>XSDTime</strong>)  - A time object represents a (local) time of day, independent of any particular day</li>
+<li><a href="types/Uri/">Uri</a>  (<strong>URI</strong>)  - a complete URI</li>
+<li><a href="types/Uriorcurie/">Uriorcurie</a>  (<strong>URIorCURIE</strong>)  - a URI or a CURIE</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/chemkg/linkml-rhea/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '.';</script>
+    <script src="js/theme_extra.js" defer></script>
+    <script src="js/theme.js" defer></script>
+      <script src="search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
+
+<!--
+MkDocs version : 1.2.3
+Build Date UTC : 2022-01-10 20:03:58.856223+00:00
+-->
