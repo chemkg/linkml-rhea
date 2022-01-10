@@ -105,53 +105,52 @@
                 <h1 id="class-directionalreaction">Class: DirectionalReaction</h1>
 <p>A chemical reaction, with the direction specified by substrates and products.</p>
 <p>URI: <a href="http://rdf.rhea-db.org/DirectionalReaction">rhea:DirectionalReaction</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Reaction],[Class]&lt;subClassOf(i)%200..1-%20[DirectionalReaction&#124;substrates:string%20%3F;products:string%20%3F;ec:string%20*;id(i):uriorcurie%20%2B;status(i):status_enum%20%3F;accession(i):CHEBI_identifier%20%3F;isTransport(i):boolean%20%3F;bidirectionalReaction(i):integer%20%3F;isChemicallyBalanced(i):boolean%20%3F;citation(i):integer%20*;type(i):uriorcurie%20%3F;directionalReaction(i):integer%20*;htmlEquation(i):string%20%3F;equation(i):string%20%3F;side(i):string%20*;label(i):string%20%3F;comment(i):string%20%3F;seeAlso(i):string%20*],[Reaction]^-[DirectionalReaction],[Class]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Reaction],[Class]&lt;subClassOf(i)%200..1-%20[DirectionalReaction&#124;substrates:string%20%3F;products:string%20%3F;ec:string%20*;id(i):uriorcurie%20%2B;status(i):status_enum%20%3F;accession(i):CHEBI_identifier%20%3F;isTransport(i):boolean%20%3F;bidirectionalReaction(i):integer%20%3F;isChemicallyBalanced(i):boolean%20%3F;citation(i):integer%20*;type(i):uriorcurie%20%3F;directionalReaction(i):integer%20*;htmlEquation(i):string%20%3F;equation(i):string%20%3F;side(i):string%20*;label(i):string%20%3F;comment(i):string%20%3F;seeAlso(i):string%20*],[Reaction]^-[DirectionalReaction],[Class]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[ReactionSide],[DirectionalReaction]&lt;subClassOf%200..1-%20[DirectionalReaction&#124;status(i):status_enum%20%3F;accession(i):Database_identifier%20%3F;seeAlso(i):string%20*;isTransport(i):boolean%20%3F;isChemicallyBalanced(i):boolean%20%3F;citation(i):integer%20*;htmlEquation(i):string%20%3F;equation(i):string%20%3F;ec(i):string%20*;id(i):uriorcurie%20%2B;comment(i):string%20%3F;type(i):uriorcurie%20%3F;label(i):string%20%3F],[ReactionSide]&lt;products%200..1-%20[DirectionalReaction],[ReactionSide]&lt;substrates%200..1-%20[DirectionalReaction],[Reaction]-%20directionalReaction%200..*&gt;[DirectionalReaction],[AbstractReaction]^-[DirectionalReaction],[Reaction],[AbstractReaction]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[ReactionSide],[DirectionalReaction]&lt;subClassOf%200..1-%20[DirectionalReaction&#124;status(i):status_enum%20%3F;accession(i):Database_identifier%20%3F;seeAlso(i):string%20*;isTransport(i):boolean%20%3F;isChemicallyBalanced(i):boolean%20%3F;citation(i):integer%20*;htmlEquation(i):string%20%3F;equation(i):string%20%3F;ec(i):string%20*;id(i):uriorcurie%20%2B;comment(i):string%20%3F;type(i):uriorcurie%20%3F;label(i):string%20%3F],[ReactionSide]&lt;products%200..1-%20[DirectionalReaction],[ReactionSide]&lt;substrates%200..1-%20[DirectionalReaction],[Reaction]-%20directionalReaction%200..*&gt;[DirectionalReaction],[AbstractReaction]^-[DirectionalReaction],[Reaction],[AbstractReaction]" /></a></p>
 <h2 id="parents">Parents</h2>
 <ul>
-<li>is_a: <a href="../Reaction/">Reaction</a> - A chemical reaction, with unspecified direction.</li>
+<li>is_a: <a href="../AbstractReaction/">AbstractReaction</a></li>
 </ul>
 <h2 id="referenced-by-class">Referenced by Class</h2>
+<ul>
+<li><strong><a href="DirectionalReaction.md">DirectionalReaction</a></strong> <em><a href="../DirectionalReaction_subClassOf/">DirectionalReaction➞subClassOf</a></em>  <sub>0..1</sub>  <strong><a href="DirectionalReaction.md">DirectionalReaction</a></strong></li>
+<li><strong>None</strong> <em><a href="./">directionalReaction</a></em>  <sub>0..*</sub>  <strong><a href="DirectionalReaction.md">DirectionalReaction</a></strong></li>
+</ul>
 <h2 id="attributes">Attributes</h2>
 <h3 id="own">Own</h3>
+<ul>
+<li><a href="../substrates/">substrates</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../ReactionSide/">ReactionSide</a></li>
+<li>Example: 15093_R None</li>
+</ul>
+</li>
+<li><a href="../products/">products</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../ReactionSide/">ReactionSide</a></li>
+<li>Example: 15093_L None</li>
+</ul>
+</li>
+<li><a href="../DirectionalReaction_subClassOf/">DirectionalReaction➞subClassOf</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="DirectionalReaction.md">DirectionalReaction</a></li>
+<li>Example: CHEBI_90358 None</li>
+</ul>
+</li>
+</ul>
+<h3 id="inherited-from-abstractreaction">Inherited from AbstractReaction:</h3>
 <ul>
 <li><a href="../id/">id</a>  <sub>1..*</sub><ul>
 <li>Range: <a href="../types/Uriorcurie/">Uriorcurie</a></li>
 <li>Example: http://rdf.rhea-db.org/Compound_12075 None</li>
 </ul>
 </li>
-<li><a href="../isTransport/">isTransport</a>  <sub>0..1</sub><ul>
-<li>Range: <a href="../types/Boolean/">Boolean</a></li>
+<li><a href="../comment/">comment</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../types/String/">String</a></li>
+<li>Example: RHEA:51568 part of RHEA:51564. None</li>
 </ul>
 </li>
 <li><a href="../type/">type</a>  <sub>0..1</sub><ul>
 <li>Range: <a href="../types/Uriorcurie/">Uriorcurie</a></li>
 </ul>
 </li>
-<li><a href="../isChemicallyBalanced/">isChemicallyBalanced</a>  <sub>0..1</sub><ul>
-<li>Range: <a href="../types/Boolean/">Boolean</a></li>
-</ul>
-</li>
-<li><a href="../substrates/">substrates</a>  <sub>0..1</sub><ul>
-<li>Range: <a href="../types/String/">String</a></li>
-<li>Example: 15093_R None</li>
-</ul>
-</li>
-<li><a href="../htmlEquation/">htmlEquation</a>  <sub>0..1</sub><ul>
-<li>Range: <a href="../types/String/">String</a></li>
-<li>Example: small&gt;-tyrosine None</li>
-</ul>
-</li>
-<li><a href="../accession/">accession</a>  <sub>0..1</sub><ul>
-<li>Range: <a href="../types/CHEBIIdentifier/">CHEBIIdentifier</a></li>
-<li>Example: CHEBI:90358 None</li>
-</ul>
-</li>
-<li><a href="../citation/">citation</a>  <sub>0..*</sub><ul>
-<li>Range: <a href="../types/Integer/">Integer</a></li>
-<li>Example: 10074065 None</li>
-</ul>
-</li>
-<li><a href="../equation/">equation</a>  <sub>0..1</sub><ul>
+<li><a href="../label/">label</a>  <sub>0..1</sub><ul>
 <li>Range: <a href="../types/String/">String</a></li>
 <li>Example: 3-(4-hydroxyphenyl)pyruvate + L-glutamate =&gt; 2-oxoglutarate + L-tyrosine None</li>
 </ul>
@@ -161,19 +160,9 @@
 <li>Example: Approved None</li>
 </ul>
 </li>
-<li><a href="../products/">products</a>  <sub>0..1</sub><ul>
-<li>Range: <a href="../types/String/">String</a></li>
-<li>Example: 15093_L None</li>
-</ul>
-</li>
-<li><a href="../label/">label</a>  <sub>0..1</sub><ul>
-<li>Range: <a href="../types/String/">String</a></li>
-<li>Example: 3-(4-hydroxyphenyl)pyruvate + L-glutamate =&gt; 2-oxoglutarate + L-tyrosine None</li>
-</ul>
-</li>
-<li><a href="../subClassOf/">subClassOf</a>  <sub>0..1</sub><ul>
-<li>Range: <a href="../Class/">Class</a></li>
-<li>Example: CHEBI_90358 None</li>
+<li><a href="../accession/">accession</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../types/DatabaseIdentifier/">DatabaseIdentifier</a></li>
+<li>Example: CHEBI:90358 None</li>
 </ul>
 </li>
 <li><a href="../seeAlso/">seeAlso</a>  <sub>0..*</sub><ul>
@@ -181,33 +170,33 @@
 <li>Example: R-HSA-517444.2 None</li>
 </ul>
 </li>
-<li><a href="../comment/">comment</a>  <sub>0..1</sub><ul>
-<li>Range: <a href="../types/String/">String</a></li>
-<li>Example: RHEA:51568 part of RHEA:51564. None</li>
+<li><a href="../isTransport/">isTransport</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../types/Boolean/">Boolean</a></li>
 </ul>
 </li>
-<li><a href="../DirectionalReaction_ec/">DirectionalReaction➞ec</a>  <sub>0..*</sub><ul>
-<li>Description: EC is rarely/never specified for directional</li>
+<li><a href="../isChemicallyBalanced/">isChemicallyBalanced</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../types/Boolean/">Boolean</a></li>
+</ul>
+</li>
+<li><a href="../citation/">citation</a>  <sub>0..*</sub><ul>
+<li>Range: <a href="../types/Integer/">Integer</a></li>
+<li>Example: 10074065 None</li>
+</ul>
+</li>
+<li><a href="../htmlEquation/">htmlEquation</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../types/String/">String</a></li>
+<li>Example: small&gt;-tyrosine None</li>
+</ul>
+</li>
+<li><a href="../equation/">equation</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../types/String/">String</a></li>
+<li>Example: 3-(4-hydroxyphenyl)pyruvate + L-glutamate =&gt; 2-oxoglutarate + L-tyrosine None</li>
+</ul>
+</li>
+<li><a href="../AbstractReaction_ec/">AbstractReaction➞ec</a>  <sub>0..*</sub><ul>
+<li>Description: EC is always specified for unspecified direction</li>
 <li>Range: <a href="../types/String/">String</a></li>
 <li>Example: 4.2.3.87 None</li>
-</ul>
-</li>
-</ul>
-<h3 id="inherited-from-reaction">Inherited from Reaction:</h3>
-<ul>
-<li><a href="../bidirectionalReaction/">bidirectionalReaction</a>  <sub>0..1</sub><ul>
-<li>Range: <a href="../types/Integer/">Integer</a></li>
-<li>Example: 28846 None</li>
-</ul>
-</li>
-<li><a href="./">directionalReaction</a>  <sub>0..*</sub><ul>
-<li>Range: <a href="../types/Integer/">Integer</a></li>
-<li>Example: 28844|28845 None</li>
-</ul>
-</li>
-<li><a href="../side/">side</a>  <sub>0..*</sub><ul>
-<li>Range: <a href="../types/String/">String</a></li>
-<li>Example: 28843_L|28843_R None</li>
 </ul>
 </li>
 </ul>

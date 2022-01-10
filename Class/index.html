@@ -103,8 +103,16 @@
             <div class="section">
               
                 <h1 id="class-class">Class: Class</h1>
+<p>compounds and reactions are represented as classes in Rhea</p>
 <p>URI: <a href="http://rdf.rhea-db.org/Class">rhea:Class</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Reaction]-%20subClassOf%200..1&gt;[Class&#124;id:uriorcurie%20%2B;comment:string%20%3F;type:uriorcurie%20%3F;label:string%20%3F],[DirectionalReaction]-%20subClassOf(i)%200..1&gt;[Class],[BidirectionalReaction]-%20subClassOf(i)%200..1&gt;[Class],[ReactionParticipant]-%20subClassOf%200..1&gt;[Class],[ReactivePart]-%20subClassOf%200..1&gt;[Class],[SmallMolecule]-%20subClassOf%200..1&gt;[Class],[SmallMolecule],[ReactivePart],[ReactionParticipant],[Reaction],[DirectionalReaction],[BidirectionalReaction]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Reaction]-%20subClassOf%200..1&gt;[Class&#124;id:uriorcurie%20%2B;comment:string%20%3F;type:uriorcurie%20%3F;label:string%20%3F],[DirectionalReaction]-%20subClassOf(i)%200..1&gt;[Class],[BidirectionalReaction]-%20subClassOf(i)%200..1&gt;[Class],[ReactionParticipant]-%20subClassOf%200..1&gt;[Class],[ReactivePart]-%20subClassOf%200..1&gt;[Class],[SmallMolecule]-%20subClassOf%200..1&gt;[Class],[SmallMolecule],[ReactivePart],[ReactionParticipant],[Reaction],[DirectionalReaction],[BidirectionalReaction]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[ReactivePart],[ReactionParticipant],[Compound],[AbstractReaction]-%20subClassOf(i)%200..1&gt;[Class&#124;id:uriorcurie%20%2B;comment:string%20%3F;type:uriorcurie%20%3F;label:string%20%3F],[Class]^-[ReactivePart],[Class]^-[ReactionParticipant],[Class]^-[Compound],[Class]^-[AbstractReaction],[AbstractReaction]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[ReactivePart],[ReactionParticipant],[Compound],[AbstractReaction]-%20subClassOf(i)%200..1&gt;[Class&#124;id:uriorcurie%20%2B;comment:string%20%3F;type:uriorcurie%20%3F;label:string%20%3F],[Class]^-[ReactivePart],[Class]^-[ReactionParticipant],[Class]^-[Compound],[Class]^-[AbstractReaction],[AbstractReaction]" /></a></p>
+<h2 id="children">Children</h2>
+<ul>
+<li><a href="../AbstractReaction/">AbstractReaction</a></li>
+<li><a href="Compound.md">Compound</a> - A chemical compound</li>
+<li><a href="../ReactionParticipant/">ReactionParticipant</a> - A reaction participant. Contained in a reaction side.</li>
+<li><a href="ReactivePart.md">ReactivePart</a> - A reactive part in a generic compound, with a defined chemical structure. A subclass of a given ChEBI chemical entity.</li>
+</ul>
 <h2 id="referenced-by-class">Referenced by Class</h2>
 <ul>
 <li><strong>None</strong> <em><a href="../subClassOf/">subClassOf</a></em>  <sub>0..1</sub>  <strong><a href="./">Class</a></strong></li>

@@ -105,7 +105,11 @@
                 <h1 id="class-compound">Class: Compound</h1>
 <p>A chemical compound</p>
 <p>URI: <a href="http://rdf.rhea-db.org/Compound">rhea:Compound</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[SmallMolecule],[Polymer],[GenericCompound],[Compound&#124;id:uriorcurie%20%2B;type:uriorcurie%20%3F;comment:string%20%3F;label:string%20%3F]^-[SmallMolecule],[Compound]^-[Polymer],[Compound]^-[GenericCompound]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[SmallMolecule],[Polymer],[GenericCompound],[Compound&#124;id:uriorcurie%20%2B;type:uriorcurie%20%3F;comment:string%20%3F;label:string%20%3F]^-[SmallMolecule],[Compound]^-[Polymer],[Compound]^-[GenericCompound]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[SmallMolecule],[ReactivePart],[ReactionParticipant],[Polymer],[GenericCompound],[Compound]&lt;subClassOf%200..1-%20[Compound&#124;name:string%20%3F;accession:Database_identifier%20%3F;htmlName:string%20%3F;formula:string%20%3F;id(i):uriorcurie%20%2B;comment(i):string%20%3F;type(i):uriorcurie%20%3F;label(i):string%20%3F],[ReactionParticipant]-%20subClassOf%200..1&gt;[Compound],[ReactivePart]-%20subClassOf%200..1&gt;[Compound],[ReactionParticipant]-%20compound%200..1&gt;[Compound],[Compound]^-[SmallMolecule],[Compound]^-[Polymer],[Compound]^-[GenericCompound],[Class]^-[Compound],[Class]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[SmallMolecule],[ReactivePart],[ReactionParticipant],[Polymer],[GenericCompound],[Compound]&lt;subClassOf%200..1-%20[Compound&#124;name:string%20%3F;accession:Database_identifier%20%3F;htmlName:string%20%3F;formula:string%20%3F;id(i):uriorcurie%20%2B;comment(i):string%20%3F;type(i):uriorcurie%20%3F;label(i):string%20%3F],[ReactionParticipant]-%20subClassOf%200..1&gt;[Compound],[ReactivePart]-%20subClassOf%200..1&gt;[Compound],[ReactionParticipant]-%20compound%200..1&gt;[Compound],[Compound]^-[SmallMolecule],[Compound]^-[Polymer],[Compound]^-[GenericCompound],[Class]^-[Compound],[Class]" /></a></p>
+<h2 id="parents">Parents</h2>
+<ul>
+<li>is_a: <a href="../Class/">Class</a> - compounds and reactions are represented as classes in Rhea</li>
+</ul>
 <h2 id="children">Children</h2>
 <ul>
 <li><a href="../GenericCompound/">GenericCompound</a> - A chemical compound whose complete chemical structure is not described. Have one or or more reactive part(s) with chemical structure(s).</li>
@@ -113,21 +117,55 @@
 <li><a href="../SmallMolecule/">SmallMolecule</a> - A chemical compound that is a small molecule. A subclass of a given ChEBI chemical entity.</li>
 </ul>
 <h2 id="referenced-by-class">Referenced by Class</h2>
+<ul>
+<li><strong><a href="Compound.md">Compound</a></strong> <em><a href="../Compound_subClassOf/">Compound➞subClassOf</a></em>  <sub>0..1</sub>  <strong><a href="Compound.md">Compound</a></strong></li>
+<li><strong><a href="../ReactionParticipant/">ReactionParticipant</a></strong> <em><a href="../ReactionParticipant_subClassOf/">ReactionParticipant➞subClassOf</a></em>  <sub>0..1</sub>  <strong><a href="Compound.md">Compound</a></strong></li>
+<li><strong><a href="ReactivePart.md">ReactivePart</a></strong> <em><a href="../ReactivePart_subClassOf/">ReactivePart➞subClassOf</a></em>  <sub>0..1</sub>  <strong><a href="Compound.md">Compound</a></strong></li>
+<li><strong>None</strong> <em><a href="./">compound</a></em>  <sub>0..1</sub>  <strong><a href="Compound.md">Compound</a></strong></li>
+</ul>
 <h2 id="attributes">Attributes</h2>
 <h3 id="own">Own</h3>
+<ul>
+<li><a href="../name/">name</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../types/String/">String</a></li>
+<li>Example: beta-D-galactosyl-(1-&gt;4)-N-acetyl-beta-D-glucosaminyl-(1-&gt;3)-beta-D-galactosyl-(1-&gt;4)-[alpha-L-fucosyl-(1-&gt;3)]-N-acetyl-beta-D-glucosaminyl-(1-&gt;3)-beta-D-galactosyl-(1-&gt;4)-beta-D-glucosyl-(1&lt;-&gt;1')-ceramide None</li>
+</ul>
+</li>
+<li><a href="../accession/">accession</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../types/DatabaseIdentifier/">DatabaseIdentifier</a></li>
+<li>Example: CHEBI:90358 None</li>
+</ul>
+</li>
+<li><a href="../htmlName/">htmlName</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../types/String/">String</a></li>
+<li>Example: 700;)-ceramide None</li>
+</ul>
+</li>
+<li><a href="../formula/">formula</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../types/String/">String</a></li>
+<li>Example: C50H83N3O37R2 None</li>
+</ul>
+</li>
+<li><a href="../Compound_subClassOf/">Compound➞subClassOf</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="Compound.md">Compound</a></li>
+<li>Example: CHEBI_90358 None</li>
+</ul>
+</li>
+</ul>
+<h3 id="inherited-from-class">Inherited from Class:</h3>
 <ul>
 <li><a href="../id/">id</a>  <sub>1..*</sub><ul>
 <li>Range: <a href="../types/Uriorcurie/">Uriorcurie</a></li>
 <li>Example: http://rdf.rhea-db.org/Compound_12075 None</li>
 </ul>
 </li>
-<li><a href="../type/">type</a>  <sub>0..1</sub><ul>
-<li>Range: <a href="../types/Uriorcurie/">Uriorcurie</a></li>
-</ul>
-</li>
 <li><a href="../comment/">comment</a>  <sub>0..1</sub><ul>
 <li>Range: <a href="../types/String/">String</a></li>
 <li>Example: RHEA:51568 part of RHEA:51564. None</li>
+</ul>
+</li>
+<li><a href="../type/">type</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../types/Uriorcurie/">Uriorcurie</a></li>
 </ul>
 </li>
 <li><a href="../label/">label</a>  <sub>0..1</sub><ul>

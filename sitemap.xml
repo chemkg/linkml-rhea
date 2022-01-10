@@ -6,7 +6,27 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://chemkg.github.io/linkml-rhea/AbstractReaction/</loc>
+         <lastmod>2022-01-10</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://chemkg.github.io/linkml-rhea/AbstractReaction_ec/</loc>
+         <lastmod>2022-01-10</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://chemkg.github.io/linkml-rhea/AbstractReaction_subClassOf/</loc>
+         <lastmod>2022-01-10</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://chemkg.github.io/linkml-rhea/BidirectionalReaction_ec/</loc>
+         <lastmod>2022-01-10</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://chemkg.github.io/linkml-rhea/BidirectionalReaction_subClassOf/</loc>
          <lastmod>2022-01-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -16,7 +36,17 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://chemkg.github.io/linkml-rhea/Compound_subClassOf/</loc>
+         <lastmod>2022-01-10</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://chemkg.github.io/linkml-rhea/DirectionalReaction_ec/</loc>
+         <lastmod>2022-01-10</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://chemkg.github.io/linkml-rhea/DirectionalReaction_subClassOf/</loc>
          <lastmod>2022-01-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -56,6 +86,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://chemkg.github.io/linkml-rhea/ReactionParticipant_subClassOf/</loc>
+         <lastmod>2022-01-10</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://chemkg.github.io/linkml-rhea/ReactionSide/</loc>
          <lastmod>2022-01-10</lastmod>
          <changefreq>daily</changefreq>
@@ -66,7 +101,22 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://chemkg.github.io/linkml-rhea/Reaction_subClassOf/</loc>
+         <lastmod>2022-01-10</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://chemkg.github.io/linkml-rhea/ReactivePart_subClassOf/</loc>
+         <lastmod>2022-01-10</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://chemkg.github.io/linkml-rhea/SmallMolecule/</loc>
+         <lastmod>2022-01-10</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://chemkg.github.io/linkml-rhea/SmallMolecule_subClassOf/</loc>
          <lastmod>2022-01-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -417,6 +467,11 @@
     </url>
     <url>
          <loc>https://chemkg.github.io/linkml-rhea/types/CHEBIIdentifier/</loc>
+         <lastmod>2022-01-10</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://chemkg.github.io/linkml-rhea/types/DatabaseIdentifier/</loc>
          <lastmod>2022-01-10</lastmod>
          <changefreq>daily</changefreq>
     </url>

@@ -126,7 +126,13 @@
 <p>Experimental alpha version of a rendering of Rhea as LinkML</p>
 <h3 id="classes">Classes</h3>
 <ul>
-<li><a href="Class/">Class</a></li>
+<li><a href="Class/">Class</a> - compounds and reactions are represented as classes in Rhea<ul>
+<li><a href="AbstractReaction/">AbstractReaction</a><ul>
+<li><a href="BidirectionalReaction.md">BidirectionalReaction</a> - A chemical reaction which can happen in one direction or the other, depending on the physiological conditions.</li>
+<li><a href="DirectionalReaction.md">DirectionalReaction</a> - A chemical reaction, with the direction specified by substrates and products.</li>
+<li><a href="Reaction/">Reaction</a> - A chemical reaction, with unspecified direction.</li>
+</ul>
+</li>
 <li><a href="Compound.md">Compound</a> - A chemical compound<ul>
 <li><a href="GenericCompound/">GenericCompound</a> - A chemical compound whose complete chemical structure is not described. Have one or or more reactive part(s) with chemical structure(s).<ul>
 <li><a href="GenericPolynucleotide/">GenericPolynucleotide</a> - A generic compound that is a polynucleotide. Have one or or more reactive part(s) with chemical structure(s).</li>
@@ -137,16 +143,11 @@
 <li><a href="SmallMolecule/">SmallMolecule</a> - A chemical compound that is a small molecule. A subclass of a given ChEBI chemical entity.</li>
 </ul>
 </li>
-<li><a href="Location.md">Location</a> - A location for a reaction participant.</li>
-<li><a href="Property/">Property</a></li>
-<li><a href="Reaction/">Reaction</a> - A chemical reaction, with unspecified direction.<ul>
-<li><a href="BidirectionalReaction.md">BidirectionalReaction</a> - A chemical reaction which can happen in one direction or the other, depending on the physiological conditions.</li>
-<li><a href="DirectionalReaction.md">DirectionalReaction</a> - A chemical reaction, with the direction specified by substrates and products.</li>
+<li><a href="ReactionParticipant/">ReactionParticipant</a> - A reaction participant. Contained in a reaction side.</li>
+<li><a href="ReactivePart.md">ReactivePart</a> - A reactive part in a generic compound, with a defined chemical structure. A subclass of a given ChEBI chemical entity.</li>
 </ul>
 </li>
-<li><a href="ReactionParticipant/">ReactionParticipant</a> - A reaction participant. Contained in a reaction side.</li>
 <li><a href="ReactionSide/">ReactionSide</a> - A reaction side in a chemical reaction. Contains one or more reaction participants.</li>
-<li><a href="ReactivePart.md">ReactivePart</a> - A reactive part in a generic compound, with a defined chemical structure. A subclass of a given ChEBI chemical entity.</li>
 </ul>
 <h3 id="mixins">Mixins</h3>
 <h3 id="slots">Slots</h3>
@@ -158,7 +159,7 @@
 <li><a href="citation/">citation</a></li>
 <li><a href="comment/">comment</a></li>
 <li><a href="compound/">compound</a></li>
-<li><a href="contains/">contains</a></li>
+<li><a href="contains/">contains</a><ul>
 <li><a href="contains1/">contains1</a></li>
 <li><a href="contains10/">contains10</a></li>
 <li><a href="contains11/">contains11</a></li>
@@ -190,14 +191,12 @@
 <li><a href="containsN/">containsN</a></li>
 <li><a href="containsNminus1/">containsNminus1</a></li>
 <li><a href="containsNplus1/">containsNplus1</a></li>
+</ul>
+</li>
 <li><a href="curatedOrder/">curatedOrder</a></li>
 <li><a href="directionalReaction/">directionalReaction</a></li>
 <li><a href="ec/">ec</a><ul>
-<li><a href="Reaction_ec/">Reaction➞ec</a> - EC is always specified for unspecified direction<ul>
-<li><a href="BidirectionalReaction_ec/">BidirectionalReaction➞ec</a> - EC is rarely/never specified for bidirectional</li>
-<li><a href="DirectionalReaction_ec/">DirectionalReaction➞ec</a> - EC is rarely/never specified for directional</li>
-</ul>
-</li>
+<li><a href="AbstractReaction_ec/">AbstractReaction➞ec</a> - EC is always specified for unspecified direction</li>
 </ul>
 </li>
 <li><a href="equation/">equation</a></li>
@@ -217,7 +216,21 @@
 <li><a href="seeAlso/">seeAlso</a></li>
 <li><a href="side/">side</a></li>
 <li><a href="status/">status</a></li>
-<li><a href="subClassOf/">subClassOf</a></li>
+<li><a href="subClassOf/">subClassOf</a><ul>
+<li><a href="AbstractReaction_subClassOf/">AbstractReaction➞subClassOf</a><ul>
+<li><a href="BidirectionalReaction_subClassOf/">BidirectionalReaction➞subClassOf</a></li>
+<li><a href="DirectionalReaction_subClassOf/">DirectionalReaction➞subClassOf</a></li>
+<li><a href="Reaction_subClassOf/">Reaction➞subClassOf</a></li>
+</ul>
+</li>
+<li><a href="Compound_subClassOf/">Compound➞subClassOf</a><ul>
+<li><a href="SmallMolecule_subClassOf/">SmallMolecule➞subClassOf</a></li>
+</ul>
+</li>
+<li><a href="ReactionParticipant_subClassOf/">ReactionParticipant➞subClassOf</a></li>
+<li><a href="ReactivePart_subClassOf/">ReactivePart➞subClassOf</a></li>
+</ul>
+</li>
 <li><a href="substrates/">substrates</a></li>
 <li><a href="substratesOrProducts/">substratesOrProducts</a></li>
 <li><a href="transformableTo/">transformableTo</a></li>
@@ -250,7 +263,8 @@
 </ul>
 <h4 id="defined">Defined</h4>
 <ul>
-<li><a href="types/CHEBIIdentifier/">CHEBIIdentifier</a>  (<a href="types/Uriorcurie/">Uriorcurie</a>) </li>
+<li><a href="types/CHEBIIdentifier/">CHEBIIdentifier</a>  (<a href="types/DatabaseIdentifier/">DatabaseIdentifier</a>) </li>
+<li><a href="types/DatabaseIdentifier/">DatabaseIdentifier</a>  (<a href="types/Uriorcurie/">Uriorcurie</a>) </li>
 <li><a href="types/Boolean/">Boolean</a>  (<strong>Bool</strong>)  - A binary (true or false) value</li>
 <li><a href="types/Date/">Date</a>  (<strong>XSDDate</strong>)  - a date (year, month and day) in an idealized calendar</li>
 <li><a href="types/Datetime/">Datetime</a>  (<strong>XSDDateTime</strong>)  - The combination of a date and time</li>
@@ -315,5 +329,5 @@
 
 <!--
 MkDocs version : 1.2.3
-Build Date UTC : 2022-01-10 20:03:58.856223+00:00
+Build Date UTC : 2022-01-10 20:47:34.074175+00:00
 -->

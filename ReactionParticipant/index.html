@@ -105,32 +105,53 @@
                 <h1 id="class-reactionparticipant">Class: ReactionParticipant</h1>
 <p>A reaction participant. Contained in a reaction side.</p>
 <p>URI: <a href="http://rdf.rhea-db.org/ReactionParticipant">rhea:ReactionParticipant</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Class]&lt;subClassOf%200..1-%20[ReactionParticipant&#124;id:uriorcurie%20%2B;compound:string%20%3F;type:uriorcurie%20%3F;location:location_enum%20%3F],[Class]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Class]&lt;subClassOf%200..1-%20[ReactionParticipant&#124;id:uriorcurie%20%2B;compound:string%20%3F;type:uriorcurie%20%3F;location:location_enum%20%3F],[Class]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Compound]&lt;subClassOf%200..1-%20[ReactionParticipant&#124;location:location_enum%20%3F;id(i):uriorcurie%20%2B;comment(i):string%20%3F;type(i):uriorcurie%20%3F;label(i):string%20%3F],[Compound]&lt;compound%200..1-%20[ReactionParticipant],[ReactionSide]-%20contains%200..*&gt;[ReactionParticipant],[Class]^-[ReactionParticipant],[ReactionSide],[Compound],[Class]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Compound]&lt;subClassOf%200..1-%20[ReactionParticipant&#124;location:location_enum%20%3F;id(i):uriorcurie%20%2B;comment(i):string%20%3F;type(i):uriorcurie%20%3F;label(i):string%20%3F],[Compound]&lt;compound%200..1-%20[ReactionParticipant],[ReactionSide]-%20contains%200..*&gt;[ReactionParticipant],[Class]^-[ReactionParticipant],[ReactionSide],[Compound],[Class]" /></a></p>
+<h2 id="parents">Parents</h2>
+<ul>
+<li>is_a: <a href="../Class/">Class</a> - compounds and reactions are represented as classes in Rhea</li>
+</ul>
+<h2 id="referenced-by-class">Referenced by Class</h2>
+<ul>
+<li><strong>None</strong> <em><a href="../contains/">contains</a></em>  <sub>0..*</sub>  <strong><a href="./">ReactionParticipant</a></strong></li>
+</ul>
 <h2 id="attributes">Attributes</h2>
 <h3 id="own">Own</h3>
+<ul>
+<li><a href="../compound/">compound</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="Compound.md">Compound</a></li>
+<li>Example: Compound_1264 None</li>
+</ul>
+</li>
+<li><a href="../location/">location</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../location_enum/">location_enum</a></li>
+<li>Example: In None</li>
+</ul>
+</li>
+<li><a href="../ReactionParticipant_subClassOf/">ReactionParticipant➞subClassOf</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="Compound.md">Compound</a></li>
+<li>Example: CHEBI_90358 None</li>
+</ul>
+</li>
+</ul>
+<h3 id="inherited-from-class">Inherited from Class:</h3>
 <ul>
 <li><a href="../id/">id</a>  <sub>1..*</sub><ul>
 <li>Range: <a href="../types/Uriorcurie/">Uriorcurie</a></li>
 <li>Example: http://rdf.rhea-db.org/Compound_12075 None</li>
 </ul>
 </li>
-<li><a href="../subClassOf/">subClassOf</a>  <sub>0..1</sub><ul>
-<li>Range: <a href="../Class/">Class</a></li>
-<li>Example: CHEBI_90358 None</li>
-</ul>
-</li>
-<li><a href="../compound/">compound</a>  <sub>0..1</sub><ul>
+<li><a href="../comment/">comment</a>  <sub>0..1</sub><ul>
 <li>Range: <a href="../types/String/">String</a></li>
-<li>Example: Compound_1264 None</li>
+<li>Example: RHEA:51568 part of RHEA:51564. None</li>
 </ul>
 </li>
 <li><a href="../type/">type</a>  <sub>0..1</sub><ul>
 <li>Range: <a href="../types/Uriorcurie/">Uriorcurie</a></li>
 </ul>
 </li>
-<li><a href="../location/">location</a>  <sub>0..1</sub><ul>
-<li>Range: <a href="../location_enum/">location_enum</a></li>
-<li>Example: In None</li>
+<li><a href="../label/">label</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../types/String/">String</a></li>
+<li>Example: 3-(4-hydroxyphenyl)pyruvate + L-glutamate =&gt; 2-oxoglutarate + L-tyrosine None</li>
 </ul>
 </li>
 </ul>

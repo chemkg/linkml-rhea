@@ -105,22 +105,31 @@
                 <h1 id="class-genericpolypeptide">Class: GenericPolypeptide</h1>
 <p>A generic compound that is a polypeptide. Have one or or more reactive part(s) with chemical structure(s).</p>
 <p>URI: <a href="http://rdf.rhea-db.org/GenericPolypeptide">rhea:GenericPolypeptide</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[GenericCompound]^-[GenericPolypeptide&#124;reactivePart:string%20*;name:string%20%3F;accession:CHEBI_identifier%20%3F;htmlName:string%20%3F;id(i):uriorcurie%20%2B;type(i):uriorcurie%20%3F;comment(i):string%20%3F;label(i):string%20%3F],[GenericCompound]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[GenericCompound]^-[GenericPolypeptide&#124;reactivePart:string%20*;name:string%20%3F;accession:CHEBI_identifier%20%3F;htmlName:string%20%3F;id(i):uriorcurie%20%2B;type(i):uriorcurie%20%3F;comment(i):string%20%3F;label(i):string%20%3F],[GenericCompound]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[GenericCompound]^-[GenericPolypeptide&#124;reactivePart(i):string%20*;name(i):string%20%3F;accession(i):Database_identifier%20%3F;htmlName(i):string%20%3F;formula(i):string%20%3F;id(i):uriorcurie%20%2B;comment(i):string%20%3F;type(i):uriorcurie%20%3F;label(i):string%20%3F],[GenericCompound],[Compound]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[GenericCompound]^-[GenericPolypeptide&#124;reactivePart(i):string%20*;name(i):string%20%3F;accession(i):Database_identifier%20%3F;htmlName(i):string%20%3F;formula(i):string%20%3F;id(i):uriorcurie%20%2B;comment(i):string%20%3F;type(i):uriorcurie%20%3F;label(i):string%20%3F],[GenericCompound],[Compound]" /></a></p>
 <h2 id="parents">Parents</h2>
 <ul>
 <li>is_a: <a href="../GenericCompound/">GenericCompound</a> - A chemical compound whose complete chemical structure is not described. Have one or or more reactive part(s) with chemical structure(s).</li>
 </ul>
 <h2 id="attributes">Attributes</h2>
-<h3 id="own">Own</h3>
+<h3 id="inherited-from-genericcompound">Inherited from GenericCompound:</h3>
 <ul>
 <li><a href="../id/">id</a>  <sub>1..*</sub><ul>
 <li>Range: <a href="../types/Uriorcurie/">Uriorcurie</a></li>
 <li>Example: http://rdf.rhea-db.org/Compound_12075 None</li>
 </ul>
 </li>
-<li><a href="../reactivePart/">reactivePart</a>  <sub>0..*</sub><ul>
+<li><a href="../comment/">comment</a>  <sub>0..1</sub><ul>
 <li>Range: <a href="../types/String/">String</a></li>
-<li>Example: Compound_10195_rp1 None</li>
+<li>Example: RHEA:51568 part of RHEA:51564. None</li>
+</ul>
+</li>
+<li><a href="../type/">type</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../types/Uriorcurie/">Uriorcurie</a></li>
+</ul>
+</li>
+<li><a href="../label/">label</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../types/String/">String</a></li>
+<li>Example: 3-(4-hydroxyphenyl)pyruvate + L-glutamate =&gt; 2-oxoglutarate + L-tyrosine None</li>
 </ul>
 </li>
 <li><a href="../name/">name</a>  <sub>0..1</sub><ul>
@@ -128,12 +137,8 @@
 <li>Example: beta-D-galactosyl-(1-&gt;4)-N-acetyl-beta-D-glucosaminyl-(1-&gt;3)-beta-D-galactosyl-(1-&gt;4)-[alpha-L-fucosyl-(1-&gt;3)]-N-acetyl-beta-D-glucosaminyl-(1-&gt;3)-beta-D-galactosyl-(1-&gt;4)-beta-D-glucosyl-(1&lt;-&gt;1')-ceramide None</li>
 </ul>
 </li>
-<li><a href="../type/">type</a>  <sub>0..1</sub><ul>
-<li>Range: <a href="../types/Uriorcurie/">Uriorcurie</a></li>
-</ul>
-</li>
 <li><a href="../accession/">accession</a>  <sub>0..1</sub><ul>
-<li>Range: <a href="../types/CHEBIIdentifier/">CHEBIIdentifier</a></li>
+<li>Range: <a href="../types/DatabaseIdentifier/">DatabaseIdentifier</a></li>
 <li>Example: CHEBI:90358 None</li>
 </ul>
 </li>
@@ -142,17 +147,19 @@
 <li>Example: 700;)-ceramide None</li>
 </ul>
 </li>
-</ul>
-<h3 id="inherited-from-genericcompound">Inherited from GenericCompound:</h3>
-<ul>
-<li><a href="../label/">label</a>  <sub>0..1</sub><ul>
+<li><a href="../formula/">formula</a>  <sub>0..1</sub><ul>
 <li>Range: <a href="../types/String/">String</a></li>
-<li>Example: 3-(4-hydroxyphenyl)pyruvate + L-glutamate =&gt; 2-oxoglutarate + L-tyrosine None</li>
+<li>Example: C50H83N3O37R2 None</li>
 </ul>
 </li>
-<li><a href="../comment/">comment</a>  <sub>0..1</sub><ul>
+<li><a href="../Compound_subClassOf/">Compound➞subClassOf</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="Compound.md">Compound</a></li>
+<li>Example: CHEBI_90358 None</li>
+</ul>
+</li>
+<li><a href="../reactivePart/">reactivePart</a>  <sub>0..*</sub><ul>
 <li>Range: <a href="../types/String/">String</a></li>
-<li>Example: RHEA:51568 part of RHEA:51564. None</li>
+<li>Example: Compound_10195_rp1 None</li>
 </ul>
 </li>
 </ul>

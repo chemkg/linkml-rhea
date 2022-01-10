@@ -105,19 +105,15 @@
                 <h1 id="class-reactivepart">Class: ReactivePart</h1>
 <p>A reactive part in a generic compound, with a defined chemical structure. A subclass of a given ChEBI chemical entity.</p>
 <p>URI: <a href="http://rdf.rhea-db.org/ReactivePart">rhea:ReactivePart</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Class]&lt;subClassOf%200..1-%20[ReactivePart&#124;id:uriorcurie%20%2B;type:uriorcurie%20%3F;name:string%20%3F;charge:integer%20%3F;chebi:string%20%3F;formula:string%20%3F;htmlName:string%20%3F;position:string%20%3F],[Class]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Class]&lt;subClassOf%200..1-%20[ReactivePart&#124;id:uriorcurie%20%2B;type:uriorcurie%20%3F;name:string%20%3F;charge:integer%20%3F;chebi:string%20%3F;formula:string%20%3F;htmlName:string%20%3F;position:string%20%3F],[Class]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[Compound]&lt;subClassOf%200..1-%20[ReactivePart&#124;name:string%20%3F;charge:integer%20%3F;chebi:string%20%3F;formula:string%20%3F;htmlName:string%20%3F;position:integer%20%3F;id(i):uriorcurie%20%2B;comment(i):string%20%3F;type(i):uriorcurie%20%3F;label(i):string%20%3F],[Class]^-[ReactivePart],[Compound],[Class]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[Compound]&lt;subClassOf%200..1-%20[ReactivePart&#124;name:string%20%3F;charge:integer%20%3F;chebi:string%20%3F;formula:string%20%3F;htmlName:string%20%3F;position:integer%20%3F;id(i):uriorcurie%20%2B;comment(i):string%20%3F;type(i):uriorcurie%20%3F;label(i):string%20%3F],[Class]^-[ReactivePart],[Compound],[Class]" /></a></p>
+<h2 id="parents">Parents</h2>
+<ul>
+<li>is_a: <a href="../Class/">Class</a> - compounds and reactions are represented as classes in Rhea</li>
+</ul>
+<h2 id="referenced-by-class">Referenced by Class</h2>
 <h2 id="attributes">Attributes</h2>
 <h3 id="own">Own</h3>
 <ul>
-<li><a href="../id/">id</a>  <sub>1..*</sub><ul>
-<li>Range: <a href="../types/Uriorcurie/">Uriorcurie</a></li>
-<li>Example: http://rdf.rhea-db.org/Compound_12075 None</li>
-</ul>
-</li>
-<li><a href="../type/">type</a>  <sub>0..1</sub><ul>
-<li>Range: <a href="../types/Uriorcurie/">Uriorcurie</a></li>
-</ul>
-</li>
 <li><a href="../name/">name</a>  <sub>0..1</sub><ul>
 <li>Range: <a href="../types/String/">String</a></li>
 <li>Example: beta-D-galactosyl-(1-&gt;4)-N-acetyl-beta-D-glucosaminyl-(1-&gt;3)-beta-D-galactosyl-(1-&gt;4)-[alpha-L-fucosyl-(1-&gt;3)]-N-acetyl-beta-D-glucosaminyl-(1-&gt;3)-beta-D-galactosyl-(1-&gt;4)-beta-D-glucosyl-(1&lt;-&gt;1')-ceramide None</li>
@@ -126,11 +122,6 @@
 <li><a href="../charge/">charge</a>  <sub>0..1</sub><ul>
 <li>Range: <a href="../types/Integer/">Integer</a></li>
 <li>Example: 0 None</li>
-</ul>
-</li>
-<li><a href="../subClassOf/">subClassOf</a>  <sub>0..1</sub><ul>
-<li>Range: <a href="../Class/">Class</a></li>
-<li>Example: CHEBI_90358 None</li>
 </ul>
 </li>
 <li><a href="../chebi/">chebi</a>  <sub>0..1</sub><ul>
@@ -149,8 +140,35 @@
 </ul>
 </li>
 <li><a href="../position/">position</a>  <sub>0..1</sub><ul>
-<li>Range: <a href="../types/String/">String</a></li>
+<li>Range: <a href="../types/Integer/">Integer</a></li>
 <li>Example: 2457 None</li>
+</ul>
+</li>
+<li><a href="../ReactivePart_subClassOf/">ReactivePart➞subClassOf</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="Compound.md">Compound</a></li>
+<li>Example: CHEBI_90358 None</li>
+</ul>
+</li>
+</ul>
+<h3 id="inherited-from-class">Inherited from Class:</h3>
+<ul>
+<li><a href="../id/">id</a>  <sub>1..*</sub><ul>
+<li>Range: <a href="../types/Uriorcurie/">Uriorcurie</a></li>
+<li>Example: http://rdf.rhea-db.org/Compound_12075 None</li>
+</ul>
+</li>
+<li><a href="../comment/">comment</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../types/String/">String</a></li>
+<li>Example: RHEA:51568 part of RHEA:51564. None</li>
+</ul>
+</li>
+<li><a href="../type/">type</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../types/Uriorcurie/">Uriorcurie</a></li>
+</ul>
+</li>
+<li><a href="../label/">label</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../types/String/">String</a></li>
+<li>Example: 3-(4-hydroxyphenyl)pyruvate + L-glutamate =&gt; 2-oxoglutarate + L-tyrosine None</li>
 </ul>
 </li>
 </ul>

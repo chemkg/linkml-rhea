@@ -105,7 +105,15 @@
                 <h1 id="class-reactionside">Class: ReactionSide</h1>
 <p>A reaction side in a chemical reaction. Contains one or more reaction participants.</p>
 <p>URI: <a href="http://rdf.rhea-db.org/ReactionSide">rhea:ReactionSide</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[ReactionSide&#124;id:uriorcurie%20%2B;contains:string%20*;transformableTo:string%20%3F;type:uriorcurie%20%3F;curatedOrder:integer%20%3F;contains1:string%20*;contains2:string%20*;contains4:string%20*;contains3:string%20*;contains6:string%20*;contains5:string%20*;contains8:string%20*;containsN:string%20*;contains7:string%20*;contains16:string%20*;contains9:string%20*;contains20:string%20%3F;contains11:string%20%3F;contains12:string%20*;containsNminus1:string%20%3F;contains2n:string%20*;contains10:string%20*;contains22:string%20%3F;contains24:string%20%3F;containsNplus1:string%20%3F;contains27:string%20%3F;contains18:string%20%3F;contains28:string%20*;contains32:string%20%3F;contains17:string%20%3F;contains13:string%20%3F;contains14:string%20%3F;contains40:string%20*;contains26:string%20%3F;contains21:string%20%3F;contains19:string%20%3F]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[ReactionSide&#124;id:uriorcurie%20%2B;contains:string%20*;transformableTo:string%20%3F;type:uriorcurie%20%3F;curatedOrder:integer%20%3F;contains1:string%20*;contains2:string%20*;contains4:string%20*;contains3:string%20*;contains6:string%20*;contains5:string%20*;contains8:string%20*;containsN:string%20*;contains7:string%20*;contains16:string%20*;contains9:string%20*;contains20:string%20%3F;contains11:string%20%3F;contains12:string%20*;containsNminus1:string%20%3F;contains2n:string%20*;contains10:string%20*;contains22:string%20%3F;contains24:string%20%3F;containsNplus1:string%20%3F;contains27:string%20%3F;contains18:string%20%3F;contains28:string%20*;contains32:string%20%3F;contains17:string%20%3F;contains13:string%20%3F;contains14:string%20%3F;contains40:string%20*;contains26:string%20%3F;contains21:string%20%3F;contains19:string%20%3F]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[ReactionSide]&lt;transformableTo%200..1-%20[ReactionSide&#124;id:uriorcurie%20%2B;type:uriorcurie%20%3F;curatedOrder:integer%20%3F;contains1:string%20*;contains2:string%20*;contains4:string%20*;contains3:string%20*;contains6:string%20*;contains5:string%20*;contains8:string%20*;containsN:string%20*;contains7:string%20*;contains16:string%20*;contains9:string%20*;contains20:string%20*;contains11:string%20*;contains12:string%20*;containsNminus1:string%20*;contains2n:string%20*;contains10:string%20*;contains22:string%20*;contains24:string%20*;containsNplus1:string%20*;contains27:string%20*;contains18:string%20*;contains28:string%20*;contains32:string%20*;contains17:string%20*;contains13:string%20*;contains14:string%20*;contains40:string%20*;contains26:string%20*;contains21:string%20*;contains19:string%20*],[ReactionParticipant]&lt;contains%200..*-%20[ReactionSide],[DirectionalReaction]-%20products%200..1&gt;[ReactionSide],[Reaction]-%20side%200..*&gt;[ReactionSide],[DirectionalReaction]-%20substrates%200..1&gt;[ReactionSide],[BidirectionalReaction]-%20substratesOrProducts%200..*&gt;[ReactionSide],[ReactionParticipant],[Reaction],[DirectionalReaction],[BidirectionalReaction]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[ReactionSide]&lt;transformableTo%200..1-%20[ReactionSide&#124;id:uriorcurie%20%2B;type:uriorcurie%20%3F;curatedOrder:integer%20%3F;contains1:string%20*;contains2:string%20*;contains4:string%20*;contains3:string%20*;contains6:string%20*;contains5:string%20*;contains8:string%20*;containsN:string%20*;contains7:string%20*;contains16:string%20*;contains9:string%20*;contains20:string%20*;contains11:string%20*;contains12:string%20*;containsNminus1:string%20*;contains2n:string%20*;contains10:string%20*;contains22:string%20*;contains24:string%20*;containsNplus1:string%20*;contains27:string%20*;contains18:string%20*;contains28:string%20*;contains32:string%20*;contains17:string%20*;contains13:string%20*;contains14:string%20*;contains40:string%20*;contains26:string%20*;contains21:string%20*;contains19:string%20*],[ReactionParticipant]&lt;contains%200..*-%20[ReactionSide],[DirectionalReaction]-%20products%200..1&gt;[ReactionSide],[Reaction]-%20side%200..*&gt;[ReactionSide],[DirectionalReaction]-%20substrates%200..1&gt;[ReactionSide],[BidirectionalReaction]-%20substratesOrProducts%200..*&gt;[ReactionSide],[ReactionParticipant],[Reaction],[DirectionalReaction],[BidirectionalReaction]" /></a></p>
+<h2 id="referenced-by-class">Referenced by Class</h2>
+<ul>
+<li><strong>None</strong> <em><a href="../products/">products</a></em>  <sub>0..1</sub>  <strong><a href="./">ReactionSide</a></strong></li>
+<li><strong>None</strong> <em><a href="../side/">side</a></em>  <sub>0..*</sub>  <strong><a href="./">ReactionSide</a></strong></li>
+<li><strong>None</strong> <em><a href="../substrates/">substrates</a></em>  <sub>0..1</sub>  <strong><a href="./">ReactionSide</a></strong></li>
+<li><strong>None</strong> <em><a href="../substratesOrProducts/">substratesOrProducts</a></em>  <sub>0..*</sub>  <strong><a href="./">ReactionSide</a></strong></li>
+<li><strong>None</strong> <em><a href="../transformableTo/">transformableTo</a></em>  <sub>0..1</sub>  <strong><a href="./">ReactionSide</a></strong></li>
+</ul>
 <h2 id="attributes">Attributes</h2>
 <h3 id="own">Own</h3>
 <ul>
@@ -115,12 +123,12 @@
 </ul>
 </li>
 <li><a href="../contains/">contains</a>  <sub>0..*</sub><ul>
-<li>Range: <a href="../types/String/">String</a></li>
+<li>Range: <a href="../ReactionParticipant/">ReactionParticipant</a></li>
 <li>Example: Participant_38219_compound_7375|Participant_38219_compound_1264 None</li>
 </ul>
 </li>
 <li><a href="../transformableTo/">transformableTo</a>  <sub>0..1</sub><ul>
-<li>Range: <a href="../types/String/">String</a></li>
+<li>Range: <a href="./">ReactionSide</a></li>
 <li>Example: 38219_L None</li>
 </ul>
 </li>
@@ -188,12 +196,12 @@
 <li>Example: Participant_50352_compound_3249 None</li>
 </ul>
 </li>
-<li><a href="../contains20/">contains20</a>  <sub>0..1</sub><ul>
+<li><a href="../contains20/">contains20</a>  <sub>0..*</sub><ul>
 <li>Range: <a href="../types/String/">String</a></li>
 <li>Example: Participant_66812_compound_3249 None</li>
 </ul>
 </li>
-<li><a href="../contains11/">contains11</a>  <sub>0..1</sub><ul>
+<li><a href="../contains11/">contains11</a>  <sub>0..*</sub><ul>
 <li>Range: <a href="../types/String/">String</a></li>
 <li>Example: Participant_18565_compound_3438 None</li>
 </ul>
@@ -203,7 +211,7 @@
 <li>Example: Participant_58944_compound_3249 None</li>
 </ul>
 </li>
-<li><a href="../containsNminus1/">containsNminus1</a>  <sub>0..1</sub><ul>
+<li><a href="../containsNminus1/">containsNminus1</a>  <sub>0..*</sub><ul>
 <li>Range: <a href="../types/String/">String</a></li>
 <li>Example: Participant_23392_compound_1283 None</li>
 </ul>
@@ -218,27 +226,27 @@
 <li>Example: Participant_27614_compound_2106 None</li>
 </ul>
 </li>
-<li><a href="../contains22/">contains22</a>  <sub>0..1</sub><ul>
+<li><a href="../contains22/">contains22</a>  <sub>0..*</sub><ul>
 <li>Range: <a href="../types/String/">String</a></li>
 <li>Example: Participant_58028_compound_3438 None</li>
 </ul>
 </li>
-<li><a href="../contains24/">contains24</a>  <sub>0..1</sub><ul>
+<li><a href="../contains24/">contains24</a>  <sub>0..*</sub><ul>
 <li>Range: <a href="../types/String/">String</a></li>
 <li>Example: Participant_58904_compound_3249 None</li>
 </ul>
 </li>
-<li><a href="../containsNplus1/">containsNplus1</a>  <sub>0..1</sub><ul>
+<li><a href="../containsNplus1/">containsNplus1</a>  <sub>0..*</sub><ul>
 <li>Range: <a href="../types/String/">String</a></li>
 <li>Example: Participant_22452_compound_5518 None</li>
 </ul>
 </li>
-<li><a href="../contains27/">contains27</a>  <sub>0..1</sub><ul>
+<li><a href="../contains27/">contains27</a>  <sub>0..*</sub><ul>
 <li>Range: <a href="../types/String/">String</a></li>
 <li>Example: Participant_50468_compound_3249 None</li>
 </ul>
 </li>
-<li><a href="../contains18/">contains18</a>  <sub>0..1</sub><ul>
+<li><a href="../contains18/">contains18</a>  <sub>0..*</sub><ul>
 <li>Range: <a href="../types/String/">String</a></li>
 <li>Example: Participant_15645_compound_3249 None</li>
 </ul>
@@ -248,22 +256,22 @@
 <li>Example: Participant_34391_compound_3249|Participant_34391_compound_2692 None</li>
 </ul>
 </li>
-<li><a href="../contains32/">contains32</a>  <sub>0..1</sub><ul>
+<li><a href="../contains32/">contains32</a>  <sub>0..*</sub><ul>
 <li>Range: <a href="../types/String/">String</a></li>
 <li>Example: Participant_58028_compound_3249 None</li>
 </ul>
 </li>
-<li><a href="../contains17/">contains17</a>  <sub>0..1</sub><ul>
+<li><a href="../contains17/">contains17</a>  <sub>0..*</sub><ul>
 <li>Range: <a href="../types/String/">String</a></li>
 <li>Example: Participant_66808_compound_3249 None</li>
 </ul>
 </li>
-<li><a href="../contains13/">contains13</a>  <sub>0..1</sub><ul>
+<li><a href="../contains13/">contains13</a>  <sub>0..*</sub><ul>
 <li>Range: <a href="../types/String/">String</a></li>
 <li>Example: Participant_66812_compound_5188 None</li>
 </ul>
 </li>
-<li><a href="../contains14/">contains14</a>  <sub>0..1</sub><ul>
+<li><a href="../contains14/">contains14</a>  <sub>0..*</sub><ul>
 <li>Range: <a href="../types/String/">String</a></li>
 <li>Example: Participant_58908_compound_3438 None</li>
 </ul>
@@ -273,17 +281,17 @@
 <li>Example: Participant_55540_compound_5518|Participant_55540_compound_2710 None</li>
 </ul>
 </li>
-<li><a href="../contains26/">contains26</a>  <sub>0..1</sub><ul>
+<li><a href="../contains26/">contains26</a>  <sub>0..*</sub><ul>
 <li>Range: <a href="../types/String/">String</a></li>
 <li>Example: Participant_55540_compound_3249 None</li>
 </ul>
 </li>
-<li><a href="../contains21/">contains21</a>  <sub>0..1</sub><ul>
+<li><a href="../contains21/">contains21</a>  <sub>0..*</sub><ul>
 <li>Range: <a href="../types/String/">String</a></li>
 <li>Example: Participant_58908_compound_3249 None</li>
 </ul>
 </li>
-<li><a href="../contains19/">contains19</a>  <sub>0..1</sub><ul>
+<li><a href="../contains19/">contains19</a>  <sub>0..*</sub><ul>
 <li>Range: <a href="../types/String/">String</a></li>
 <li>Example: Participant_18565_compound_3249 None</li>
 </ul>
