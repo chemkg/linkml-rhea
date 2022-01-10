@@ -1,0 +1,11 @@
+site_name: "ALPHA linkml-rhea"
+theme:
+  name: readthedocs
+  analytics:
+    gtag: G-2SYBSJVZ23
+nav:
+  - Introduction: home.md
+  - Schema: index.md
+  - Credits: credits.md
+site_url: https://chemkg.github.io/linkml-rhea/
+repo_url: https://github.com/chemkg/linkml-rhea/
