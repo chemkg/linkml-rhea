@@ -316,6 +316,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://chemkg.github.io/linkml-rhea/credits/</loc>
+         <lastmod>2022-01-10</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://chemkg.github.io/linkml-rhea/curatedOrder/</loc>
          <lastmod>2022-01-10</lastmod>
          <changefreq>daily</changefreq>
@@ -337,6 +342,11 @@
     </url>
     <url>
          <loc>https://chemkg.github.io/linkml-rhea/formula/</loc>
+         <lastmod>2022-01-10</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://chemkg.github.io/linkml-rhea/home/</loc>
          <lastmod>2022-01-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
