@@ -1,5 +1,40 @@
 
 
+CREATE TABLE "AbstractReaction" (
+	comment TEXT, 
+	type TEXT, 
+	label TEXT, 
+	status VARCHAR(11), 
+	accession TEXT, 
+	"seeAlso" TEXT, 
+	"isTransport" BOOLEAN, 
+	"isChemicallyBalanced" BOOLEAN, 
+	citation INTEGER, 
+	"htmlEquation" TEXT, 
+	equation TEXT, 
+	"subClassOf" TEXT, 
+	ec TEXT, 
+	PRIMARY KEY (comment, type, label, status, accession, "seeAlso", "isTransport", "isChemicallyBalanced", citation, "htmlEquation", equation, "subClassOf", ec)
+);
+
+CREATE TABLE "BidirectionalReaction" (
+	comment TEXT, 
+	type TEXT, 
+	label TEXT, 
+	status VARCHAR(11), 
+	accession TEXT, 
+	"seeAlso" TEXT, 
+	"isTransport" BOOLEAN, 
+	"isChemicallyBalanced" BOOLEAN, 
+	citation INTEGER, 
+	"htmlEquation" TEXT, 
+	equation TEXT, 
+	ec TEXT, 
+	"substratesOrProducts" TEXT, 
+	"subClassOf" TEXT, 
+	PRIMARY KEY (comment, type, label, status, accession, "seeAlso", "isTransport", "isChemicallyBalanced", citation, "htmlEquation", equation, ec, "substratesOrProducts", "subClassOf")
+);
+
 CREATE TABLE "Class" (
 	comment TEXT, 
 	type TEXT, 
@@ -8,111 +43,99 @@ CREATE TABLE "Class" (
 );
 
 CREATE TABLE "Compound" (
-	type TEXT, 
 	comment TEXT, 
-	label TEXT, 
-	PRIMARY KEY (type, comment, label)
-);
-
-CREATE TABLE "DirectionalReaction" (
-	"bidirectionalReaction" INTEGER, 
-	"isTransport" BOOLEAN, 
 	type TEXT, 
-	"isChemicallyBalanced" BOOLEAN, 
-	substrates TEXT, 
-	"htmlEquation" TEXT, 
+	label TEXT, 
+	name TEXT, 
 	accession TEXT, 
-	citation INTEGER, 
-	equation TEXT, 
-	status VARCHAR(11), 
-	products TEXT, 
-	label TEXT, 
+	"htmlName" TEXT, 
+	formula TEXT, 
 	"subClassOf" TEXT, 
-	"seeAlso" TEXT, 
-	comment TEXT, 
-	ec TEXT, 
-	PRIMARY KEY ("bidirectionalReaction", "isTransport", type, "isChemicallyBalanced", substrates, "htmlEquation", accession, citation, equation, status, products, label, "subClassOf", "seeAlso", comment, ec)
+	PRIMARY KEY (comment, type, label, name, accession, "htmlName", formula, "subClassOf")
 );
 
 CREATE TABLE "GenericCompound" (
-	label TEXT, 
-	type TEXT, 
 	comment TEXT, 
-	PRIMARY KEY (label, type, comment)
+	type TEXT, 
+	label TEXT, 
+	name TEXT, 
+	accession TEXT, 
+	"htmlName" TEXT, 
+	formula TEXT, 
+	"subClassOf" TEXT, 
+	"reactivePart" TEXT, 
+	PRIMARY KEY (comment, type, label, name, accession, "htmlName", formula, "subClassOf", "reactivePart")
 );
 
 CREATE TABLE "GenericPolynucleotide" (
-	label TEXT, 
 	comment TEXT, 
-	name TEXT, 
 	type TEXT, 
-	"reactivePart" TEXT, 
+	label TEXT, 
+	name TEXT, 
 	accession TEXT, 
 	"htmlName" TEXT, 
-	PRIMARY KEY (label, comment, name, type, "reactivePart", accession, "htmlName")
+	formula TEXT, 
+	"subClassOf" TEXT, 
+	"reactivePart" TEXT, 
+	PRIMARY KEY (comment, type, label, name, accession, "htmlName", formula, "subClassOf", "reactivePart")
 );
 
 CREATE TABLE "GenericPolypeptide" (
-	label TEXT, 
 	comment TEXT, 
-	"reactivePart" TEXT, 
-	name TEXT, 
 	type TEXT, 
+	label TEXT, 
+	name TEXT, 
 	accession TEXT, 
 	"htmlName" TEXT, 
-	PRIMARY KEY (label, comment, "reactivePart", name, type, accession, "htmlName")
-);
-
-CREATE TABLE "Location" (
-	type TEXT, 
-	PRIMARY KEY (type)
+	formula TEXT, 
+	"subClassOf" TEXT, 
+	"reactivePart" TEXT, 
+	PRIMARY KEY (comment, type, label, name, accession, "htmlName", formula, "subClassOf", "reactivePart")
 );
 
 CREATE TABLE "Polymer" (
 	comment TEXT, 
-	label TEXT, 
 	type TEXT, 
-	charge INTEGER, 
-	"underlyingChebi" TEXT, 
-	formula TEXT, 
+	label TEXT, 
+	name TEXT, 
 	accession TEXT, 
 	"htmlName" TEXT, 
-	name TEXT, 
+	formula TEXT, 
+	"subClassOf" TEXT, 
+	charge INTEGER, 
+	"underlyingChebi" TEXT, 
 	"polymerizationIndex" VARCHAR(3), 
-	PRIMARY KEY (comment, label, type, charge, "underlyingChebi", formula, accession, "htmlName", name, "polymerizationIndex")
-);
-
-CREATE TABLE "Property" (
-	type TEXT, 
-	PRIMARY KEY (type)
+	PRIMARY KEY (comment, type, label, name, accession, "htmlName", formula, "subClassOf", charge, "underlyingChebi", "polymerizationIndex")
 );
 
 CREATE TABLE "Reaction" (
+	comment TEXT, 
+	type TEXT, 
+	label TEXT, 
 	status VARCHAR(11), 
 	accession TEXT, 
+	"seeAlso" TEXT, 
 	"isTransport" BOOLEAN, 
-	"bidirectionalReaction" INTEGER, 
 	"isChemicallyBalanced" BOOLEAN, 
 	citation INTEGER, 
-	type TEXT, 
-	"directionalReaction" INTEGER, 
 	"htmlEquation" TEXT, 
 	equation TEXT, 
+	"directionalReaction" TEXT, 
+	"bidirectionalReaction" TEXT, 
 	side TEXT, 
-	label TEXT, 
-	comment TEXT, 
-	"subClassOf" TEXT, 
 	ec TEXT, 
-	"seeAlso" TEXT, 
-	PRIMARY KEY (status, accession, "isTransport", "bidirectionalReaction", "isChemicallyBalanced", citation, type, "directionalReaction", "htmlEquation", equation, side, label, comment, "subClassOf", ec, "seeAlso")
+	"subClassOf" TEXT, 
+	PRIMARY KEY (comment, type, label, status, accession, "seeAlso", "isTransport", "isChemicallyBalanced", citation, "htmlEquation", equation, "directionalReaction", "bidirectionalReaction", side, ec, "subClassOf")
 );
 
 CREATE TABLE "ReactionParticipant" (
-	"subClassOf" TEXT, 
-	compound TEXT, 
+	comment TEXT, 
 	type TEXT, 
+	label TEXT, 
+	compound TEXT, 
 	location VARCHAR(3), 
-	PRIMARY KEY ("subClassOf", compound, type, location)
+	"subClassOf" TEXT, 
+	PRIMARY KEY (comment, type, label, compound, location, "subClassOf")
 );
 
 CREATE TABLE "ReactionSide" (
@@ -155,29 +178,38 @@ CREATE TABLE "ReactionSide" (
 );
 
 CREATE TABLE "ReactivePart" (
+	comment TEXT, 
 	type TEXT, 
+	label TEXT, 
 	name TEXT, 
 	charge INTEGER, 
-	"subClassOf" TEXT, 
 	chebi TEXT, 
 	formula TEXT, 
 	"htmlName" TEXT, 
-	position TEXT, 
-	PRIMARY KEY (type, name, charge, "subClassOf", chebi, formula, "htmlName", position)
+	position INTEGER, 
+	"subClassOf" TEXT, 
+	PRIMARY KEY (comment, type, label, name, charge, chebi, formula, "htmlName", position, "subClassOf")
 );
 
 CREATE TABLE "SmallMolecule" (
 	comment TEXT, 
-	label TEXT, 
 	type TEXT, 
-	chebi TEXT, 
-	"htmlName" TEXT, 
+	label TEXT, 
 	accession TEXT, 
 	formula TEXT, 
+	chebi TEXT, 
+	"htmlName" TEXT, 
 	charge INTEGER, 
-	"subClassOf" TEXT, 
 	name TEXT, 
-	PRIMARY KEY (comment, label, type, chebi, "htmlName", accession, formula, charge, "subClassOf", name)
+	"subClassOf" TEXT, 
+	PRIMARY KEY (comment, type, label, accession, formula, chebi, "htmlName", charge, name, "subClassOf")
+);
+
+CREATE TABLE "AbstractReaction_id" (
+	backref_id TEXT, 
+	id TEXT NOT NULL, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(backref_id) REFERENCES "AbstractReaction_id" (id)
 );
 
 CREATE TABLE "BidirectionalReaction_id" (
@@ -229,25 +261,11 @@ CREATE TABLE "GenericPolypeptide_id" (
 	FOREIGN KEY(backref_id) REFERENCES "GenericPolypeptide_id" (id)
 );
 
-CREATE TABLE "Location_id" (
-	backref_id TEXT, 
-	id TEXT NOT NULL, 
-	PRIMARY KEY (id), 
-	FOREIGN KEY(backref_id) REFERENCES "Location_id" (id)
-);
-
 CREATE TABLE "Polymer_id" (
 	backref_id TEXT, 
 	id TEXT NOT NULL, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(backref_id) REFERENCES "Polymer_id" (id)
-);
-
-CREATE TABLE "Property_id" (
-	backref_id TEXT, 
-	id TEXT NOT NULL, 
-	PRIMARY KEY (id), 
-	FOREIGN KEY(backref_id) REFERENCES "Property_id" (id)
 );
 
 CREATE TABLE "Reaction_id" (
@@ -285,50 +303,23 @@ CREATE TABLE "SmallMolecule_id" (
 	FOREIGN KEY(backref_id) REFERENCES "SmallMolecule_id" (id)
 );
 
-CREATE TABLE "BidirectionalReaction" (
-	"bidirectionalReaction" INTEGER, 
-	"seeAlso" TEXT, 
-	citation INTEGER, 
-	label TEXT, 
-	accession TEXT, 
-	equation TEXT, 
-	status VARCHAR(11), 
-	"isTransport" BOOLEAN, 
-	"substratesOrProducts" TEXT, 
-	type TEXT, 
-	"isChemicallyBalanced" BOOLEAN, 
-	"htmlEquation" TEXT, 
-	"subClassOf" TEXT, 
+CREATE TABLE "DirectionalReaction" (
 	comment TEXT, 
+	type TEXT, 
+	label TEXT, 
+	status VARCHAR(11), 
+	accession TEXT, 
+	"seeAlso" TEXT, 
+	"isTransport" BOOLEAN, 
+	"isChemicallyBalanced" BOOLEAN, 
+	citation INTEGER, 
+	"htmlEquation" TEXT, 
+	equation TEXT, 
 	ec TEXT, 
-	PRIMARY KEY ("bidirectionalReaction", "seeAlso", citation, label, accession, equation, status, "isTransport", "substratesOrProducts", type, "isChemicallyBalanced", "htmlEquation", "subClassOf", comment, ec), 
-	FOREIGN KEY("subClassOf") REFERENCES "Class_id" (id)
-);
-
-CREATE TABLE "BidirectionalReaction_directionalReaction" (
-	backref_id TEXT, 
-	"directionalReaction" INTEGER, 
-	PRIMARY KEY (backref_id, "directionalReaction"), 
-	FOREIGN KEY(backref_id) REFERENCES "BidirectionalReaction_id" (id)
-);
-
-CREATE TABLE "BidirectionalReaction_side" (
-	backref_id TEXT, 
-	side TEXT, 
-	PRIMARY KEY (backref_id, side), 
-	FOREIGN KEY(backref_id) REFERENCES "BidirectionalReaction_id" (id)
-);
-
-CREATE TABLE "DirectionalReaction_directionalReaction" (
-	backref_id TEXT, 
-	"directionalReaction" INTEGER, 
-	PRIMARY KEY (backref_id, "directionalReaction"), 
-	FOREIGN KEY(backref_id) REFERENCES "DirectionalReaction_id" (id)
-);
-
-CREATE TABLE "DirectionalReaction_side" (
-	backref_id TEXT, 
-	side TEXT, 
-	PRIMARY KEY (backref_id, side), 
-	FOREIGN KEY(backref_id) REFERENCES "DirectionalReaction_id" (id)
+	substrates TEXT, 
+	products TEXT, 
+	"subClassOf" TEXT, 
+	PRIMARY KEY (comment, type, label, status, accession, "seeAlso", "isTransport", "isChemicallyBalanced", citation, "htmlEquation", equation, ec, substrates, products, "subClassOf"), 
+	FOREIGN KEY(substrates) REFERENCES "ReactionSide_id" (id), 
+	FOREIGN KEY(products) REFERENCES "ReactionSide_id" (id)
 );

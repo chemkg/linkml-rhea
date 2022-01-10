@@ -23,10 +23,20 @@
   "default_range": "string",
   "types": [
     {
+      "name": "Database_identifier",
+      "definition_uri": "http://rdf.rhea-db.org/DatabaseIdentifier",
+      "from_schema": "https://w3id.org/rhea",
+      "typeof": "uriorcurie",
+      "base": "URIorCURIE",
+      "uri": "http://www.w3.org/2001/XMLSchema#anyURI",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
       "name": "CHEBI_identifier",
       "definition_uri": "http://rdf.rhea-db.org/CHEBIIdentifier",
       "from_schema": "https://w3id.org/rhea",
-      "typeof": "uriorcurie",
+      "typeof": "Database_identifier",
       "base": "URIorCURIE",
       "uri": "http://www.w3.org/2001/XMLSchema#anyURI",
       "repr": "str",
@@ -289,23 +299,10 @@
       "slot_uri": "http://rdf.rhea-db.org/id",
       "multivalued": true,
       "identifier": true,
-      "owner": "Polymer",
+      "owner": "ReactionSide",
       "domain_of": [
-        "Reaction",
-        "DirectionalReaction",
-        "BidirectionalReaction",
-        "ReactionParticipant",
-        "ReactionSide",
-        "ReactivePart",
-        "Location",
         "Class",
-        "Property",
-        "Compound",
-        "SmallMolecule",
-        "GenericCompound",
-        "GenericPolynucleotide",
-        "GenericPolypeptide",
-        "Polymer"
+        "ReactionSide"
       ],
       "range": "uriorcurie",
       "required": true,
@@ -328,44 +325,35 @@
       ],
       "from_schema": "https://w3id.org/rhea",
       "slot_uri": "http://rdf.rhea-db.org/name",
-      "owner": "Polymer",
+      "owner": "SmallMolecule",
       "domain_of": [
         "ReactivePart",
-        "SmallMolecule",
-        "GenericPolynucleotide",
-        "GenericPolypeptide",
-        "Polymer"
+        "Compound",
+        "SmallMolecule"
       ],
       "range": "string",
       "@type": "SlotDefinition"
     },
     {
-      "name": "type",
-      "definition_uri": "http://rdf.rhea-db.org/type",
+      "name": "accession",
+      "definition_uri": "http://rdf.rhea-db.org/accession",
       "mappings": [
-        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+        "http://rdf.rhea-db.org/accession"
+      ],
+      "examples": [
+        {
+          "value": "CHEBI:90358",
+          "@type": "Example"
+        }
       ],
       "from_schema": "https://w3id.org/rhea",
-      "slot_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
-      "owner": "Polymer",
+      "slot_uri": "http://rdf.rhea-db.org/accession",
+      "owner": "Compound",
       "domain_of": [
-        "Reaction",
-        "DirectionalReaction",
-        "BidirectionalReaction",
-        "ReactionParticipant",
-        "ReactionSide",
-        "ReactivePart",
-        "Location",
-        "Class",
-        "Property",
-        "Compound",
-        "SmallMolecule",
-        "GenericCompound",
-        "GenericPolynucleotide",
-        "GenericPolypeptide",
-        "Polymer"
+        "AbstractReaction",
+        "Compound"
       ],
-      "range": "uriorcurie",
+      "range": "Database_identifier",
       "@type": "SlotDefinition"
     },
     {
@@ -404,42 +392,157 @@
       ],
       "from_schema": "https://w3id.org/rhea",
       "slot_uri": "http://rdf.rhea-db.org/htmlName",
-      "owner": "Polymer",
+      "owner": "SmallMolecule",
       "domain_of": [
         "ReactivePart",
-        "SmallMolecule",
-        "GenericPolynucleotide",
-        "GenericPolypeptide",
-        "Polymer"
+        "Compound",
+        "SmallMolecule"
       ],
       "range": "string",
       "@type": "SlotDefinition"
     },
     {
-      "name": "accession",
-      "definition_uri": "http://rdf.rhea-db.org/accession",
+      "name": "status",
+      "definition_uri": "http://rdf.rhea-db.org/status",
       "mappings": [
-        "http://rdf.rhea-db.org/accession"
+        "http://rdf.rhea-db.org/status"
       ],
       "examples": [
         {
-          "value": "CHEBI:90358",
+          "value": "Approved",
           "@type": "Example"
         }
       ],
       "from_schema": "https://w3id.org/rhea",
-      "slot_uri": "http://rdf.rhea-db.org/accession",
-      "owner": "Polymer",
+      "slot_uri": "http://rdf.rhea-db.org/status",
+      "owner": "AbstractReaction",
       "domain_of": [
-        "Reaction",
-        "DirectionalReaction",
-        "BidirectionalReaction",
-        "SmallMolecule",
-        "GenericPolynucleotide",
-        "GenericPolypeptide",
-        "Polymer"
+        "AbstractReaction"
       ],
-      "range": "CHEBI_identifier",
+      "range": "status_enum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "label",
+      "definition_uri": "http://rdf.rhea-db.org/label",
+      "mappings": [
+        "http://www.w3.org/2000/01/rdf-schema#label"
+      ],
+      "examples": [
+        {
+          "value": "3-(4-hydroxyphenyl)pyruvate + L-glutamate => 2-oxoglutarate + L-tyrosine",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://w3id.org/rhea",
+      "slot_uri": "http://www.w3.org/2000/01/rdf-schema#label",
+      "owner": "Class",
+      "domain_of": [
+        "Class"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "seeAlso",
+      "definition_uri": "http://rdf.rhea-db.org/seeAlso",
+      "mappings": [
+        "http://www.w3.org/2000/01/rdf-schema#seeAlso"
+      ],
+      "examples": [
+        {
+          "value": "R-HSA-517444.2",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://w3id.org/rhea",
+      "slot_uri": "http://www.w3.org/2000/01/rdf-schema#seeAlso",
+      "multivalued": true,
+      "owner": "AbstractReaction",
+      "domain_of": [
+        "AbstractReaction"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "comment",
+      "definition_uri": "http://rdf.rhea-db.org/comment",
+      "mappings": [
+        "http://www.w3.org/2000/01/rdf-schema#comment"
+      ],
+      "examples": [
+        {
+          "value": "RHEA:51568 part of RHEA:51564.",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://w3id.org/rhea",
+      "slot_uri": "http://www.w3.org/2000/01/rdf-schema#comment",
+      "owner": "Class",
+      "domain_of": [
+        "Class"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "citation",
+      "definition_uri": "http://rdf.rhea-db.org/citation",
+      "mappings": [
+        "http://rdf.rhea-db.org/citation"
+      ],
+      "examples": [
+        {
+          "value": "10074065",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://w3id.org/rhea",
+      "slot_uri": "http://rdf.rhea-db.org/citation",
+      "multivalued": true,
+      "owner": "AbstractReaction",
+      "domain_of": [
+        "AbstractReaction"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "type",
+      "definition_uri": "http://rdf.rhea-db.org/type",
+      "mappings": [
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+      ],
+      "from_schema": "https://w3id.org/rhea",
+      "slot_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "owner": "ReactionSide",
+      "domain_of": [
+        "Class",
+        "ReactionSide"
+      ],
+      "range": "uriorcurie",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "subClassOf",
+      "definition_uri": "http://rdf.rhea-db.org/subClassOf",
+      "mappings": [
+        "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+      ],
+      "examples": [
+        {
+          "value": "CHEBI_90358",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://w3id.org/rhea",
+      "slot_uri": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+      "owner": "AbstractReaction",
+      "domain_of": [
+        "AbstractReaction"
+      ],
+      "range": "Class",
       "@type": "SlotDefinition"
     },
     {
@@ -456,11 +559,10 @@
       ],
       "from_schema": "https://w3id.org/rhea",
       "slot_uri": "http://rdf.rhea-db.org/formula",
-      "owner": "Polymer",
+      "owner": "Compound",
       "domain_of": [
         "ReactivePart",
-        "SmallMolecule",
-        "Polymer"
+        "Compound"
       ],
       "range": "string",
       "@type": "SlotDefinition"
@@ -489,29 +591,67 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "subClassOf",
-      "definition_uri": "http://rdf.rhea-db.org/subClassOf",
+      "name": "equation",
+      "definition_uri": "http://rdf.rhea-db.org/equation",
       "mappings": [
-        "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+        "http://rdf.rhea-db.org/equation"
       ],
       "examples": [
         {
-          "value": "CHEBI_90358",
+          "value": "3-(4-hydroxyphenyl)pyruvate + L-glutamate => 2-oxoglutarate + L-tyrosine",
           "@type": "Example"
         }
       ],
       "from_schema": "https://w3id.org/rhea",
-      "slot_uri": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
-      "owner": "SmallMolecule",
+      "slot_uri": "http://rdf.rhea-db.org/equation",
+      "owner": "AbstractReaction",
       "domain_of": [
-        "Reaction",
-        "DirectionalReaction",
-        "BidirectionalReaction",
-        "ReactionParticipant",
-        "ReactivePart",
-        "SmallMolecule"
+        "AbstractReaction"
       ],
-      "range": "Class",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "htmlEquation",
+      "definition_uri": "http://rdf.rhea-db.org/htmlEquation",
+      "mappings": [
+        "http://rdf.rhea-db.org/htmlEquation"
+      ],
+      "examples": [
+        {
+          "value": "small>-tyrosine",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://w3id.org/rhea",
+      "slot_uri": "http://rdf.rhea-db.org/htmlEquation",
+      "owner": "AbstractReaction",
+      "domain_of": [
+        "AbstractReaction"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "ec",
+      "definition_uri": "http://rdf.rhea-db.org/ec",
+      "mappings": [
+        "http://rdf.rhea-db.org/ec"
+      ],
+      "examples": [
+        {
+          "value": "4.2.3.87",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://w3id.org/rhea",
+      "slot_uri": "http://rdf.rhea-db.org/ec",
+      "multivalued": true,
+      "owner": "Reaction",
+      "domain_of": [
+        "Reaction"
+      ],
+      "range": "string",
       "@type": "SlotDefinition"
     },
     {
@@ -532,7 +672,7 @@
       "domain_of": [
         "ReactionParticipant"
       ],
-      "range": "string",
+      "range": "Compound",
       "@type": "SlotDefinition"
     },
     {
@@ -564,11 +704,9 @@
       ],
       "from_schema": "https://w3id.org/rhea",
       "slot_uri": "http://rdf.rhea-db.org/isTransport",
-      "owner": "BidirectionalReaction",
+      "owner": "AbstractReaction",
       "domain_of": [
-        "Reaction",
-        "DirectionalReaction",
-        "BidirectionalReaction"
+        "AbstractReaction"
       ],
       "range": "boolean",
       "@type": "SlotDefinition"
@@ -581,13 +719,33 @@
       ],
       "from_schema": "https://w3id.org/rhea",
       "slot_uri": "http://rdf.rhea-db.org/isChemicallyBalanced",
-      "owner": "BidirectionalReaction",
+      "owner": "AbstractReaction",
       "domain_of": [
-        "Reaction",
-        "DirectionalReaction",
-        "BidirectionalReaction"
+        "AbstractReaction"
       ],
       "range": "boolean",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "substratesOrProducts",
+      "definition_uri": "http://rdf.rhea-db.org/substratesOrProducts",
+      "mappings": [
+        "http://rdf.rhea-db.org/substratesOrProducts"
+      ],
+      "examples": [
+        {
+          "value": "49544_R|49544_L",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://w3id.org/rhea",
+      "slot_uri": "http://rdf.rhea-db.org/substratesOrProducts",
+      "multivalued": true,
+      "owner": "BidirectionalReaction",
+      "domain_of": [
+        "BidirectionalReaction"
+      ],
+      "range": "ReactionSide",
       "@type": "SlotDefinition"
     },
     {
@@ -608,100 +766,7 @@
       "domain_of": [
         "DirectionalReaction"
       ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "htmlEquation",
-      "definition_uri": "http://rdf.rhea-db.org/htmlEquation",
-      "mappings": [
-        "http://rdf.rhea-db.org/htmlEquation"
-      ],
-      "examples": [
-        {
-          "value": "small>-tyrosine",
-          "@type": "Example"
-        }
-      ],
-      "from_schema": "https://w3id.org/rhea",
-      "slot_uri": "http://rdf.rhea-db.org/htmlEquation",
-      "owner": "BidirectionalReaction",
-      "domain_of": [
-        "Reaction",
-        "DirectionalReaction",
-        "BidirectionalReaction"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "citation",
-      "definition_uri": "http://rdf.rhea-db.org/citation",
-      "mappings": [
-        "http://rdf.rhea-db.org/citation"
-      ],
-      "examples": [
-        {
-          "value": "10074065",
-          "@type": "Example"
-        }
-      ],
-      "from_schema": "https://w3id.org/rhea",
-      "slot_uri": "http://rdf.rhea-db.org/citation",
-      "multivalued": true,
-      "owner": "BidirectionalReaction",
-      "domain_of": [
-        "Reaction",
-        "DirectionalReaction",
-        "BidirectionalReaction"
-      ],
-      "range": "integer",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "equation",
-      "definition_uri": "http://rdf.rhea-db.org/equation",
-      "mappings": [
-        "http://rdf.rhea-db.org/equation"
-      ],
-      "examples": [
-        {
-          "value": "3-(4-hydroxyphenyl)pyruvate + L-glutamate => 2-oxoglutarate + L-tyrosine",
-          "@type": "Example"
-        }
-      ],
-      "from_schema": "https://w3id.org/rhea",
-      "slot_uri": "http://rdf.rhea-db.org/equation",
-      "owner": "BidirectionalReaction",
-      "domain_of": [
-        "Reaction",
-        "DirectionalReaction",
-        "BidirectionalReaction"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "status",
-      "definition_uri": "http://rdf.rhea-db.org/status",
-      "mappings": [
-        "http://rdf.rhea-db.org/status"
-      ],
-      "examples": [
-        {
-          "value": "Approved",
-          "@type": "Example"
-        }
-      ],
-      "from_schema": "https://w3id.org/rhea",
-      "slot_uri": "http://rdf.rhea-db.org/status",
-      "owner": "BidirectionalReaction",
-      "domain_of": [
-        "Reaction",
-        "DirectionalReaction",
-        "BidirectionalReaction"
-      ],
-      "range": "status_enum",
+      "range": "ReactionSide",
       "@type": "SlotDefinition"
     },
     {
@@ -722,126 +787,7 @@
       "domain_of": [
         "DirectionalReaction"
       ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "label",
-      "definition_uri": "http://rdf.rhea-db.org/label",
-      "mappings": [
-        "http://www.w3.org/2000/01/rdf-schema#label"
-      ],
-      "examples": [
-        {
-          "value": "3-(4-hydroxyphenyl)pyruvate + L-glutamate => 2-oxoglutarate + L-tyrosine",
-          "@type": "Example"
-        }
-      ],
-      "from_schema": "https://w3id.org/rhea",
-      "slot_uri": "http://www.w3.org/2000/01/rdf-schema#label",
-      "owner": "GenericCompound",
-      "domain_of": [
-        "Reaction",
-        "DirectionalReaction",
-        "BidirectionalReaction",
-        "Class",
-        "Compound",
-        "GenericCompound"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "seeAlso",
-      "definition_uri": "http://rdf.rhea-db.org/seeAlso",
-      "mappings": [
-        "http://www.w3.org/2000/01/rdf-schema#seeAlso"
-      ],
-      "examples": [
-        {
-          "value": "R-HSA-517444.2",
-          "@type": "Example"
-        }
-      ],
-      "from_schema": "https://w3id.org/rhea",
-      "slot_uri": "http://www.w3.org/2000/01/rdf-schema#seeAlso",
-      "multivalued": true,
-      "owner": "BidirectionalReaction",
-      "domain_of": [
-        "Reaction",
-        "DirectionalReaction",
-        "BidirectionalReaction"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "comment",
-      "definition_uri": "http://rdf.rhea-db.org/comment",
-      "mappings": [
-        "http://www.w3.org/2000/01/rdf-schema#comment"
-      ],
-      "examples": [
-        {
-          "value": "RHEA:51568 part of RHEA:51564.",
-          "@type": "Example"
-        }
-      ],
-      "from_schema": "https://w3id.org/rhea",
-      "slot_uri": "http://www.w3.org/2000/01/rdf-schema#comment",
-      "owner": "GenericCompound",
-      "domain_of": [
-        "Reaction",
-        "DirectionalReaction",
-        "BidirectionalReaction",
-        "Class",
-        "Compound",
-        "GenericCompound"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "bidirectionalReaction",
-      "definition_uri": "http://rdf.rhea-db.org/bidirectionalReaction",
-      "mappings": [
-        "http://rdf.rhea-db.org/bidirectionalReaction"
-      ],
-      "examples": [
-        {
-          "value": "28846",
-          "@type": "Example"
-        }
-      ],
-      "from_schema": "https://w3id.org/rhea",
-      "slot_uri": "http://rdf.rhea-db.org/bidirectionalReaction",
-      "owner": "Reaction",
-      "domain_of": [
-        "Reaction"
-      ],
-      "range": "integer",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "directionalReaction",
-      "definition_uri": "http://rdf.rhea-db.org/directionalReaction",
-      "mappings": [
-        "http://rdf.rhea-db.org/directionalReaction"
-      ],
-      "examples": [
-        {
-          "value": "28844|28845",
-          "@type": "Example"
-        }
-      ],
-      "from_schema": "https://w3id.org/rhea",
-      "slot_uri": "http://rdf.rhea-db.org/directionalReaction",
-      "multivalued": true,
-      "owner": "Reaction",
-      "domain_of": [
-        "Reaction"
-      ],
-      "range": "integer",
+      "range": "ReactionSide",
       "@type": "SlotDefinition"
     },
     {
@@ -863,51 +809,50 @@
       "domain_of": [
         "Reaction"
       ],
-      "range": "string",
+      "range": "ReactionSide",
       "@type": "SlotDefinition"
     },
     {
-      "name": "ec",
-      "definition_uri": "http://rdf.rhea-db.org/ec",
+      "name": "bidirectionalReaction",
+      "definition_uri": "http://rdf.rhea-db.org/bidirectionalReaction",
       "mappings": [
-        "http://rdf.rhea-db.org/ec"
+        "http://rdf.rhea-db.org/bidirectionalReaction"
       ],
       "examples": [
         {
-          "value": "4.2.3.87",
+          "value": "28846",
           "@type": "Example"
         }
       ],
       "from_schema": "https://w3id.org/rhea",
-      "slot_uri": "http://rdf.rhea-db.org/ec",
+      "slot_uri": "http://rdf.rhea-db.org/bidirectionalReaction",
+      "owner": "Reaction",
+      "domain_of": [
+        "Reaction"
+      ],
+      "range": "BidirectionalReaction",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "directionalReaction",
+      "definition_uri": "http://rdf.rhea-db.org/directionalReaction",
+      "mappings": [
+        "http://rdf.rhea-db.org/directionalReaction"
+      ],
+      "examples": [
+        {
+          "value": "28844|28845",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://w3id.org/rhea",
+      "slot_uri": "http://rdf.rhea-db.org/directionalReaction",
       "multivalued": true,
       "owner": "Reaction",
       "domain_of": [
         "Reaction"
       ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "contains",
-      "definition_uri": "http://rdf.rhea-db.org/contains",
-      "mappings": [
-        "http://rdf.rhea-db.org/contains"
-      ],
-      "examples": [
-        {
-          "value": "Participant_38219_compound_7375|Participant_38219_compound_1264",
-          "@type": "Example"
-        }
-      ],
-      "from_schema": "https://w3id.org/rhea",
-      "slot_uri": "http://rdf.rhea-db.org/contains",
-      "multivalued": true,
-      "owner": "ReactionSide",
-      "domain_of": [
-        "ReactionSide"
-      ],
-      "range": "string",
+      "range": "DirectionalReaction",
       "@type": "SlotDefinition"
     },
     {
@@ -928,7 +873,7 @@
       "domain_of": [
         "ReactionSide"
       ],
-      "range": "string",
+      "range": "ReactionSide",
       "@type": "SlotDefinition"
     },
     {
@@ -953,695 +898,6 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "contains1",
-      "definition_uri": "http://rdf.rhea-db.org/contains1",
-      "mappings": [
-        "http://rdf.rhea-db.org/contains1"
-      ],
-      "examples": [
-        {
-          "value": "Participant_38219_compound_7375|Participant_38219_compound_1264",
-          "@type": "Example"
-        }
-      ],
-      "from_schema": "https://w3id.org/rhea",
-      "slot_uri": "http://rdf.rhea-db.org/contains1",
-      "multivalued": true,
-      "owner": "ReactionSide",
-      "domain_of": [
-        "ReactionSide"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "contains2",
-      "definition_uri": "http://rdf.rhea-db.org/contains2",
-      "mappings": [
-        "http://rdf.rhea-db.org/contains2"
-      ],
-      "examples": [
-        {
-          "value": "Participant_33599_compound_10439",
-          "@type": "Example"
-        }
-      ],
-      "from_schema": "https://w3id.org/rhea",
-      "slot_uri": "http://rdf.rhea-db.org/contains2",
-      "multivalued": true,
-      "owner": "ReactionSide",
-      "domain_of": [
-        "ReactionSide"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "contains4",
-      "definition_uri": "http://rdf.rhea-db.org/contains4",
-      "mappings": [
-        "http://rdf.rhea-db.org/contains4"
-      ],
-      "examples": [
-        {
-          "value": "Participant_56272_compound_12863",
-          "@type": "Example"
-        }
-      ],
-      "from_schema": "https://w3id.org/rhea",
-      "slot_uri": "http://rdf.rhea-db.org/contains4",
-      "multivalued": true,
-      "owner": "ReactionSide",
-      "domain_of": [
-        "ReactionSide"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "contains3",
-      "definition_uri": "http://rdf.rhea-db.org/contains3",
-      "mappings": [
-        "http://rdf.rhea-db.org/contains3"
-      ],
-      "examples": [
-        {
-          "value": "Participant_58440_compound_6127",
-          "@type": "Example"
-        }
-      ],
-      "from_schema": "https://w3id.org/rhea",
-      "slot_uri": "http://rdf.rhea-db.org/contains3",
-      "multivalued": true,
-      "owner": "ReactionSide",
-      "domain_of": [
-        "ReactionSide"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "contains6",
-      "definition_uri": "http://rdf.rhea-db.org/contains6",
-      "mappings": [
-        "http://rdf.rhea-db.org/contains6"
-      ],
-      "examples": [
-        {
-          "value": "Participant_40963_compound_1283",
-          "@type": "Example"
-        }
-      ],
-      "from_schema": "https://w3id.org/rhea",
-      "slot_uri": "http://rdf.rhea-db.org/contains6",
-      "multivalued": true,
-      "owner": "ReactionSide",
-      "domain_of": [
-        "ReactionSide"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "contains5",
-      "definition_uri": "http://rdf.rhea-db.org/contains5",
-      "mappings": [
-        "http://rdf.rhea-db.org/contains5"
-      ],
-      "examples": [
-        {
-          "value": "Participant_56864_compound_5188",
-          "@type": "Example"
-        }
-      ],
-      "from_schema": "https://w3id.org/rhea",
-      "slot_uri": "http://rdf.rhea-db.org/contains5",
-      "multivalued": true,
-      "owner": "ReactionSide",
-      "domain_of": [
-        "ReactionSide"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "contains8",
-      "definition_uri": "http://rdf.rhea-db.org/contains8",
-      "mappings": [
-        "http://rdf.rhea-db.org/contains8"
-      ],
-      "examples": [
-        {
-          "value": "Participant_58904_compound_2780",
-          "@type": "Example"
-        }
-      ],
-      "from_schema": "https://w3id.org/rhea",
-      "slot_uri": "http://rdf.rhea-db.org/contains8",
-      "multivalued": true,
-      "owner": "ReactionSide",
-      "domain_of": [
-        "ReactionSide"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "containsN",
-      "definition_uri": "http://rdf.rhea-db.org/containsN",
-      "mappings": [
-        "http://rdf.rhea-db.org/containsN"
-      ],
-      "examples": [
-        {
-          "value": "Participant_58948_compound_2790",
-          "@type": "Example"
-        }
-      ],
-      "from_schema": "https://w3id.org/rhea",
-      "slot_uri": "http://rdf.rhea-db.org/containsN",
-      "multivalued": true,
-      "owner": "ReactionSide",
-      "domain_of": [
-        "ReactionSide"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "contains7",
-      "definition_uri": "http://rdf.rhea-db.org/contains7",
-      "mappings": [
-        "http://rdf.rhea-db.org/contains7"
-      ],
-      "examples": [
-        {
-          "value": "Participant_35179_compound_5125",
-          "@type": "Example"
-        }
-      ],
-      "from_schema": "https://w3id.org/rhea",
-      "slot_uri": "http://rdf.rhea-db.org/contains7",
-      "multivalued": true,
-      "owner": "ReactionSide",
-      "domain_of": [
-        "ReactionSide"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "contains16",
-      "definition_uri": "http://rdf.rhea-db.org/contains16",
-      "mappings": [
-        "http://rdf.rhea-db.org/contains16"
-      ],
-      "examples": [
-        {
-          "value": "Participant_58904_compound_3438",
-          "@type": "Example"
-        }
-      ],
-      "from_schema": "https://w3id.org/rhea",
-      "slot_uri": "http://rdf.rhea-db.org/contains16",
-      "multivalued": true,
-      "owner": "ReactionSide",
-      "domain_of": [
-        "ReactionSide"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "contains9",
-      "definition_uri": "http://rdf.rhea-db.org/contains9",
-      "mappings": [
-        "http://rdf.rhea-db.org/contains9"
-      ],
-      "examples": [
-        {
-          "value": "Participant_50352_compound_3249",
-          "@type": "Example"
-        }
-      ],
-      "from_schema": "https://w3id.org/rhea",
-      "slot_uri": "http://rdf.rhea-db.org/contains9",
-      "multivalued": true,
-      "owner": "ReactionSide",
-      "domain_of": [
-        "ReactionSide"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "contains20",
-      "definition_uri": "http://rdf.rhea-db.org/contains20",
-      "mappings": [
-        "http://rdf.rhea-db.org/contains20"
-      ],
-      "examples": [
-        {
-          "value": "Participant_66812_compound_3249",
-          "@type": "Example"
-        }
-      ],
-      "from_schema": "https://w3id.org/rhea",
-      "slot_uri": "http://rdf.rhea-db.org/contains20",
-      "owner": "ReactionSide",
-      "domain_of": [
-        "ReactionSide"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "contains11",
-      "definition_uri": "http://rdf.rhea-db.org/contains11",
-      "mappings": [
-        "http://rdf.rhea-db.org/contains11"
-      ],
-      "examples": [
-        {
-          "value": "Participant_18565_compound_3438",
-          "@type": "Example"
-        }
-      ],
-      "from_schema": "https://w3id.org/rhea",
-      "slot_uri": "http://rdf.rhea-db.org/contains11",
-      "owner": "ReactionSide",
-      "domain_of": [
-        "ReactionSide"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "contains12",
-      "definition_uri": "http://rdf.rhea-db.org/contains12",
-      "mappings": [
-        "http://rdf.rhea-db.org/contains12"
-      ],
-      "examples": [
-        {
-          "value": "Participant_58944_compound_3249",
-          "@type": "Example"
-        }
-      ],
-      "from_schema": "https://w3id.org/rhea",
-      "slot_uri": "http://rdf.rhea-db.org/contains12",
-      "multivalued": true,
-      "owner": "ReactionSide",
-      "domain_of": [
-        "ReactionSide"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "containsNminus1",
-      "definition_uri": "http://rdf.rhea-db.org/containsNminus1",
-      "mappings": [
-        "http://rdf.rhea-db.org/containsNminus1"
-      ],
-      "examples": [
-        {
-          "value": "Participant_23392_compound_1283",
-          "@type": "Example"
-        }
-      ],
-      "from_schema": "https://w3id.org/rhea",
-      "slot_uri": "http://rdf.rhea-db.org/containsNminus1",
-      "owner": "ReactionSide",
-      "domain_of": [
-        "ReactionSide"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "contains2n",
-      "definition_uri": "http://rdf.rhea-db.org/contains2n",
-      "mappings": [
-        "http://rdf.rhea-db.org/contains2n"
-      ],
-      "examples": [
-        {
-          "value": "Participant_20157_compound_3249|Participant_20157_compound_10350",
-          "@type": "Example"
-        }
-      ],
-      "from_schema": "https://w3id.org/rhea",
-      "slot_uri": "http://rdf.rhea-db.org/contains2n",
-      "multivalued": true,
-      "owner": "ReactionSide",
-      "domain_of": [
-        "ReactionSide"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "contains10",
-      "definition_uri": "http://rdf.rhea-db.org/contains10",
-      "mappings": [
-        "http://rdf.rhea-db.org/contains10"
-      ],
-      "examples": [
-        {
-          "value": "Participant_27614_compound_2106",
-          "@type": "Example"
-        }
-      ],
-      "from_schema": "https://w3id.org/rhea",
-      "slot_uri": "http://rdf.rhea-db.org/contains10",
-      "multivalued": true,
-      "owner": "ReactionSide",
-      "domain_of": [
-        "ReactionSide"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "contains22",
-      "definition_uri": "http://rdf.rhea-db.org/contains22",
-      "mappings": [
-        "http://rdf.rhea-db.org/contains22"
-      ],
-      "examples": [
-        {
-          "value": "Participant_58028_compound_3438",
-          "@type": "Example"
-        }
-      ],
-      "from_schema": "https://w3id.org/rhea",
-      "slot_uri": "http://rdf.rhea-db.org/contains22",
-      "owner": "ReactionSide",
-      "domain_of": [
-        "ReactionSide"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "contains24",
-      "definition_uri": "http://rdf.rhea-db.org/contains24",
-      "mappings": [
-        "http://rdf.rhea-db.org/contains24"
-      ],
-      "examples": [
-        {
-          "value": "Participant_58904_compound_3249",
-          "@type": "Example"
-        }
-      ],
-      "from_schema": "https://w3id.org/rhea",
-      "slot_uri": "http://rdf.rhea-db.org/contains24",
-      "owner": "ReactionSide",
-      "domain_of": [
-        "ReactionSide"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "containsNplus1",
-      "definition_uri": "http://rdf.rhea-db.org/containsNplus1",
-      "mappings": [
-        "http://rdf.rhea-db.org/containsNplus1"
-      ],
-      "examples": [
-        {
-          "value": "Participant_22452_compound_5518",
-          "@type": "Example"
-        }
-      ],
-      "from_schema": "https://w3id.org/rhea",
-      "slot_uri": "http://rdf.rhea-db.org/containsNplus1",
-      "owner": "ReactionSide",
-      "domain_of": [
-        "ReactionSide"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "contains27",
-      "definition_uri": "http://rdf.rhea-db.org/contains27",
-      "mappings": [
-        "http://rdf.rhea-db.org/contains27"
-      ],
-      "examples": [
-        {
-          "value": "Participant_50468_compound_3249",
-          "@type": "Example"
-        }
-      ],
-      "from_schema": "https://w3id.org/rhea",
-      "slot_uri": "http://rdf.rhea-db.org/contains27",
-      "owner": "ReactionSide",
-      "domain_of": [
-        "ReactionSide"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "contains18",
-      "definition_uri": "http://rdf.rhea-db.org/contains18",
-      "mappings": [
-        "http://rdf.rhea-db.org/contains18"
-      ],
-      "examples": [
-        {
-          "value": "Participant_15645_compound_3249",
-          "@type": "Example"
-        }
-      ],
-      "from_schema": "https://w3id.org/rhea",
-      "slot_uri": "http://rdf.rhea-db.org/contains18",
-      "owner": "ReactionSide",
-      "domain_of": [
-        "ReactionSide"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "contains28",
-      "definition_uri": "http://rdf.rhea-db.org/contains28",
-      "mappings": [
-        "http://rdf.rhea-db.org/contains28"
-      ],
-      "examples": [
-        {
-          "value": "Participant_34391_compound_3249|Participant_34391_compound_2692",
-          "@type": "Example"
-        }
-      ],
-      "from_schema": "https://w3id.org/rhea",
-      "slot_uri": "http://rdf.rhea-db.org/contains28",
-      "multivalued": true,
-      "owner": "ReactionSide",
-      "domain_of": [
-        "ReactionSide"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "contains32",
-      "definition_uri": "http://rdf.rhea-db.org/contains32",
-      "mappings": [
-        "http://rdf.rhea-db.org/contains32"
-      ],
-      "examples": [
-        {
-          "value": "Participant_58028_compound_3249",
-          "@type": "Example"
-        }
-      ],
-      "from_schema": "https://w3id.org/rhea",
-      "slot_uri": "http://rdf.rhea-db.org/contains32",
-      "owner": "ReactionSide",
-      "domain_of": [
-        "ReactionSide"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "contains17",
-      "definition_uri": "http://rdf.rhea-db.org/contains17",
-      "mappings": [
-        "http://rdf.rhea-db.org/contains17"
-      ],
-      "examples": [
-        {
-          "value": "Participant_66808_compound_3249",
-          "@type": "Example"
-        }
-      ],
-      "from_schema": "https://w3id.org/rhea",
-      "slot_uri": "http://rdf.rhea-db.org/contains17",
-      "owner": "ReactionSide",
-      "domain_of": [
-        "ReactionSide"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "contains13",
-      "definition_uri": "http://rdf.rhea-db.org/contains13",
-      "mappings": [
-        "http://rdf.rhea-db.org/contains13"
-      ],
-      "examples": [
-        {
-          "value": "Participant_66812_compound_5188",
-          "@type": "Example"
-        }
-      ],
-      "from_schema": "https://w3id.org/rhea",
-      "slot_uri": "http://rdf.rhea-db.org/contains13",
-      "owner": "ReactionSide",
-      "domain_of": [
-        "ReactionSide"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "contains14",
-      "definition_uri": "http://rdf.rhea-db.org/contains14",
-      "mappings": [
-        "http://rdf.rhea-db.org/contains14"
-      ],
-      "examples": [
-        {
-          "value": "Participant_58908_compound_3438",
-          "@type": "Example"
-        }
-      ],
-      "from_schema": "https://w3id.org/rhea",
-      "slot_uri": "http://rdf.rhea-db.org/contains14",
-      "owner": "ReactionSide",
-      "domain_of": [
-        "ReactionSide"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "contains40",
-      "definition_uri": "http://rdf.rhea-db.org/contains40",
-      "mappings": [
-        "http://rdf.rhea-db.org/contains40"
-      ],
-      "examples": [
-        {
-          "value": "Participant_55540_compound_5518|Participant_55540_compound_2710",
-          "@type": "Example"
-        }
-      ],
-      "from_schema": "https://w3id.org/rhea",
-      "slot_uri": "http://rdf.rhea-db.org/contains40",
-      "multivalued": true,
-      "owner": "ReactionSide",
-      "domain_of": [
-        "ReactionSide"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "contains26",
-      "definition_uri": "http://rdf.rhea-db.org/contains26",
-      "mappings": [
-        "http://rdf.rhea-db.org/contains26"
-      ],
-      "examples": [
-        {
-          "value": "Participant_55540_compound_3249",
-          "@type": "Example"
-        }
-      ],
-      "from_schema": "https://w3id.org/rhea",
-      "slot_uri": "http://rdf.rhea-db.org/contains26",
-      "owner": "ReactionSide",
-      "domain_of": [
-        "ReactionSide"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "contains21",
-      "definition_uri": "http://rdf.rhea-db.org/contains21",
-      "mappings": [
-        "http://rdf.rhea-db.org/contains21"
-      ],
-      "examples": [
-        {
-          "value": "Participant_58908_compound_3249",
-          "@type": "Example"
-        }
-      ],
-      "from_schema": "https://w3id.org/rhea",
-      "slot_uri": "http://rdf.rhea-db.org/contains21",
-      "owner": "ReactionSide",
-      "domain_of": [
-        "ReactionSide"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "contains19",
-      "definition_uri": "http://rdf.rhea-db.org/contains19",
-      "mappings": [
-        "http://rdf.rhea-db.org/contains19"
-      ],
-      "examples": [
-        {
-          "value": "Participant_18565_compound_3249",
-          "@type": "Example"
-        }
-      ],
-      "from_schema": "https://w3id.org/rhea",
-      "slot_uri": "http://rdf.rhea-db.org/contains19",
-      "owner": "ReactionSide",
-      "domain_of": [
-        "ReactionSide"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "substratesOrProducts",
-      "definition_uri": "http://rdf.rhea-db.org/substratesOrProducts",
-      "mappings": [
-        "http://rdf.rhea-db.org/substratesOrProducts"
-      ],
-      "examples": [
-        {
-          "value": "49544_R|49544_L",
-          "@type": "Example"
-        }
-      ],
-      "from_schema": "https://w3id.org/rhea",
-      "slot_uri": "http://rdf.rhea-db.org/substratesOrProducts",
-      "multivalued": true,
-      "owner": "BidirectionalReaction",
-      "domain_of": [
-        "BidirectionalReaction"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
       "name": "position",
       "definition_uri": "http://rdf.rhea-db.org/position",
       "mappings": [
@@ -1659,7 +915,7 @@
       "domain_of": [
         "ReactivePart"
       ],
-      "range": "string",
+      "range": "integer",
       "@type": "SlotDefinition"
     },
     {
@@ -1677,10 +933,9 @@
       "from_schema": "https://w3id.org/rhea",
       "slot_uri": "http://rdf.rhea-db.org/reactivePart",
       "multivalued": true,
-      "owner": "GenericPolypeptide",
+      "owner": "GenericCompound",
       "domain_of": [
-        "GenericPolynucleotide",
-        "GenericPolypeptide"
+        "GenericCompound"
       ],
       "range": "string",
       "@type": "SlotDefinition"
@@ -1703,7 +958,7 @@
       "domain_of": [
         "Polymer"
       ],
-      "range": "string",
+      "range": "CHEBI_identifier",
       "@type": "SlotDefinition"
     },
     {
@@ -1728,7 +983,742 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "Reaction_ec",
+      "name": "contains",
+      "definition_uri": "http://rdf.rhea-db.org/contains",
+      "mappings": [
+        "http://rdf.rhea-db.org/contains"
+      ],
+      "examples": [
+        {
+          "value": "Participant_38219_compound_7375|Participant_38219_compound_1264",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://w3id.org/rhea",
+      "slot_uri": "http://rdf.rhea-db.org/contains",
+      "multivalued": true,
+      "owner": "ReactionSide",
+      "domain_of": [
+        "ReactionSide"
+      ],
+      "range": "ReactionParticipant",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "contains1",
+      "definition_uri": "http://rdf.rhea-db.org/contains1",
+      "mappings": [
+        "http://rdf.rhea-db.org/contains1"
+      ],
+      "examples": [
+        {
+          "value": "Participant_38219_compound_7375|Participant_38219_compound_1264",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://w3id.org/rhea",
+      "is_a": "contains",
+      "slot_uri": "http://rdf.rhea-db.org/contains1",
+      "multivalued": true,
+      "owner": "ReactionSide",
+      "domain_of": [
+        "ReactionSide"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "contains2",
+      "definition_uri": "http://rdf.rhea-db.org/contains2",
+      "mappings": [
+        "http://rdf.rhea-db.org/contains2"
+      ],
+      "examples": [
+        {
+          "value": "Participant_33599_compound_10439",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://w3id.org/rhea",
+      "is_a": "contains",
+      "slot_uri": "http://rdf.rhea-db.org/contains2",
+      "multivalued": true,
+      "owner": "ReactionSide",
+      "domain_of": [
+        "ReactionSide"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "contains4",
+      "definition_uri": "http://rdf.rhea-db.org/contains4",
+      "mappings": [
+        "http://rdf.rhea-db.org/contains4"
+      ],
+      "examples": [
+        {
+          "value": "Participant_56272_compound_12863",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://w3id.org/rhea",
+      "is_a": "contains",
+      "slot_uri": "http://rdf.rhea-db.org/contains4",
+      "multivalued": true,
+      "owner": "ReactionSide",
+      "domain_of": [
+        "ReactionSide"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "contains3",
+      "definition_uri": "http://rdf.rhea-db.org/contains3",
+      "mappings": [
+        "http://rdf.rhea-db.org/contains3"
+      ],
+      "examples": [
+        {
+          "value": "Participant_58440_compound_6127",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://w3id.org/rhea",
+      "is_a": "contains",
+      "slot_uri": "http://rdf.rhea-db.org/contains3",
+      "multivalued": true,
+      "owner": "ReactionSide",
+      "domain_of": [
+        "ReactionSide"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "contains6",
+      "definition_uri": "http://rdf.rhea-db.org/contains6",
+      "mappings": [
+        "http://rdf.rhea-db.org/contains6"
+      ],
+      "examples": [
+        {
+          "value": "Participant_40963_compound_1283",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://w3id.org/rhea",
+      "is_a": "contains",
+      "slot_uri": "http://rdf.rhea-db.org/contains6",
+      "multivalued": true,
+      "owner": "ReactionSide",
+      "domain_of": [
+        "ReactionSide"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "contains5",
+      "definition_uri": "http://rdf.rhea-db.org/contains5",
+      "mappings": [
+        "http://rdf.rhea-db.org/contains5"
+      ],
+      "examples": [
+        {
+          "value": "Participant_56864_compound_5188",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://w3id.org/rhea",
+      "is_a": "contains",
+      "slot_uri": "http://rdf.rhea-db.org/contains5",
+      "multivalued": true,
+      "owner": "ReactionSide",
+      "domain_of": [
+        "ReactionSide"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "contains8",
+      "definition_uri": "http://rdf.rhea-db.org/contains8",
+      "mappings": [
+        "http://rdf.rhea-db.org/contains8"
+      ],
+      "examples": [
+        {
+          "value": "Participant_58904_compound_2780",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://w3id.org/rhea",
+      "is_a": "contains",
+      "slot_uri": "http://rdf.rhea-db.org/contains8",
+      "multivalued": true,
+      "owner": "ReactionSide",
+      "domain_of": [
+        "ReactionSide"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "containsN",
+      "definition_uri": "http://rdf.rhea-db.org/containsN",
+      "mappings": [
+        "http://rdf.rhea-db.org/containsN"
+      ],
+      "examples": [
+        {
+          "value": "Participant_58948_compound_2790",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://w3id.org/rhea",
+      "is_a": "contains",
+      "slot_uri": "http://rdf.rhea-db.org/containsN",
+      "multivalued": true,
+      "owner": "ReactionSide",
+      "domain_of": [
+        "ReactionSide"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "contains7",
+      "definition_uri": "http://rdf.rhea-db.org/contains7",
+      "mappings": [
+        "http://rdf.rhea-db.org/contains7"
+      ],
+      "examples": [
+        {
+          "value": "Participant_35179_compound_5125",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://w3id.org/rhea",
+      "is_a": "contains",
+      "slot_uri": "http://rdf.rhea-db.org/contains7",
+      "multivalued": true,
+      "owner": "ReactionSide",
+      "domain_of": [
+        "ReactionSide"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "contains16",
+      "definition_uri": "http://rdf.rhea-db.org/contains16",
+      "mappings": [
+        "http://rdf.rhea-db.org/contains16"
+      ],
+      "examples": [
+        {
+          "value": "Participant_58904_compound_3438",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://w3id.org/rhea",
+      "is_a": "contains",
+      "slot_uri": "http://rdf.rhea-db.org/contains16",
+      "multivalued": true,
+      "owner": "ReactionSide",
+      "domain_of": [
+        "ReactionSide"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "contains9",
+      "definition_uri": "http://rdf.rhea-db.org/contains9",
+      "mappings": [
+        "http://rdf.rhea-db.org/contains9"
+      ],
+      "examples": [
+        {
+          "value": "Participant_50352_compound_3249",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://w3id.org/rhea",
+      "is_a": "contains",
+      "slot_uri": "http://rdf.rhea-db.org/contains9",
+      "multivalued": true,
+      "owner": "ReactionSide",
+      "domain_of": [
+        "ReactionSide"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "contains20",
+      "definition_uri": "http://rdf.rhea-db.org/contains20",
+      "mappings": [
+        "http://rdf.rhea-db.org/contains20"
+      ],
+      "examples": [
+        {
+          "value": "Participant_66812_compound_3249",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://w3id.org/rhea",
+      "is_a": "contains",
+      "slot_uri": "http://rdf.rhea-db.org/contains20",
+      "multivalued": true,
+      "owner": "ReactionSide",
+      "domain_of": [
+        "ReactionSide"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "contains11",
+      "definition_uri": "http://rdf.rhea-db.org/contains11",
+      "mappings": [
+        "http://rdf.rhea-db.org/contains11"
+      ],
+      "examples": [
+        {
+          "value": "Participant_18565_compound_3438",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://w3id.org/rhea",
+      "is_a": "contains",
+      "slot_uri": "http://rdf.rhea-db.org/contains11",
+      "multivalued": true,
+      "owner": "ReactionSide",
+      "domain_of": [
+        "ReactionSide"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "contains12",
+      "definition_uri": "http://rdf.rhea-db.org/contains12",
+      "mappings": [
+        "http://rdf.rhea-db.org/contains12"
+      ],
+      "examples": [
+        {
+          "value": "Participant_58944_compound_3249",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://w3id.org/rhea",
+      "is_a": "contains",
+      "slot_uri": "http://rdf.rhea-db.org/contains12",
+      "multivalued": true,
+      "owner": "ReactionSide",
+      "domain_of": [
+        "ReactionSide"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "containsNminus1",
+      "definition_uri": "http://rdf.rhea-db.org/containsNminus1",
+      "mappings": [
+        "http://rdf.rhea-db.org/containsNminus1"
+      ],
+      "examples": [
+        {
+          "value": "Participant_23392_compound_1283",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://w3id.org/rhea",
+      "is_a": "contains",
+      "slot_uri": "http://rdf.rhea-db.org/containsNminus1",
+      "multivalued": true,
+      "owner": "ReactionSide",
+      "domain_of": [
+        "ReactionSide"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "contains2n",
+      "definition_uri": "http://rdf.rhea-db.org/contains2n",
+      "mappings": [
+        "http://rdf.rhea-db.org/contains2n"
+      ],
+      "examples": [
+        {
+          "value": "Participant_20157_compound_3249|Participant_20157_compound_10350",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://w3id.org/rhea",
+      "is_a": "contains",
+      "slot_uri": "http://rdf.rhea-db.org/contains2n",
+      "multivalued": true,
+      "owner": "ReactionSide",
+      "domain_of": [
+        "ReactionSide"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "contains10",
+      "definition_uri": "http://rdf.rhea-db.org/contains10",
+      "mappings": [
+        "http://rdf.rhea-db.org/contains10"
+      ],
+      "examples": [
+        {
+          "value": "Participant_27614_compound_2106",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://w3id.org/rhea",
+      "is_a": "contains",
+      "slot_uri": "http://rdf.rhea-db.org/contains10",
+      "multivalued": true,
+      "owner": "ReactionSide",
+      "domain_of": [
+        "ReactionSide"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "contains22",
+      "definition_uri": "http://rdf.rhea-db.org/contains22",
+      "mappings": [
+        "http://rdf.rhea-db.org/contains22"
+      ],
+      "examples": [
+        {
+          "value": "Participant_58028_compound_3438",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://w3id.org/rhea",
+      "is_a": "contains",
+      "slot_uri": "http://rdf.rhea-db.org/contains22",
+      "multivalued": true,
+      "owner": "ReactionSide",
+      "domain_of": [
+        "ReactionSide"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "contains24",
+      "definition_uri": "http://rdf.rhea-db.org/contains24",
+      "mappings": [
+        "http://rdf.rhea-db.org/contains24"
+      ],
+      "examples": [
+        {
+          "value": "Participant_58904_compound_3249",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://w3id.org/rhea",
+      "is_a": "contains",
+      "slot_uri": "http://rdf.rhea-db.org/contains24",
+      "multivalued": true,
+      "owner": "ReactionSide",
+      "domain_of": [
+        "ReactionSide"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "containsNplus1",
+      "definition_uri": "http://rdf.rhea-db.org/containsNplus1",
+      "mappings": [
+        "http://rdf.rhea-db.org/containsNplus1"
+      ],
+      "examples": [
+        {
+          "value": "Participant_22452_compound_5518",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://w3id.org/rhea",
+      "is_a": "contains",
+      "slot_uri": "http://rdf.rhea-db.org/containsNplus1",
+      "multivalued": true,
+      "owner": "ReactionSide",
+      "domain_of": [
+        "ReactionSide"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "contains27",
+      "definition_uri": "http://rdf.rhea-db.org/contains27",
+      "mappings": [
+        "http://rdf.rhea-db.org/contains27"
+      ],
+      "examples": [
+        {
+          "value": "Participant_50468_compound_3249",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://w3id.org/rhea",
+      "is_a": "contains",
+      "slot_uri": "http://rdf.rhea-db.org/contains27",
+      "multivalued": true,
+      "owner": "ReactionSide",
+      "domain_of": [
+        "ReactionSide"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "contains18",
+      "definition_uri": "http://rdf.rhea-db.org/contains18",
+      "mappings": [
+        "http://rdf.rhea-db.org/contains18"
+      ],
+      "examples": [
+        {
+          "value": "Participant_15645_compound_3249",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://w3id.org/rhea",
+      "is_a": "contains",
+      "slot_uri": "http://rdf.rhea-db.org/contains18",
+      "multivalued": true,
+      "owner": "ReactionSide",
+      "domain_of": [
+        "ReactionSide"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "contains28",
+      "definition_uri": "http://rdf.rhea-db.org/contains28",
+      "mappings": [
+        "http://rdf.rhea-db.org/contains28"
+      ],
+      "examples": [
+        {
+          "value": "Participant_34391_compound_3249|Participant_34391_compound_2692",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://w3id.org/rhea",
+      "is_a": "contains",
+      "slot_uri": "http://rdf.rhea-db.org/contains28",
+      "multivalued": true,
+      "owner": "ReactionSide",
+      "domain_of": [
+        "ReactionSide"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "contains32",
+      "definition_uri": "http://rdf.rhea-db.org/contains32",
+      "mappings": [
+        "http://rdf.rhea-db.org/contains32"
+      ],
+      "examples": [
+        {
+          "value": "Participant_58028_compound_3249",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://w3id.org/rhea",
+      "is_a": "contains",
+      "slot_uri": "http://rdf.rhea-db.org/contains32",
+      "multivalued": true,
+      "owner": "ReactionSide",
+      "domain_of": [
+        "ReactionSide"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "contains17",
+      "definition_uri": "http://rdf.rhea-db.org/contains17",
+      "mappings": [
+        "http://rdf.rhea-db.org/contains17"
+      ],
+      "examples": [
+        {
+          "value": "Participant_66808_compound_3249",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://w3id.org/rhea",
+      "is_a": "contains",
+      "slot_uri": "http://rdf.rhea-db.org/contains17",
+      "multivalued": true,
+      "owner": "ReactionSide",
+      "domain_of": [
+        "ReactionSide"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "contains13",
+      "definition_uri": "http://rdf.rhea-db.org/contains13",
+      "mappings": [
+        "http://rdf.rhea-db.org/contains13"
+      ],
+      "examples": [
+        {
+          "value": "Participant_66812_compound_5188",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://w3id.org/rhea",
+      "is_a": "contains",
+      "slot_uri": "http://rdf.rhea-db.org/contains13",
+      "multivalued": true,
+      "owner": "ReactionSide",
+      "domain_of": [
+        "ReactionSide"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "contains14",
+      "definition_uri": "http://rdf.rhea-db.org/contains14",
+      "mappings": [
+        "http://rdf.rhea-db.org/contains14"
+      ],
+      "examples": [
+        {
+          "value": "Participant_58908_compound_3438",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://w3id.org/rhea",
+      "is_a": "contains",
+      "slot_uri": "http://rdf.rhea-db.org/contains14",
+      "multivalued": true,
+      "owner": "ReactionSide",
+      "domain_of": [
+        "ReactionSide"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "contains40",
+      "definition_uri": "http://rdf.rhea-db.org/contains40",
+      "mappings": [
+        "http://rdf.rhea-db.org/contains40"
+      ],
+      "examples": [
+        {
+          "value": "Participant_55540_compound_5518|Participant_55540_compound_2710",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://w3id.org/rhea",
+      "is_a": "contains",
+      "slot_uri": "http://rdf.rhea-db.org/contains40",
+      "multivalued": true,
+      "owner": "ReactionSide",
+      "domain_of": [
+        "ReactionSide"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "contains26",
+      "definition_uri": "http://rdf.rhea-db.org/contains26",
+      "mappings": [
+        "http://rdf.rhea-db.org/contains26"
+      ],
+      "examples": [
+        {
+          "value": "Participant_55540_compound_3249",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://w3id.org/rhea",
+      "is_a": "contains",
+      "slot_uri": "http://rdf.rhea-db.org/contains26",
+      "multivalued": true,
+      "owner": "ReactionSide",
+      "domain_of": [
+        "ReactionSide"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "contains21",
+      "definition_uri": "http://rdf.rhea-db.org/contains21",
+      "mappings": [
+        "http://rdf.rhea-db.org/contains21"
+      ],
+      "examples": [
+        {
+          "value": "Participant_58908_compound_3249",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://w3id.org/rhea",
+      "is_a": "contains",
+      "slot_uri": "http://rdf.rhea-db.org/contains21",
+      "multivalued": true,
+      "owner": "ReactionSide",
+      "domain_of": [
+        "ReactionSide"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "contains19",
+      "definition_uri": "http://rdf.rhea-db.org/contains19",
+      "mappings": [
+        "http://rdf.rhea-db.org/contains19"
+      ],
+      "examples": [
+        {
+          "value": "Participant_18565_compound_3249",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://w3id.org/rhea",
+      "is_a": "contains",
+      "slot_uri": "http://rdf.rhea-db.org/contains19",
+      "multivalued": true,
+      "owner": "ReactionSide",
+      "domain_of": [
+        "ReactionSide"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "AbstractReaction_ec",
       "definition_uri": "http://rdf.rhea-db.org/ec",
       "mappings": [
         "http://rdf.rhea-db.org/ec"
@@ -1742,77 +1732,272 @@
       ],
       "from_schema": "https://w3id.org/rhea",
       "is_a": "ec",
-      "domain": "Reaction",
+      "domain": "AbstractReaction",
       "slot_uri": "http://rdf.rhea-db.org/ec",
       "multivalued": true,
       "alias": "ec",
+      "owner": "AbstractReaction",
+      "domain_of": [
+        "AbstractReaction"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "ec",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "AbstractReaction_subClassOf",
+      "definition_uri": "http://rdf.rhea-db.org/subClassOf",
+      "mappings": [
+        "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+      ],
+      "examples": [
+        {
+          "value": "CHEBI_90358",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://w3id.org/rhea",
+      "is_a": "subClassOf",
+      "domain": "AbstractReaction",
+      "slot_uri": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+      "alias": "subClassOf",
+      "owner": "AbstractReaction",
+      "domain_of": [
+        "AbstractReaction"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "subClassOf",
+      "range": "AbstractReaction",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Reaction_subClassOf",
+      "definition_uri": "http://rdf.rhea-db.org/subClassOf",
+      "mappings": [
+        "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+      ],
+      "examples": [
+        {
+          "value": "CHEBI_90358",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://w3id.org/rhea",
+      "is_a": "AbstractReaction_subClassOf",
+      "domain": "Reaction",
+      "slot_uri": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+      "alias": "subClassOf",
       "owner": "Reaction",
       "domain_of": [
         "Reaction"
       ],
       "is_usage_slot": true,
-      "usage_slot_name": "ec",
-      "range": "string",
+      "usage_slot_name": "subClassOf",
+      "range": "Reaction",
       "@type": "SlotDefinition"
     },
     {
-      "name": "DirectionalReaction_ec",
-      "definition_uri": "http://rdf.rhea-db.org/ec",
+      "name": "DirectionalReaction_subClassOf",
+      "definition_uri": "http://rdf.rhea-db.org/subClassOf",
       "mappings": [
-        "http://rdf.rhea-db.org/ec"
+        "http://www.w3.org/2000/01/rdf-schema#subClassOf"
       ],
-      "description": "EC is rarely/never specified for directional",
       "examples": [
         {
-          "value": "4.2.3.87",
+          "value": "CHEBI_90358",
           "@type": "Example"
         }
       ],
       "from_schema": "https://w3id.org/rhea",
-      "is_a": "Reaction_ec",
+      "is_a": "AbstractReaction_subClassOf",
       "domain": "DirectionalReaction",
-      "slot_uri": "http://rdf.rhea-db.org/ec",
-      "multivalued": true,
-      "alias": "ec",
+      "slot_uri": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+      "alias": "subClassOf",
       "owner": "DirectionalReaction",
       "domain_of": [
         "DirectionalReaction"
       ],
       "is_usage_slot": true,
-      "usage_slot_name": "ec",
-      "range": "string",
+      "usage_slot_name": "subClassOf",
+      "range": "DirectionalReaction",
       "@type": "SlotDefinition"
     },
     {
-      "name": "BidirectionalReaction_ec",
-      "definition_uri": "http://rdf.rhea-db.org/ec",
+      "name": "BidirectionalReaction_subClassOf",
+      "definition_uri": "http://rdf.rhea-db.org/subClassOf",
       "mappings": [
-        "http://rdf.rhea-db.org/ec"
+        "http://www.w3.org/2000/01/rdf-schema#subClassOf"
       ],
-      "description": "EC is rarely/never specified for bidirectional",
       "examples": [
         {
-          "value": "4.2.3.87",
+          "value": "CHEBI_90358",
           "@type": "Example"
         }
       ],
       "from_schema": "https://w3id.org/rhea",
-      "is_a": "Reaction_ec",
+      "is_a": "AbstractReaction_subClassOf",
       "domain": "BidirectionalReaction",
-      "slot_uri": "http://rdf.rhea-db.org/ec",
-      "multivalued": true,
-      "alias": "ec",
+      "slot_uri": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+      "alias": "subClassOf",
       "owner": "BidirectionalReaction",
       "domain_of": [
         "BidirectionalReaction"
       ],
       "is_usage_slot": true,
-      "usage_slot_name": "ec",
-      "range": "string",
+      "usage_slot_name": "subClassOf",
+      "range": "BidirectionalReaction",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "ReactionParticipant_subClassOf",
+      "definition_uri": "http://rdf.rhea-db.org/subClassOf",
+      "mappings": [
+        "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+      ],
+      "examples": [
+        {
+          "value": "CHEBI_90358",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://w3id.org/rhea",
+      "is_a": "subClassOf",
+      "domain": "ReactionParticipant",
+      "slot_uri": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+      "alias": "subClassOf",
+      "owner": "ReactionParticipant",
+      "domain_of": [
+        "ReactionParticipant"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "subClassOf",
+      "range": "Compound",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "ReactivePart_subClassOf",
+      "definition_uri": "http://rdf.rhea-db.org/subClassOf",
+      "mappings": [
+        "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+      ],
+      "examples": [
+        {
+          "value": "CHEBI_90358",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://w3id.org/rhea",
+      "is_a": "subClassOf",
+      "domain": "ReactivePart",
+      "slot_uri": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+      "alias": "subClassOf",
+      "owner": "ReactivePart",
+      "domain_of": [
+        "ReactivePart"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "subClassOf",
+      "range": "Compound",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Compound_subClassOf",
+      "definition_uri": "http://rdf.rhea-db.org/subClassOf",
+      "mappings": [
+        "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+      ],
+      "examples": [
+        {
+          "value": "CHEBI_90358",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://w3id.org/rhea",
+      "is_a": "subClassOf",
+      "domain": "Compound",
+      "slot_uri": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+      "alias": "subClassOf",
+      "owner": "Compound",
+      "domain_of": [
+        "Compound"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "subClassOf",
+      "range": "Compound",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "SmallMolecule_subClassOf",
+      "definition_uri": "http://rdf.rhea-db.org/subClassOf",
+      "mappings": [
+        "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+      ],
+      "examples": [
+        {
+          "value": "CHEBI_90358",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://w3id.org/rhea",
+      "is_a": "Compound_subClassOf",
+      "domain": "SmallMolecule",
+      "slot_uri": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+      "alias": "subClassOf",
+      "owner": "SmallMolecule",
+      "domain_of": [
+        "SmallMolecule"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "subClassOf",
+      "range": "SmallMolecule",
       "@type": "SlotDefinition"
     }
   ],
   "classes": [
+    {
+      "name": "Class",
+      "definition_uri": "http://rdf.rhea-db.org/Class",
+      "mappings": [
+        "http://www.w3.org/2000/01/rdf-schema#Class"
+      ],
+      "description": "compounds and reactions are represented as classes in Rhea",
+      "from_schema": "https://w3id.org/rhea",
+      "slots": [
+        "id",
+        "comment",
+        "type",
+        "label"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://www.w3.org/2000/01/rdf-schema#Class",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "AbstractReaction",
+      "definition_uri": "http://rdf.rhea-db.org/AbstractReaction",
+      "from_schema": "https://w3id.org/rhea",
+      "is_a": "Class",
+      "slots": [
+        "id",
+        "comment",
+        "type",
+        "label",
+        "status",
+        "accession",
+        "seeAlso",
+        "isTransport",
+        "isChemicallyBalanced",
+        "citation",
+        "htmlEquation",
+        "equation",
+        "AbstractReaction_subClassOf",
+        "AbstractReaction_ec"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://rdf.rhea-db.org/AbstractReaction",
+      "@type": "ClassDefinition"
+    },
     {
       "name": "Reaction",
       "definition_uri": "http://rdf.rhea-db.org/Reaction",
@@ -1821,24 +2006,25 @@
       ],
       "description": "A chemical reaction, with unspecified direction.",
       "from_schema": "https://w3id.org/rhea",
+      "is_a": "AbstractReaction",
       "slots": [
         "id",
+        "comment",
+        "type",
+        "label",
         "status",
         "accession",
+        "seeAlso",
         "isTransport",
-        "bidirectionalReaction",
         "isChemicallyBalanced",
         "citation",
-        "type",
-        "directionalReaction",
         "htmlEquation",
         "equation",
+        "directionalReaction",
+        "bidirectionalReaction",
         "side",
-        "label",
-        "comment",
-        "subClassOf",
-        "Reaction_ec",
-        "seeAlso"
+        "ec",
+        "Reaction_subClassOf"
       ],
       "slot_usage": {},
       "class_uri": "http://rdf.rhea-db.org/Reaction",
@@ -1852,27 +2038,24 @@
       ],
       "description": "A chemical reaction, with the direction specified by substrates and products.",
       "from_schema": "https://w3id.org/rhea",
-      "is_a": "Reaction",
+      "is_a": "AbstractReaction",
       "slots": [
-        "bidirectionalReaction",
-        "directionalReaction",
-        "side",
         "id",
-        "isTransport",
-        "type",
-        "isChemicallyBalanced",
-        "substrates",
-        "htmlEquation",
-        "accession",
-        "citation",
-        "equation",
-        "status",
-        "products",
-        "label",
-        "subClassOf",
-        "seeAlso",
         "comment",
-        "DirectionalReaction_ec"
+        "type",
+        "label",
+        "status",
+        "accession",
+        "seeAlso",
+        "isTransport",
+        "isChemicallyBalanced",
+        "citation",
+        "htmlEquation",
+        "equation",
+        "AbstractReaction_ec",
+        "substrates",
+        "products",
+        "DirectionalReaction_subClassOf"
       ],
       "slot_usage": {},
       "class_uri": "http://rdf.rhea-db.org/DirectionalReaction",
@@ -1886,26 +2069,23 @@
       ],
       "description": "A chemical reaction which can happen in one direction or the other, depending on the physiological conditions.",
       "from_schema": "https://w3id.org/rhea",
-      "is_a": "Reaction",
+      "is_a": "AbstractReaction",
       "slots": [
-        "bidirectionalReaction",
-        "directionalReaction",
-        "side",
         "id",
-        "seeAlso",
-        "citation",
-        "label",
-        "accession",
-        "equation",
-        "status",
-        "isTransport",
-        "substratesOrProducts",
-        "type",
-        "isChemicallyBalanced",
-        "htmlEquation",
-        "subClassOf",
         "comment",
-        "BidirectionalReaction_ec"
+        "type",
+        "label",
+        "status",
+        "accession",
+        "seeAlso",
+        "isTransport",
+        "isChemicallyBalanced",
+        "citation",
+        "htmlEquation",
+        "equation",
+        "AbstractReaction_ec",
+        "substratesOrProducts",
+        "BidirectionalReaction_subClassOf"
       ],
       "slot_usage": {},
       "class_uri": "http://rdf.rhea-db.org/BidirectionalReaction",
@@ -1919,12 +2099,15 @@
       ],
       "description": "A reaction participant. Contained in a reaction side.",
       "from_schema": "https://w3id.org/rhea",
+      "is_a": "Class",
       "slots": [
         "id",
-        "subClassOf",
-        "compound",
+        "comment",
         "type",
-        "location"
+        "label",
+        "compound",
+        "location",
+        "ReactionParticipant_subClassOf"
       ],
       "slot_usage": {},
       "class_uri": "http://rdf.rhea-db.org/ReactionParticipant",
@@ -1988,67 +2171,22 @@
       ],
       "description": "A reactive part in a generic compound, with a defined chemical structure. A subclass of a given ChEBI chemical entity.",
       "from_schema": "https://w3id.org/rhea",
-      "slots": [
-        "id",
-        "type",
-        "name",
-        "charge",
-        "subClassOf",
-        "chebi",
-        "formula",
-        "htmlName",
-        "position"
-      ],
-      "slot_usage": {},
-      "class_uri": "http://rdf.rhea-db.org/ReactivePart",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "Location",
-      "definition_uri": "http://rdf.rhea-db.org/Location",
-      "mappings": [
-        "http://rdf.rhea-db.org/Location"
-      ],
-      "description": "A location for a reaction participant.",
-      "from_schema": "https://w3id.org/rhea",
-      "slots": [
-        "id",
-        "type"
-      ],
-      "slot_usage": {},
-      "class_uri": "http://rdf.rhea-db.org/Location",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "Class",
-      "definition_uri": "http://rdf.rhea-db.org/Class",
-      "mappings": [
-        "http://www.w3.org/2000/01/rdf-schema#Class"
-      ],
-      "from_schema": "https://w3id.org/rhea",
+      "is_a": "Class",
       "slots": [
         "id",
         "comment",
         "type",
-        "label"
+        "label",
+        "name",
+        "charge",
+        "chebi",
+        "formula",
+        "htmlName",
+        "position",
+        "ReactivePart_subClassOf"
       ],
       "slot_usage": {},
-      "class_uri": "http://www.w3.org/2000/01/rdf-schema#Class",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "Property",
-      "definition_uri": "http://rdf.rhea-db.org/Property",
-      "mappings": [
-        "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
-      ],
-      "from_schema": "https://w3id.org/rhea",
-      "slots": [
-        "id",
-        "type"
-      ],
-      "slot_usage": {},
-      "class_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property",
+      "class_uri": "http://rdf.rhea-db.org/ReactivePart",
       "@type": "ClassDefinition"
     },
     {
@@ -2059,11 +2197,17 @@
       ],
       "description": "A chemical compound",
       "from_schema": "https://w3id.org/rhea",
+      "is_a": "Class",
       "slots": [
         "id",
-        "type",
         "comment",
-        "label"
+        "type",
+        "label",
+        "name",
+        "accession",
+        "htmlName",
+        "formula",
+        "Compound_subClassOf"
       ],
       "slot_usage": {},
       "class_uri": "http://rdf.rhea-db.org/Compound",
@@ -2079,17 +2223,17 @@
       "from_schema": "https://w3id.org/rhea",
       "is_a": "Compound",
       "slots": [
-        "comment",
-        "label",
         "id",
+        "comment",
         "type",
-        "chebi",
-        "htmlName",
+        "label",
         "accession",
         "formula",
+        "chebi",
+        "htmlName",
         "charge",
-        "subClassOf",
-        "name"
+        "name",
+        "SmallMolecule_subClassOf"
       ],
       "slot_usage": {},
       "class_uri": "http://rdf.rhea-db.org/SmallMolecule",
@@ -2106,9 +2250,15 @@
       "is_a": "Compound",
       "slots": [
         "id",
-        "label",
+        "comment",
         "type",
-        "comment"
+        "label",
+        "name",
+        "accession",
+        "htmlName",
+        "formula",
+        "Compound_subClassOf",
+        "reactivePart"
       ],
       "slot_usage": {},
       "class_uri": "http://rdf.rhea-db.org/GenericCompound",
@@ -2124,14 +2274,16 @@
       "from_schema": "https://w3id.org/rhea",
       "is_a": "GenericCompound",
       "slots": [
-        "label",
-        "comment",
         "id",
-        "name",
+        "comment",
         "type",
-        "reactivePart",
+        "label",
+        "name",
         "accession",
-        "htmlName"
+        "htmlName",
+        "formula",
+        "Compound_subClassOf",
+        "reactivePart"
       ],
       "slot_usage": {},
       "class_uri": "http://rdf.rhea-db.org/GenericPolynucleotide",
@@ -2147,14 +2299,16 @@
       "from_schema": "https://w3id.org/rhea",
       "is_a": "GenericCompound",
       "slots": [
-        "label",
-        "comment",
         "id",
-        "reactivePart",
-        "name",
+        "comment",
         "type",
+        "label",
+        "name",
         "accession",
-        "htmlName"
+        "htmlName",
+        "formula",
+        "Compound_subClassOf",
+        "reactivePart"
       ],
       "slot_usage": {},
       "class_uri": "http://rdf.rhea-db.org/GenericPolypeptide",
@@ -2170,16 +2324,17 @@
       "from_schema": "https://w3id.org/rhea",
       "is_a": "Compound",
       "slots": [
-        "comment",
-        "label",
         "id",
+        "comment",
         "type",
-        "charge",
-        "underlyingChebi",
-        "formula",
+        "label",
+        "name",
         "accession",
         "htmlName",
-        "name",
+        "formula",
+        "Compound_subClassOf",
+        "charge",
+        "underlyingChebi",
         "polymerizationIndex"
       ],
       "slot_usage": {},
@@ -2189,9 +2344,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "rhea.yaml",
-  "source_file_date": "2022-01-10T11:57:20",
-  "source_file_size": 16107,
-  "generation_date": "2022-01-10T11:59:14",
+  "source_file_date": "2022-01-10T12:46:28",
+  "source_file_size": 16212,
+  "generation_date": "2022-01-10T12:46:38",
   "@type": "SchemaDefinition",
   "@context": [
     "schema/jsonld/rhea.context.jsonld",

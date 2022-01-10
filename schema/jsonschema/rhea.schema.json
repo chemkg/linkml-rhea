@@ -1,14 +1,11 @@
 {
    "$defs": {
-      "BidirectionalReaction": {
+      "AbstractReaction": {
          "additionalProperties": false,
-         "description": "A chemical reaction which can happen in one direction or the other, depending on the physiological conditions.",
+         "description": "",
          "properties": {
             "accession": {
                "type": "string"
-            },
-            "bidirectionalReaction": {
-               "type": "integer"
             },
             "citation": {
                "items": {
@@ -19,14 +16,8 @@
             "comment": {
                "type": "string"
             },
-            "directionalReaction": {
-               "items": {
-                  "type": "integer"
-               },
-               "type": "array"
-            },
             "ec": {
-               "description": "EC is rarely/never specified for bidirectional",
+               "description": "EC is always specified for unspecified direction",
                "items": {
                   "type": "string"
                },
@@ -59,7 +50,67 @@
                },
                "type": "array"
             },
-            "side": {
+            "status": {
+               "$ref": "#/$defs/StatusEnum"
+            },
+            "subClassOf": {
+               "type": "string"
+            },
+            "type": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "id"
+         ],
+         "title": "AbstractReaction",
+         "type": "object"
+      },
+      "BidirectionalReaction": {
+         "additionalProperties": false,
+         "description": "A chemical reaction which can happen in one direction or the other, depending on the physiological conditions.",
+         "properties": {
+            "accession": {
+               "type": "string"
+            },
+            "citation": {
+               "items": {
+                  "type": "integer"
+               },
+               "type": "array"
+            },
+            "comment": {
+               "type": "string"
+            },
+            "ec": {
+               "description": "EC is always specified for unspecified direction",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "equation": {
+               "type": "string"
+            },
+            "htmlEquation": {
+               "type": "string"
+            },
+            "id": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "isChemicallyBalanced": {
+               "type": "boolean"
+            },
+            "isTransport": {
+               "type": "boolean"
+            },
+            "label": {
+               "type": "string"
+            },
+            "seeAlso": {
                "items": {
                   "type": "string"
                },
@@ -89,7 +140,7 @@
       },
       "Class": {
          "additionalProperties": false,
-         "description": "",
+         "description": "compounds and reactions are represented as classes in Rhea",
          "properties": {
             "comment": {
                "type": "string"
@@ -117,7 +168,16 @@
          "additionalProperties": false,
          "description": "A chemical compound",
          "properties": {
+            "accession": {
+               "type": "string"
+            },
             "comment": {
+               "type": "string"
+            },
+            "formula": {
+               "type": "string"
+            },
+            "htmlName": {
                "type": "string"
             },
             "id": {
@@ -127,6 +187,12 @@
                "type": "array"
             },
             "label": {
+               "type": "string"
+            },
+            "name": {
+               "type": "string"
+            },
+            "subClassOf": {
                "type": "string"
             },
             "type": {
@@ -146,9 +212,6 @@
             "accession": {
                "type": "string"
             },
-            "bidirectionalReaction": {
-               "type": "integer"
-            },
             "citation": {
                "items": {
                   "type": "integer"
@@ -158,14 +221,8 @@
             "comment": {
                "type": "string"
             },
-            "directionalReaction": {
-               "items": {
-                  "type": "integer"
-               },
-               "type": "array"
-            },
             "ec": {
-               "description": "EC is rarely/never specified for directional",
+               "description": "EC is always specified for unspecified direction",
                "items": {
                   "type": "string"
                },
@@ -201,12 +258,6 @@
                },
                "type": "array"
             },
-            "side": {
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
-            },
             "status": {
                "$ref": "#/$defs/StatusEnum"
             },
@@ -230,7 +281,16 @@
          "additionalProperties": false,
          "description": "A chemical compound whose complete chemical structure is not described. Have one or or more reactive part(s) with chemical structure(s).",
          "properties": {
+            "accession": {
+               "type": "string"
+            },
             "comment": {
+               "type": "string"
+            },
+            "formula": {
+               "type": "string"
+            },
+            "htmlName": {
                "type": "string"
             },
             "id": {
@@ -240,6 +300,18 @@
                "type": "array"
             },
             "label": {
+               "type": "string"
+            },
+            "name": {
+               "type": "string"
+            },
+            "reactivePart": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "subClassOf": {
                "type": "string"
             },
             "type": {
@@ -262,6 +334,9 @@
             "comment": {
                "type": "string"
             },
+            "formula": {
+               "type": "string"
+            },
             "htmlName": {
                "type": "string"
             },
@@ -282,6 +357,9 @@
                   "type": "string"
                },
                "type": "array"
+            },
+            "subClassOf": {
+               "type": "string"
             },
             "type": {
                "type": "string"
@@ -303,6 +381,9 @@
             "comment": {
                "type": "string"
             },
+            "formula": {
+               "type": "string"
+            },
             "htmlName": {
                "type": "string"
             },
@@ -324,25 +405,8 @@
                },
                "type": "array"
             },
-            "type": {
+            "subClassOf": {
                "type": "string"
-            }
-         },
-         "required": [
-            "id"
-         ],
-         "title": "GenericPolypeptide",
-         "type": "object"
-      },
-      "Location": {
-         "additionalProperties": false,
-         "description": "A location for a reaction participant.",
-         "properties": {
-            "id": {
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
             },
             "type": {
                "type": "string"
@@ -351,7 +415,7 @@
          "required": [
             "id"
          ],
-         "title": "Location",
+         "title": "GenericPolypeptide",
          "type": "object"
       },
       "LocationEnum": {
@@ -397,6 +461,9 @@
             "polymerizationIndex": {
                "$ref": "#/$defs/PolymerizationIndexEnum"
             },
+            "subClassOf": {
+               "type": "string"
+            },
             "type": {
                "type": "string"
             },
@@ -425,26 +492,6 @@
          "title": "PolymerizationIndexEnum",
          "type": "string"
       },
-      "Property": {
-         "additionalProperties": false,
-         "description": "",
-         "properties": {
-            "id": {
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
-            },
-            "type": {
-               "type": "string"
-            }
-         },
-         "required": [
-            "id"
-         ],
-         "title": "Property",
-         "type": "object"
-      },
       "Reaction": {
          "additionalProperties": false,
          "description": "A chemical reaction, with unspecified direction.",
@@ -453,7 +500,7 @@
                "type": "string"
             },
             "bidirectionalReaction": {
-               "type": "integer"
+               "type": "string"
             },
             "citation": {
                "items": {
@@ -466,12 +513,11 @@
             },
             "directionalReaction": {
                "items": {
-                  "type": "integer"
+                  "type": "string"
                },
                "type": "array"
             },
             "ec": {
-               "description": "EC is always specified for unspecified direction",
                "items": {
                   "type": "string"
                },
@@ -530,6 +576,9 @@
          "additionalProperties": false,
          "description": "A reaction participant. Contained in a reaction side.",
          "properties": {
+            "comment": {
+               "type": "string"
+            },
             "compound": {
                "type": "string"
             },
@@ -538,6 +587,9 @@
                   "type": "string"
                },
                "type": "array"
+            },
+            "label": {
+               "type": "string"
             },
             "location": {
                "$ref": "#/$defs/LocationEnum"
@@ -578,7 +630,10 @@
                "type": "array"
             },
             "contains11": {
-               "type": "string"
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "contains12": {
                "items": {
@@ -587,10 +642,16 @@
                "type": "array"
             },
             "contains13": {
-               "type": "string"
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "contains14": {
-               "type": "string"
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "contains16": {
                "items": {
@@ -599,13 +660,22 @@
                "type": "array"
             },
             "contains17": {
-               "type": "string"
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "contains18": {
-               "type": "string"
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "contains19": {
-               "type": "string"
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "contains2": {
                "items": {
@@ -614,22 +684,40 @@
                "type": "array"
             },
             "contains20": {
-               "type": "string"
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "contains21": {
-               "type": "string"
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "contains22": {
-               "type": "string"
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "contains24": {
-               "type": "string"
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "contains26": {
-               "type": "string"
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "contains27": {
-               "type": "string"
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "contains28": {
                "items": {
@@ -650,7 +738,10 @@
                "type": "array"
             },
             "contains32": {
-               "type": "string"
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "contains4": {
                "items": {
@@ -701,10 +792,16 @@
                "type": "array"
             },
             "containsNminus1": {
-               "type": "string"
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "containsNplus1": {
-               "type": "string"
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "curatedOrder": {
                "type": "integer"
@@ -738,6 +835,9 @@
             "chebi": {
                "type": "string"
             },
+            "comment": {
+               "type": "string"
+            },
             "formula": {
                "type": "string"
             },
@@ -750,11 +850,14 @@
                },
                "type": "array"
             },
+            "label": {
+               "type": "string"
+            },
             "name": {
                "type": "string"
             },
             "position": {
-               "type": "string"
+               "type": "integer"
             },
             "subClassOf": {
                "type": "string"
