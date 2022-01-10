@@ -1,0 +1,244 @@
+BASE <http://rdf.rhea-db.org/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX linkml: <https://w3id.org/linkml/>
+
+
+<CHEBIIdentifier> IRI
+
+linkml:String xsd:string
+
+linkml:Integer xsd:integer
+
+linkml:Boolean xsd:boolean
+
+linkml:Float xsd:float
+
+linkml:Double xsd:double
+
+linkml:Decimal xsd:decimal
+
+linkml:Time xsd:dateTime
+
+linkml:Date xsd:date
+
+linkml:Datetime xsd:dateTime
+
+linkml:Uriorcurie IRI
+
+linkml:Uri IRI
+
+linkml:Ncname xsd:string
+
+linkml:Objectidentifier IRI
+
+linkml:Nodeidentifier NONLITERAL
+
+<BidirectionalReaction> CLOSED {
+    (  $<BidirectionalReaction_tes> (  &<Reaction_tes> ;
+          rdf:type [ <Reaction> ] ? ;
+          <substratesOrProducts> @linkml:String * ;
+          <ec> @linkml:String *
+       ) ;
+       rdf:type [ <BidirectionalReaction> ]
+    )
+}
+
+<Class> CLOSED {
+    (  $<Class_tes> (  rdfs:comment @linkml:String ? ;
+          rdf:type @linkml:Uriorcurie ? ;
+          rdfs:label @linkml:String ?
+       ) ;
+       rdf:type [ rdfs:Class ]
+    )
+}
+
+<Compound>  (
+    CLOSED {
+       (  $<Compound_tes> (  rdf:type @linkml:Uriorcurie ? ;
+             rdfs:comment @linkml:String ? ;
+             rdfs:label @linkml:String ?
+          ) ;
+          rdf:type [ <Compound> ]
+       )
+    } OR @<GenericCompound> OR @<Polymer> OR @<SmallMolecule>
+)
+
+<DirectionalReaction> CLOSED {
+    (  $<DirectionalReaction_tes> (  &<Reaction_tes> ;
+          rdf:type [ <Reaction> ] ? ;
+          <substrates> @linkml:String ? ;
+          <products> @linkml:String ? ;
+          <ec> @linkml:String *
+       ) ;
+       rdf:type [ <DirectionalReaction> ]
+    )
+}
+
+<GenericCompound>  (
+    CLOSED {
+       (  $<GenericCompound_tes> (  &<Compound_tes> ;
+             rdf:type [ <Compound> ] ?
+          ) ;
+          rdf:type [ <GenericCompound> ]
+       )
+    } OR @<GenericPolynucleotide> OR @<GenericPolypeptide>
+)
+
+<GenericPolynucleotide> CLOSED {
+    (  $<GenericPolynucleotide_tes> (  &<GenericCompound_tes> ;
+          rdf:type [ <GenericCompound> ] ? ;
+          <name> @linkml:String ? ;
+          <reactivePart> @linkml:String * ;
+          <accession> @<CHEBIIdentifier> ? ;
+          <htmlName> @linkml:String ?
+       ) ;
+       rdf:type [ <GenericPolynucleotide> ]
+    )
+}
+
+<GenericPolypeptide> CLOSED {
+    (  $<GenericPolypeptide_tes> (  &<GenericCompound_tes> ;
+          rdf:type [ <GenericCompound> ] ? ;
+          <reactivePart> @linkml:String * ;
+          <name> @linkml:String ? ;
+          <accession> @<CHEBIIdentifier> ? ;
+          <htmlName> @linkml:String ?
+       ) ;
+       rdf:type [ <GenericPolypeptide> ]
+    )
+}
+
+<Location> CLOSED {
+    (  $<Location_tes> rdf:type @linkml:Uriorcurie ? ;
+       rdf:type [ <Location> ]
+    )
+}
+
+<Polymer> CLOSED {
+    (  $<Polymer_tes> (  &<Compound_tes> ;
+          rdf:type [ <Compound> ] ? ;
+          <charge> @linkml:Integer ? ;
+          <underlyingChebi> @linkml:String ? ;
+          <formula> @linkml:String ? ;
+          <accession> @<CHEBIIdentifier> ? ;
+          <htmlName> @linkml:String ? ;
+          <name> @linkml:String ? ;
+          <polymerizationIndex> @<PolymerizationIndexEnum> ?
+       ) ;
+       rdf:type [ <Polymer> ]
+    )
+}
+
+<Property> CLOSED {
+    (  $<Property_tes> rdf:type @linkml:Uriorcurie ? ;
+       rdf:type [ rdf:Property ]
+    )
+}
+
+<Reaction>  (
+    CLOSED {
+       (  $<Reaction_tes> (  <status> @<StatusEnum> ? ;
+             <accession> @<CHEBIIdentifier> ? ;
+             <isTransport> @linkml:Boolean ? ;
+             <bidirectionalReaction> @linkml:Integer ? ;
+             <isChemicallyBalanced> @linkml:Boolean ? ;
+             <citation> @linkml:Integer * ;
+             rdf:type @linkml:Uriorcurie ? ;
+             <directionalReaction> @linkml:Integer * ;
+             <htmlEquation> @linkml:String ? ;
+             <equation> @linkml:String ? ;
+             <side> @linkml:String * ;
+             rdfs:label @linkml:String ? ;
+             rdfs:comment @linkml:String ? ;
+             rdfs:subClassOf @<Class> ? ;
+             <ec> @linkml:String * ;
+             rdfs:seeAlso @linkml:String *
+          ) ;
+          rdf:type [ <Reaction> ]
+       )
+    } OR @<BidirectionalReaction> OR @<DirectionalReaction>
+)
+
+<ReactionParticipant> CLOSED {
+    (  $<ReactionParticipant_tes> (  rdfs:subClassOf @<Class> ? ;
+          <compound> @linkml:String ? ;
+          rdf:type @linkml:Uriorcurie ? ;
+          <location> @<LocationEnum> ?
+       ) ;
+       rdf:type [ <ReactionParticipant> ]
+    )
+}
+
+<ReactionSide> CLOSED {
+    (  $<ReactionSide_tes> (  <contains> @linkml:String * ;
+          <transformableTo> @linkml:String ? ;
+          rdf:type @linkml:Uriorcurie ? ;
+          <curatedOrder> @linkml:Integer ? ;
+          <contains1> @linkml:String * ;
+          <contains2> @linkml:String * ;
+          <contains4> @linkml:String * ;
+          <contains3> @linkml:String * ;
+          <contains6> @linkml:String * ;
+          <contains5> @linkml:String * ;
+          <contains8> @linkml:String * ;
+          <containsN> @linkml:String * ;
+          <contains7> @linkml:String * ;
+          <contains16> @linkml:String * ;
+          <contains9> @linkml:String * ;
+          <contains20> @linkml:String ? ;
+          <contains11> @linkml:String ? ;
+          <contains12> @linkml:String * ;
+          <containsNminus1> @linkml:String ? ;
+          <contains2n> @linkml:String * ;
+          <contains10> @linkml:String * ;
+          <contains22> @linkml:String ? ;
+          <contains24> @linkml:String ? ;
+          <containsNplus1> @linkml:String ? ;
+          <contains27> @linkml:String ? ;
+          <contains18> @linkml:String ? ;
+          <contains28> @linkml:String * ;
+          <contains32> @linkml:String ? ;
+          <contains17> @linkml:String ? ;
+          <contains13> @linkml:String ? ;
+          <contains14> @linkml:String ? ;
+          <contains40> @linkml:String * ;
+          <contains26> @linkml:String ? ;
+          <contains21> @linkml:String ? ;
+          <contains19> @linkml:String ?
+       ) ;
+       rdf:type [ <ReactionSide> ]
+    )
+}
+
+<ReactivePart> CLOSED {
+    (  $<ReactivePart_tes> (  rdf:type @linkml:Uriorcurie ? ;
+          <name> @linkml:String ? ;
+          <charge> @linkml:Integer ? ;
+          rdfs:subClassOf @<Class> ? ;
+          <chebi> @linkml:String ? ;
+          <formula> @linkml:String ? ;
+          <htmlName> @linkml:String ? ;
+          <position> @linkml:String ?
+       ) ;
+       rdf:type [ <ReactivePart> ]
+    )
+}
+
+<SmallMolecule> CLOSED {
+    (  $<SmallMolecule_tes> (  &<Compound_tes> ;
+          rdf:type [ <Compound> ] ? ;
+          <chebi> @linkml:String ? ;
+          <htmlName> @linkml:String ? ;
+          <accession> @<CHEBIIdentifier> ? ;
+          <formula> @linkml:String ? ;
+          <charge> @linkml:Integer ? ;
+          rdfs:subClassOf @<Class> ? ;
+          <name> @linkml:String ?
+       ) ;
+       rdf:type [ <SmallMolecule> ]
+    )
+}
+
+

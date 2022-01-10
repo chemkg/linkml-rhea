@@ -1,0 +1,538 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rhea: <http://rdf.rhea-db.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+rhea:BidirectionalReaction a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A chemical reaction which can happen in one direction or the other, depending on the physiological conditions." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:order 14 ;
+            sh:path rhea:bidirectionalReaction ],
+        [ sh:order 8 ;
+            sh:path rhea:substratesOrProducts ],
+        [ sh:maxCount 1 ;
+            sh:order 11 ;
+            sh:path rhea:htmlEquation ],
+        [ sh:order 0 ;
+            sh:path rhea:id ],
+        [ sh:maxCount 1 ;
+            sh:order 10 ;
+            sh:path rhea:isChemicallyBalanced ],
+        [ sh:maxCount 1 ;
+            sh:order 13 ;
+            sh:path rdfs:comment ],
+        [ sh:order 15 ;
+            sh:path rhea:directionalReaction ],
+        [ sh:in ( rhea:Approved rhea:Obsolete rhea:Preliminary ) ;
+            sh:maxCount 1 ;
+            sh:order 6 ;
+            sh:path rhea:status ],
+        [ sh:maxCount 1 ;
+            sh:order 9 ;
+            sh:path rdf:type ],
+        [ sh:order 16 ;
+            sh:path rhea:side ],
+        [ sh:maxCount 1 ;
+            sh:order 3 ;
+            sh:path rdfs:label ],
+        [ sh:maxCount 1 ;
+            sh:order 5 ;
+            sh:path rhea:equation ],
+        [ sh:description "EC is rarely/never specified for bidirectional" ;
+            sh:order 17 ;
+            sh:path rhea:ec ],
+        [ sh:maxCount 1 ;
+            sh:order 7 ;
+            sh:path rhea:isTransport ],
+        [ sh:order 1 ;
+            sh:path rdfs:seeAlso ],
+        [ sh:maxCount 1 ;
+            sh:order 4 ;
+            sh:path rhea:accession ],
+        [ sh:class rdfs:Class ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 12 ;
+            sh:path rdfs:subClassOf ],
+        [ sh:order 2 ;
+            sh:path rhea:citation ] ;
+    sh:targetClass rhea:BidirectionalReaction .
+
+rhea:Compound a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A chemical compound" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:order 0 ;
+            sh:path rhea:id ],
+        [ sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path rdfs:comment ],
+        [ sh:maxCount 1 ;
+            sh:order 3 ;
+            sh:path rdfs:label ],
+        [ sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path rdf:type ] ;
+    sh:targetClass rhea:Compound .
+
+rhea:DirectionalReaction a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A chemical reaction, with the direction specified by substrates and products." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:order 5 ;
+            sh:path rhea:htmlEquation ],
+        [ sh:in ( rhea:Approved rhea:Obsolete rhea:Preliminary ) ;
+            sh:maxCount 1 ;
+            sh:order 9 ;
+            sh:path rhea:status ],
+        [ sh:order 13 ;
+            sh:path rdfs:seeAlso ],
+        [ sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path rdf:type ],
+        [ sh:maxCount 1 ;
+            sh:order 3 ;
+            sh:path rhea:isChemicallyBalanced ],
+        [ sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path rhea:isTransport ],
+        [ sh:maxCount 1 ;
+            sh:order 4 ;
+            sh:path rhea:substrates ],
+        [ sh:order 7 ;
+            sh:path rhea:citation ],
+        [ sh:order 16 ;
+            sh:path rhea:directionalReaction ],
+        [ sh:maxCount 1 ;
+            sh:order 15 ;
+            sh:path rhea:bidirectionalReaction ],
+        [ sh:order 0 ;
+            sh:path rhea:id ],
+        [ sh:maxCount 1 ;
+            sh:order 6 ;
+            sh:path rhea:accession ],
+        [ sh:maxCount 1 ;
+            sh:order 11 ;
+            sh:path rdfs:label ],
+        [ sh:maxCount 1 ;
+            sh:order 8 ;
+            sh:path rhea:equation ],
+        [ sh:class rdfs:Class ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 12 ;
+            sh:path rdfs:subClassOf ],
+        [ sh:order 17 ;
+            sh:path rhea:side ],
+        [ sh:maxCount 1 ;
+            sh:order 14 ;
+            sh:path rdfs:comment ],
+        [ sh:description "EC is rarely/never specified for directional" ;
+            sh:order 18 ;
+            sh:path rhea:ec ],
+        [ sh:maxCount 1 ;
+            sh:order 10 ;
+            sh:path rhea:products ] ;
+    sh:targetClass rhea:DirectionalReaction .
+
+rhea:GenericCompound a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A chemical compound whose complete chemical structure is not described. Have one or or more reactive part(s) with chemical structure(s)." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:order 3 ;
+            sh:path rdfs:comment ],
+        [ sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path rdf:type ],
+        [ sh:order 0 ;
+            sh:path rhea:id ],
+        [ sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path rdfs:label ] ;
+    sh:targetClass rhea:GenericCompound .
+
+rhea:GenericPolynucleotide a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A generic compound that is a polynucleotide. Have one or or more reactive part(s) with chemical structure(s)." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path rdf:type ],
+        [ sh:maxCount 1 ;
+            sh:order 4 ;
+            sh:path rhea:accession ],
+        [ sh:maxCount 1 ;
+            sh:order 5 ;
+            sh:path rhea:htmlName ],
+        [ sh:order 3 ;
+            sh:path rhea:reactivePart ],
+        [ sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path rhea:name ],
+        [ sh:maxCount 1 ;
+            sh:order 6 ;
+            sh:path rdfs:label ],
+        [ sh:order 0 ;
+            sh:path rhea:id ],
+        [ sh:maxCount 1 ;
+            sh:order 7 ;
+            sh:path rdfs:comment ] ;
+    sh:targetClass rhea:GenericPolynucleotide .
+
+rhea:GenericPolypeptide a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A generic compound that is a polypeptide. Have one or or more reactive part(s) with chemical structure(s)." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:order 7 ;
+            sh:path rdfs:comment ],
+        [ sh:maxCount 1 ;
+            sh:order 6 ;
+            sh:path rdfs:label ],
+        [ sh:maxCount 1 ;
+            sh:order 5 ;
+            sh:path rhea:htmlName ],
+        [ sh:maxCount 1 ;
+            sh:order 4 ;
+            sh:path rhea:accession ],
+        [ sh:order 1 ;
+            sh:path rhea:reactivePart ],
+        [ sh:maxCount 1 ;
+            sh:order 3 ;
+            sh:path rdf:type ],
+        [ sh:order 0 ;
+            sh:path rhea:id ],
+        [ sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path rhea:name ] ;
+    sh:targetClass rhea:GenericPolypeptide .
+
+rhea:Location a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A location for a reaction participant." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:order 0 ;
+            sh:path rhea:id ],
+        [ sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path rdf:type ] ;
+    sh:targetClass rhea:Location .
+
+rhea:Polymer a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A chemical compound that is a polymer. Described by a polymerization index, and an underlying polymer from ChEBI." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path rhea:charge ],
+        [ sh:maxCount 1 ;
+            sh:order 6 ;
+            sh:path rhea:htmlName ],
+        [ sh:maxCount 1 ;
+            sh:order 4 ;
+            sh:path rhea:formula ],
+        [ sh:maxCount 1 ;
+            sh:order 10 ;
+            sh:path rdfs:label ],
+        [ sh:order 0 ;
+            sh:path rhea:id ],
+        [ sh:maxCount 1 ;
+            sh:order 3 ;
+            sh:path rhea:underlyingChebi ],
+        [ sh:maxCount 1 ;
+            sh:order 7 ;
+            sh:path rhea:name ],
+        [ sh:in ( "n-2" "n+1" "n-3" "n-1" "n" "n-5" "n-4" "n+2" ) ;
+            sh:maxCount 1 ;
+            sh:order 8 ;
+            sh:path rhea:polymerizationIndex ],
+        [ sh:maxCount 1 ;
+            sh:order 5 ;
+            sh:path rhea:accession ],
+        [ sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path rdf:type ],
+        [ sh:maxCount 1 ;
+            sh:order 9 ;
+            sh:path rdfs:comment ] ;
+    sh:targetClass rhea:Polymer .
+
+rhea:Reaction a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A chemical reaction, with unspecified direction." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:order 13 ;
+            sh:path rdfs:comment ],
+        [ sh:order 0 ;
+            sh:path rhea:id ],
+        [ sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path rhea:accession ],
+        [ sh:maxCount 1 ;
+            sh:order 9 ;
+            sh:path rhea:htmlEquation ],
+        [ sh:maxCount 1 ;
+            sh:order 7 ;
+            sh:path rdf:type ],
+        [ sh:order 6 ;
+            sh:path rhea:citation ],
+        [ sh:maxCount 1 ;
+            sh:order 3 ;
+            sh:path rhea:isTransport ],
+        [ sh:order 11 ;
+            sh:path rhea:side ],
+        [ sh:class rdfs:Class ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 14 ;
+            sh:path rdfs:subClassOf ],
+        [ sh:maxCount 1 ;
+            sh:order 12 ;
+            sh:path rdfs:label ],
+        [ sh:order 8 ;
+            sh:path rhea:directionalReaction ],
+        [ sh:description "EC is always specified for unspecified direction" ;
+            sh:order 15 ;
+            sh:path rhea:ec ],
+        [ sh:order 16 ;
+            sh:path rdfs:seeAlso ],
+        [ sh:in ( rhea:Approved rhea:Obsolete rhea:Preliminary ) ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path rhea:status ],
+        [ sh:maxCount 1 ;
+            sh:order 10 ;
+            sh:path rhea:equation ],
+        [ sh:maxCount 1 ;
+            sh:order 5 ;
+            sh:path rhea:isChemicallyBalanced ],
+        [ sh:maxCount 1 ;
+            sh:order 4 ;
+            sh:path rhea:bidirectionalReaction ] ;
+    sh:targetClass rhea:Reaction .
+
+rhea:ReactionParticipant a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A reaction participant. Contained in a reaction side." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:order 3 ;
+            sh:path rdf:type ],
+        [ sh:in ( rhea:Out rhea:In ) ;
+            sh:maxCount 1 ;
+            sh:order 4 ;
+            sh:path rhea:location ],
+        [ sh:order 0 ;
+            sh:path rhea:id ],
+        [ sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path rhea:compound ],
+        [ sh:class rdfs:Class ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 1 ;
+            sh:path rdfs:subClassOf ] ;
+    sh:targetClass rhea:ReactionParticipant .
+
+rhea:ReactionSide a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A reaction side in a chemical reaction. Contains one or more reaction participants." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:order 12 ;
+            sh:path rhea:containsN ],
+        [ sh:order 11 ;
+            sh:path rhea:contains8 ],
+        [ sh:maxCount 1 ;
+            sh:order 19 ;
+            sh:path rhea:containsNminus1 ],
+        [ sh:maxCount 1 ;
+            sh:order 26 ;
+            sh:path rhea:contains18 ],
+        [ sh:maxCount 1 ;
+            sh:order 16 ;
+            sh:path rhea:contains20 ],
+        [ sh:order 8 ;
+            sh:path rhea:contains3 ],
+        [ sh:maxCount 1 ;
+            sh:order 24 ;
+            sh:path rhea:containsNplus1 ],
+        [ sh:maxCount 1 ;
+            sh:order 3 ;
+            sh:path rdf:type ],
+        [ sh:maxCount 1 ;
+            sh:order 29 ;
+            sh:path rhea:contains17 ],
+        [ sh:order 1 ;
+            sh:path rhea:contains ],
+        [ sh:order 13 ;
+            sh:path rhea:contains7 ],
+        [ sh:maxCount 1 ;
+            sh:order 35 ;
+            sh:path rhea:contains19 ],
+        [ sh:order 27 ;
+            sh:path rhea:contains28 ],
+        [ sh:maxCount 1 ;
+            sh:order 4 ;
+            sh:path rhea:curatedOrder ],
+        [ sh:maxCount 1 ;
+            sh:order 17 ;
+            sh:path rhea:contains11 ],
+        [ sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path rhea:transformableTo ],
+        [ sh:order 21 ;
+            sh:path rhea:contains10 ],
+        [ sh:maxCount 1 ;
+            sh:order 25 ;
+            sh:path rhea:contains27 ],
+        [ sh:maxCount 1 ;
+            sh:order 34 ;
+            sh:path rhea:contains21 ],
+        [ sh:order 32 ;
+            sh:path rhea:contains40 ],
+        [ sh:order 7 ;
+            sh:path rhea:contains4 ],
+        [ sh:maxCount 1 ;
+            sh:order 23 ;
+            sh:path rhea:contains24 ],
+        [ sh:maxCount 1 ;
+            sh:order 31 ;
+            sh:path rhea:contains14 ],
+        [ sh:order 18 ;
+            sh:path rhea:contains12 ],
+        [ sh:order 20 ;
+            sh:path rhea:contains2n ],
+        [ sh:order 6 ;
+            sh:path rhea:contains2 ],
+        [ sh:order 5 ;
+            sh:path rhea:contains1 ],
+        [ sh:maxCount 1 ;
+            sh:order 28 ;
+            sh:path rhea:contains32 ],
+        [ sh:order 14 ;
+            sh:path rhea:contains16 ],
+        [ sh:maxCount 1 ;
+            sh:order 33 ;
+            sh:path rhea:contains26 ],
+        [ sh:maxCount 1 ;
+            sh:order 22 ;
+            sh:path rhea:contains22 ],
+        [ sh:order 9 ;
+            sh:path rhea:contains6 ],
+        [ sh:order 15 ;
+            sh:path rhea:contains9 ],
+        [ sh:order 0 ;
+            sh:path rhea:id ],
+        [ sh:maxCount 1 ;
+            sh:order 30 ;
+            sh:path rhea:contains13 ],
+        [ sh:order 10 ;
+            sh:path rhea:contains5 ] ;
+    sh:targetClass rhea:ReactionSide .
+
+rhea:ReactivePart a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A reactive part in a generic compound, with a defined chemical structure. A subclass of a given ChEBI chemical entity." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:order 7 ;
+            sh:path rhea:htmlName ],
+        [ sh:order 0 ;
+            sh:path rhea:id ],
+        [ sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path rdf:type ],
+        [ sh:maxCount 1 ;
+            sh:order 3 ;
+            sh:path rhea:charge ],
+        [ sh:maxCount 1 ;
+            sh:order 5 ;
+            sh:path rhea:chebi ],
+        [ sh:maxCount 1 ;
+            sh:order 8 ;
+            sh:path rhea:position ],
+        [ sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path rhea:name ],
+        [ sh:maxCount 1 ;
+            sh:order 6 ;
+            sh:path rhea:formula ],
+        [ sh:class rdfs:Class ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 4 ;
+            sh:path rdfs:subClassOf ] ;
+    sh:targetClass rhea:ReactivePart .
+
+rhea:SmallMolecule a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A chemical compound that is a small molecule. A subclass of a given ChEBI chemical entity." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:order 4 ;
+            sh:path rhea:accession ],
+        [ sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path rhea:chebi ],
+        [ sh:maxCount 1 ;
+            sh:order 6 ;
+            sh:path rhea:charge ],
+        [ sh:maxCount 1 ;
+            sh:order 3 ;
+            sh:path rhea:htmlName ],
+        [ sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path rdf:type ],
+        [ sh:maxCount 1 ;
+            sh:order 8 ;
+            sh:path rhea:name ],
+        [ sh:maxCount 1 ;
+            sh:order 9 ;
+            sh:path rdfs:comment ],
+        [ sh:order 0 ;
+            sh:path rhea:id ],
+        [ sh:class rdfs:Class ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 7 ;
+            sh:path rdfs:subClassOf ],
+        [ sh:maxCount 1 ;
+            sh:order 5 ;
+            sh:path rhea:formula ],
+        [ sh:maxCount 1 ;
+            sh:order 10 ;
+            sh:path rdfs:label ] ;
+    sh:targetClass rhea:SmallMolecule .
+
+rdf:Property a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path rdf:type ],
+        [ sh:order 0 ;
+            sh:path rhea:id ] ;
+    sh:targetClass rdf:Property .
+
+rdfs:Class a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:order 3 ;
+            sh:path rdfs:label ],
+        [ sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path rdfs:comment ],
+        [ sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path rdf:type ],
+        [ sh:order 0 ;
+            sh:path rhea:id ] ;
+    sh:targetClass rdfs:Class .
+

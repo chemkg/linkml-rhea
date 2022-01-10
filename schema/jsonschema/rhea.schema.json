@@ -1,0 +1,837 @@
+{
+   "$defs": {
+      "BidirectionalReaction": {
+         "additionalProperties": false,
+         "description": "A chemical reaction which can happen in one direction or the other, depending on the physiological conditions.",
+         "properties": {
+            "accession": {
+               "type": "string"
+            },
+            "bidirectionalReaction": {
+               "type": "integer"
+            },
+            "citation": {
+               "items": {
+                  "type": "integer"
+               },
+               "type": "array"
+            },
+            "comment": {
+               "type": "string"
+            },
+            "directionalReaction": {
+               "items": {
+                  "type": "integer"
+               },
+               "type": "array"
+            },
+            "ec": {
+               "description": "EC is rarely/never specified for bidirectional",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "equation": {
+               "type": "string"
+            },
+            "htmlEquation": {
+               "type": "string"
+            },
+            "id": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "isChemicallyBalanced": {
+               "type": "boolean"
+            },
+            "isTransport": {
+               "type": "boolean"
+            },
+            "label": {
+               "type": "string"
+            },
+            "seeAlso": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "side": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "status": {
+               "$ref": "#/$defs/StatusEnum"
+            },
+            "subClassOf": {
+               "type": "string"
+            },
+            "substratesOrProducts": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "type": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "id"
+         ],
+         "title": "BidirectionalReaction",
+         "type": "object"
+      },
+      "Class": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "comment": {
+               "type": "string"
+            },
+            "id": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "label": {
+               "type": "string"
+            },
+            "type": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "id"
+         ],
+         "title": "Class",
+         "type": "object"
+      },
+      "Compound": {
+         "additionalProperties": false,
+         "description": "A chemical compound",
+         "properties": {
+            "comment": {
+               "type": "string"
+            },
+            "id": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "label": {
+               "type": "string"
+            },
+            "type": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "id"
+         ],
+         "title": "Compound",
+         "type": "object"
+      },
+      "DirectionalReaction": {
+         "additionalProperties": false,
+         "description": "A chemical reaction, with the direction specified by substrates and products.",
+         "properties": {
+            "accession": {
+               "type": "string"
+            },
+            "bidirectionalReaction": {
+               "type": "integer"
+            },
+            "citation": {
+               "items": {
+                  "type": "integer"
+               },
+               "type": "array"
+            },
+            "comment": {
+               "type": "string"
+            },
+            "directionalReaction": {
+               "items": {
+                  "type": "integer"
+               },
+               "type": "array"
+            },
+            "ec": {
+               "description": "EC is rarely/never specified for directional",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "equation": {
+               "type": "string"
+            },
+            "htmlEquation": {
+               "type": "string"
+            },
+            "id": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "isChemicallyBalanced": {
+               "type": "boolean"
+            },
+            "isTransport": {
+               "type": "boolean"
+            },
+            "label": {
+               "type": "string"
+            },
+            "products": {
+               "type": "string"
+            },
+            "seeAlso": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "side": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "status": {
+               "$ref": "#/$defs/StatusEnum"
+            },
+            "subClassOf": {
+               "type": "string"
+            },
+            "substrates": {
+               "type": "string"
+            },
+            "type": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "id"
+         ],
+         "title": "DirectionalReaction",
+         "type": "object"
+      },
+      "GenericCompound": {
+         "additionalProperties": false,
+         "description": "A chemical compound whose complete chemical structure is not described. Have one or or more reactive part(s) with chemical structure(s).",
+         "properties": {
+            "comment": {
+               "type": "string"
+            },
+            "id": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "label": {
+               "type": "string"
+            },
+            "type": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "id"
+         ],
+         "title": "GenericCompound",
+         "type": "object"
+      },
+      "GenericPolynucleotide": {
+         "additionalProperties": false,
+         "description": "A generic compound that is a polynucleotide. Have one or or more reactive part(s) with chemical structure(s).",
+         "properties": {
+            "accession": {
+               "type": "string"
+            },
+            "comment": {
+               "type": "string"
+            },
+            "htmlName": {
+               "type": "string"
+            },
+            "id": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "label": {
+               "type": "string"
+            },
+            "name": {
+               "type": "string"
+            },
+            "reactivePart": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "type": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "id"
+         ],
+         "title": "GenericPolynucleotide",
+         "type": "object"
+      },
+      "GenericPolypeptide": {
+         "additionalProperties": false,
+         "description": "A generic compound that is a polypeptide. Have one or or more reactive part(s) with chemical structure(s).",
+         "properties": {
+            "accession": {
+               "type": "string"
+            },
+            "comment": {
+               "type": "string"
+            },
+            "htmlName": {
+               "type": "string"
+            },
+            "id": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "label": {
+               "type": "string"
+            },
+            "name": {
+               "type": "string"
+            },
+            "reactivePart": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "type": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "id"
+         ],
+         "title": "GenericPolypeptide",
+         "type": "object"
+      },
+      "Location": {
+         "additionalProperties": false,
+         "description": "A location for a reaction participant.",
+         "properties": {
+            "id": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "type": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "id"
+         ],
+         "title": "Location",
+         "type": "object"
+      },
+      "LocationEnum": {
+         "description": "",
+         "enum": [
+            "Out",
+            "In"
+         ],
+         "title": "LocationEnum",
+         "type": "string"
+      },
+      "Polymer": {
+         "additionalProperties": false,
+         "description": "A chemical compound that is a polymer. Described by a polymerization index, and an underlying polymer from ChEBI.",
+         "properties": {
+            "accession": {
+               "type": "string"
+            },
+            "charge": {
+               "type": "integer"
+            },
+            "comment": {
+               "type": "string"
+            },
+            "formula": {
+               "type": "string"
+            },
+            "htmlName": {
+               "type": "string"
+            },
+            "id": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "label": {
+               "type": "string"
+            },
+            "name": {
+               "type": "string"
+            },
+            "polymerizationIndex": {
+               "$ref": "#/$defs/PolymerizationIndexEnum"
+            },
+            "type": {
+               "type": "string"
+            },
+            "underlyingChebi": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "id"
+         ],
+         "title": "Polymer",
+         "type": "object"
+      },
+      "PolymerizationIndexEnum": {
+         "description": "",
+         "enum": [
+            "n-2",
+            "n+1",
+            "n-3",
+            "n-1",
+            "n",
+            "n-5",
+            "n-4",
+            "n+2"
+         ],
+         "title": "PolymerizationIndexEnum",
+         "type": "string"
+      },
+      "Property": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "id": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "type": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "id"
+         ],
+         "title": "Property",
+         "type": "object"
+      },
+      "Reaction": {
+         "additionalProperties": false,
+         "description": "A chemical reaction, with unspecified direction.",
+         "properties": {
+            "accession": {
+               "type": "string"
+            },
+            "bidirectionalReaction": {
+               "type": "integer"
+            },
+            "citation": {
+               "items": {
+                  "type": "integer"
+               },
+               "type": "array"
+            },
+            "comment": {
+               "type": "string"
+            },
+            "directionalReaction": {
+               "items": {
+                  "type": "integer"
+               },
+               "type": "array"
+            },
+            "ec": {
+               "description": "EC is always specified for unspecified direction",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "equation": {
+               "type": "string"
+            },
+            "htmlEquation": {
+               "type": "string"
+            },
+            "id": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "isChemicallyBalanced": {
+               "type": "boolean"
+            },
+            "isTransport": {
+               "type": "boolean"
+            },
+            "label": {
+               "type": "string"
+            },
+            "seeAlso": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "side": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "status": {
+               "$ref": "#/$defs/StatusEnum"
+            },
+            "subClassOf": {
+               "type": "string"
+            },
+            "type": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "id"
+         ],
+         "title": "Reaction",
+         "type": "object"
+      },
+      "ReactionParticipant": {
+         "additionalProperties": false,
+         "description": "A reaction participant. Contained in a reaction side.",
+         "properties": {
+            "compound": {
+               "type": "string"
+            },
+            "id": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "location": {
+               "$ref": "#/$defs/LocationEnum"
+            },
+            "subClassOf": {
+               "type": "string"
+            },
+            "type": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "id"
+         ],
+         "title": "ReactionParticipant",
+         "type": "object"
+      },
+      "ReactionSide": {
+         "additionalProperties": false,
+         "description": "A reaction side in a chemical reaction. Contains one or more reaction participants.",
+         "properties": {
+            "contains": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "contains1": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "contains10": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "contains11": {
+               "type": "string"
+            },
+            "contains12": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "contains13": {
+               "type": "string"
+            },
+            "contains14": {
+               "type": "string"
+            },
+            "contains16": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "contains17": {
+               "type": "string"
+            },
+            "contains18": {
+               "type": "string"
+            },
+            "contains19": {
+               "type": "string"
+            },
+            "contains2": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "contains20": {
+               "type": "string"
+            },
+            "contains21": {
+               "type": "string"
+            },
+            "contains22": {
+               "type": "string"
+            },
+            "contains24": {
+               "type": "string"
+            },
+            "contains26": {
+               "type": "string"
+            },
+            "contains27": {
+               "type": "string"
+            },
+            "contains28": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "contains2n": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "contains3": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "contains32": {
+               "type": "string"
+            },
+            "contains4": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "contains40": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "contains5": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "contains6": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "contains7": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "contains8": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "contains9": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "containsN": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "containsNminus1": {
+               "type": "string"
+            },
+            "containsNplus1": {
+               "type": "string"
+            },
+            "curatedOrder": {
+               "type": "integer"
+            },
+            "id": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "transformableTo": {
+               "type": "string"
+            },
+            "type": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "id"
+         ],
+         "title": "ReactionSide",
+         "type": "object"
+      },
+      "ReactivePart": {
+         "additionalProperties": false,
+         "description": "A reactive part in a generic compound, with a defined chemical structure. A subclass of a given ChEBI chemical entity.",
+         "properties": {
+            "charge": {
+               "type": "integer"
+            },
+            "chebi": {
+               "type": "string"
+            },
+            "formula": {
+               "type": "string"
+            },
+            "htmlName": {
+               "type": "string"
+            },
+            "id": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "name": {
+               "type": "string"
+            },
+            "position": {
+               "type": "string"
+            },
+            "subClassOf": {
+               "type": "string"
+            },
+            "type": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "id"
+         ],
+         "title": "ReactivePart",
+         "type": "object"
+      },
+      "SmallMolecule": {
+         "additionalProperties": false,
+         "description": "A chemical compound that is a small molecule. A subclass of a given ChEBI chemical entity.",
+         "properties": {
+            "accession": {
+               "type": "string"
+            },
+            "charge": {
+               "type": "integer"
+            },
+            "chebi": {
+               "type": "string"
+            },
+            "comment": {
+               "type": "string"
+            },
+            "formula": {
+               "type": "string"
+            },
+            "htmlName": {
+               "type": "string"
+            },
+            "id": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "label": {
+               "type": "string"
+            },
+            "name": {
+               "type": "string"
+            },
+            "subClassOf": {
+               "type": "string"
+            },
+            "type": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "id"
+         ],
+         "title": "SmallMolecule",
+         "type": "object"
+      },
+      "StatusEnum": {
+         "description": "",
+         "enum": [
+            "Approved",
+            "Obsolete",
+            "Preliminary"
+         ],
+         "title": "StatusEnum",
+         "type": "string"
+      }
+   },
+   "$id": "https://w3id.org/rhea",
+   "$schema": "http://json-schema.org/draft-07/schema#",
+   "additionalProperties": true,
+   "properties": {},
+   "required": [],
+   "title": "rhea-linkml",
+   "type": "object"
+}

@@ -1,0 +1,642 @@
+id: https://w3id.org/rhea
+name: rhea-linkml
+description: Experimental alpha version of a rendering of Rhea as LinkML
+imports:
+- linkml:types
+prefixes:
+  linkml: https://w3id.org/linkml/
+  rhea: http://rdf.rhea-db.org/
+default_curi_maps:
+  - semweb_context
+default_prefix: rhea
+types:
+  CHEBI identifier:
+    typeof: uriorcurie
+    pattern: "^CHEBI:\\d+$"
+classes:
+
+  ## Reactions
+  
+  Reaction:
+    description: A chemical reaction, with unspecified direction.
+    slots:
+    - id
+    - status
+    - accession
+    - isTransport
+    - bidirectionalReaction
+    - isChemicallyBalanced
+    - citation
+    - type
+    - directionalReaction
+    - htmlEquation
+    - equation
+    - side
+    - label
+    - comment
+    - subClassOf
+    - ec
+    - seeAlso
+    slot_usage:
+      ec:
+        description: EC is always specified for unspecified direction
+    class_uri: http://rdf.rhea-db.org/Reaction
+  DirectionalReaction:
+    is_a: Reaction
+    description: A chemical reaction, with the direction specified by substrates and products.
+    slots:
+    - id
+    - isTransport
+    - type
+    - isChemicallyBalanced
+    - substrates
+    - htmlEquation
+    - accession
+    - citation
+    - equation
+    - status
+    - products
+    - label
+    - subClassOf
+    - seeAlso
+    - comment
+    slot_usage:
+      ec:
+        description: EC is rarely/never specified for directional
+    class_uri: http://rdf.rhea-db.org/DirectionalReaction
+  BidirectionalReaction:
+    is_a: Reaction
+    description: A chemical reaction which can happen in one direction or the other, depending on the physiological conditions.
+    slots:
+    - id
+    - seeAlso
+    - citation
+    - label
+    - accession
+    - equation
+    - status
+    - isTransport
+    - substratesOrProducts
+    - type
+    - isChemicallyBalanced
+    - htmlEquation
+    - subClassOf
+    - comment
+    slot_usage:
+      ec:
+        description: EC is rarely/never specified for bidirectional
+    class_uri: http://rdf.rhea-db.org/BidirectionalReaction
+    
+  ReactionParticipant:
+    description: A reaction participant. Contained in a reaction side.
+    slots:
+    - id
+    - subClassOf
+    - compound
+    - type
+    - location
+    slot_usage: {}
+    class_uri: http://rdf.rhea-db.org/ReactionParticipant
+  ReactionSide:
+    description: A reaction side in a chemical reaction. Contains one or more reaction participants.
+    slots:
+    - id
+    - contains
+    - transformableTo
+    - type
+    - curatedOrder
+    - contains1
+    - contains2
+    - contains4
+    - contains3
+    - contains6
+    - contains5
+    - contains8
+    - containsN
+    - contains7
+    - contains16
+    - contains9
+    - contains20
+    - contains11
+    - contains12
+    - containsNminus1
+    - contains2n
+    - contains10
+    - contains22
+    - contains24
+    - containsNplus1
+    - contains27
+    - contains18
+    - contains28
+    - contains32
+    - contains17
+    - contains13
+    - contains14
+    - contains40
+    - contains26
+    - contains21
+    - contains19
+    slot_usage: {}
+    class_uri: http://rdf.rhea-db.org/ReactionSide
+  ReactivePart:
+    description: A reactive part in a generic compound, with a defined chemical structure. A subclass of a given ChEBI chemical entity.
+    slots:
+    - id
+    - type
+    - name
+    - charge
+    - subClassOf
+    - chebi
+    - formula
+    - htmlName
+    - position
+    slot_usage: {}
+    class_uri: http://rdf.rhea-db.org/ReactivePart
+  Location:
+    description: A location for a reaction participant.
+    slots:
+    - id
+    - type
+    slot_usage: {}
+    class_uri: http://rdf.rhea-db.org/Location
+
+  ## generic
+  Class:
+    slots:
+    - id
+    - comment
+    - type
+    - label
+    slot_usage: {}
+    class_uri: http://www.w3.org/2000/01/rdf-schema#Class
+  Property:
+    slots:
+    - id
+    - type
+    slot_usage: {}
+    class_uri: http://www.w3.org/1999/02/22-rdf-syntax-ns#Property
+
+  ## compounds
+  Compound:
+    description: A chemical compound
+    slots:
+    - id
+    - type
+    - comment
+    - label
+    slot_usage: {}
+    class_uri: http://rdf.rhea-db.org/Compound
+  SmallMolecule:
+    is_a: Compound
+    description: A chemical compound that is a small molecule. A subclass of a given ChEBI chemical entity.
+    slots:
+    - id
+    - type
+    - chebi
+    - htmlName
+    - accession
+    - formula
+    - charge
+    - subClassOf
+    - name
+    slot_usage: {}
+    class_uri: http://rdf.rhea-db.org/SmallMolecule
+  GenericCompound:
+    is_a: Compound
+    description: A chemical compound whose complete chemical structure is not described. Have one or or more reactive part(s) with chemical structure(s).
+    slots:
+    - id
+    - label
+    - type
+    - comment
+    slot_usage: {}
+    class_uri: http://rdf.rhea-db.org/GenericCompound
+  GenericPolynucleotide:
+    is_a: GenericCompound
+    description: A generic compound that is a polynucleotide. Have one or or more reactive part(s) with chemical structure(s).
+    slots:
+    - id
+    - name
+    - type
+    - reactivePart
+    - accession
+    - htmlName
+    slot_usage: {}
+    class_uri: http://rdf.rhea-db.org/GenericPolynucleotide
+  GenericPolypeptide:
+    is_a: GenericCompound
+    description: A generic compound that is a polypeptide. Have one or or more reactive part(s) with chemical structure(s).
+    slots:
+    - id
+    - reactivePart
+    - name
+    - type
+    - accession
+    - htmlName
+    slot_usage: {}
+    class_uri: http://rdf.rhea-db.org/GenericPolypeptide
+  Polymer:
+    is_a: Compound
+    description: A chemical compound that is a polymer. Described by a polymerization index, and an underlying polymer from ChEBI.
+    slots:
+    - id
+    - type
+    - charge
+    - underlyingChebi
+    - formula
+    - accession
+    - htmlName
+    - name
+    - polymerizationIndex
+    slot_usage: {}
+    class_uri: http://rdf.rhea-db.org/Polymer
+
+    
+slots:
+  id:
+    identifier: true
+    range: uriorcurie
+    examples:
+    - value: http://rdf.rhea-db.org/Compound_12075
+    multivalued: true
+    slot_uri: http://rdf.rhea-db.org/id
+
+  name:
+    range: string
+    examples:
+    - value: beta-D-galactosyl-(1->4)-N-acetyl-beta-D-glucosaminyl-(1->3)-beta-D-galactosyl-(1->4)-[alpha-L-fucosyl-(1->3)]-N-acetyl-beta-D-glucosaminyl-(1->3)-beta-D-galactosyl-(1->4)-beta-D-glucosyl-(1<->1')-ceramide
+    slot_uri: http://rdf.rhea-db.org/name
+    exact_mappings:
+      - rdfs:label
+
+  type:
+    range: uriorcurie
+    slot_uri: http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+  chebi:
+    range: string
+    examples:
+    - value: CHEBI_90358
+    slot_uri: http://rdf.rhea-db.org/chebi
+  htmlName:
+    range: string
+    examples:
+    - value: 700;)-ceramide
+    slot_uri: http://rdf.rhea-db.org/htmlName
+  accession:
+    range: CHEBI identifier
+    examples:
+    - value: CHEBI:90358
+    slot_uri: http://rdf.rhea-db.org/accession
+  formula:
+    range: string
+    examples:
+    - value: C50H83N3O37R2
+    slot_uri: http://rdf.rhea-db.org/formula
+  charge:
+    range: integer
+    examples:
+    - value: '0'
+    slot_uri: http://rdf.rhea-db.org/charge
+  subClassOf:
+    range: Class
+    examples:
+    - value: CHEBI_90358
+    slot_uri: http://www.w3.org/2000/01/rdf-schema#subClassOf
+  compound:
+    range: string
+    examples:
+    - value: Compound_1264
+    slot_uri: http://rdf.rhea-db.org/compound
+  location:
+    range: location_enum
+    examples:
+    - value: In
+    slot_uri: http://rdf.rhea-db.org/location
+  isTransport:
+    range: boolean
+    slot_uri: http://rdf.rhea-db.org/isTransport
+  isChemicallyBalanced:
+    range: boolean
+    slot_uri: http://rdf.rhea-db.org/isChemicallyBalanced
+  substrates:
+    range: string
+    examples:
+    - value: 15093_R
+    slot_uri: http://rdf.rhea-db.org/substrates
+  htmlEquation:
+    range: string
+    examples:
+    - value: small>-tyrosine
+    slot_uri: http://rdf.rhea-db.org/htmlEquation
+  citation:
+    range: integer
+    examples:
+    - value: '10074065'
+    multivalued: true
+    slot_uri: http://rdf.rhea-db.org/citation
+  equation:
+    range: string
+    examples:
+    - value: 3-(4-hydroxyphenyl)pyruvate + L-glutamate => 2-oxoglutarate + L-tyrosine
+    slot_uri: http://rdf.rhea-db.org/equation
+  status:
+    range: status_enum
+    examples:
+    - value: Approved
+    slot_uri: http://rdf.rhea-db.org/status
+  products:
+    range: string
+    examples:
+    - value: 15093_L
+    slot_uri: http://rdf.rhea-db.org/products
+  label:
+    range: string
+    examples:
+    - value: 3-(4-hydroxyphenyl)pyruvate + L-glutamate => 2-oxoglutarate + L-tyrosine
+    slot_uri: http://www.w3.org/2000/01/rdf-schema#label
+  seeAlso:
+    range: string
+    examples:
+    - value: R-HSA-517444.2
+    multivalued: true
+    slot_uri: http://www.w3.org/2000/01/rdf-schema#seeAlso
+  comment:
+    range: string
+    examples:
+    - value: RHEA:51568 part of RHEA:51564.
+    slot_uri: http://www.w3.org/2000/01/rdf-schema#comment
+  bidirectionalReaction:
+    range: integer
+    examples:
+    - value: '28846'
+    slot_uri: http://rdf.rhea-db.org/bidirectionalReaction
+  directionalReaction:
+    range: integer
+    examples:
+    - value: 28844|28845
+    multivalued: true
+    slot_uri: http://rdf.rhea-db.org/directionalReaction
+  side:
+    range: string
+    examples:
+    - value: 28843_L|28843_R
+    multivalued: true
+    slot_uri: http://rdf.rhea-db.org/side
+  ec:
+    range: string
+    examples:
+    - value: 4.2.3.87
+    multivalued: true
+    slot_uri: http://rdf.rhea-db.org/ec
+  contains:
+    range: string
+    examples:
+    - value: Participant_38219_compound_7375|Participant_38219_compound_1264
+    multivalued: true
+    slot_uri: http://rdf.rhea-db.org/contains
+  transformableTo:
+    range: string
+    examples:
+    - value: 38219_L
+    slot_uri: http://rdf.rhea-db.org/transformableTo
+  curatedOrder:
+    range: integer
+    examples:
+    - value: '2'
+    slot_uri: http://rdf.rhea-db.org/curatedOrder
+  contains1:
+    range: string
+    examples:
+    - value: Participant_38219_compound_7375|Participant_38219_compound_1264
+    multivalued: true
+    slot_uri: http://rdf.rhea-db.org/contains1
+  contains2:
+    range: string
+    examples:
+    - value: Participant_33599_compound_10439
+    multivalued: true
+    slot_uri: http://rdf.rhea-db.org/contains2
+  contains4:
+    range: string
+    examples:
+    - value: Participant_56272_compound_12863
+    multivalued: true
+    slot_uri: http://rdf.rhea-db.org/contains4
+  contains3:
+    range: string
+    examples:
+    - value: Participant_58440_compound_6127
+    multivalued: true
+    slot_uri: http://rdf.rhea-db.org/contains3
+  contains6:
+    range: string
+    examples:
+    - value: Participant_40963_compound_1283
+    multivalued: true
+    slot_uri: http://rdf.rhea-db.org/contains6
+  contains5:
+    range: string
+    examples:
+    - value: Participant_56864_compound_5188
+    multivalued: true
+    slot_uri: http://rdf.rhea-db.org/contains5
+  contains8:
+    range: string
+    examples:
+    - value: Participant_58904_compound_2780
+    multivalued: true
+    slot_uri: http://rdf.rhea-db.org/contains8
+  containsN:
+    range: string
+    examples:
+    - value: Participant_58948_compound_2790
+    multivalued: true
+    slot_uri: http://rdf.rhea-db.org/containsN
+  contains7:
+    range: string
+    examples:
+    - value: Participant_35179_compound_5125
+    multivalued: true
+    slot_uri: http://rdf.rhea-db.org/contains7
+  contains16:
+    range: string
+    examples:
+    - value: Participant_58904_compound_3438
+    multivalued: true
+    slot_uri: http://rdf.rhea-db.org/contains16
+  contains9:
+    range: string
+    examples:
+    - value: Participant_50352_compound_3249
+    multivalued: true
+    slot_uri: http://rdf.rhea-db.org/contains9
+  contains20:
+    range: string
+    examples:
+    - value: Participant_66812_compound_3249
+    slot_uri: http://rdf.rhea-db.org/contains20
+  contains11:
+    range: string
+    examples:
+    - value: Participant_18565_compound_3438
+    slot_uri: http://rdf.rhea-db.org/contains11
+  contains12:
+    range: string
+    examples:
+    - value: Participant_58944_compound_3249
+    multivalued: true
+    slot_uri: http://rdf.rhea-db.org/contains12
+  containsNminus1:
+    range: string
+    examples:
+    - value: Participant_23392_compound_1283
+    slot_uri: http://rdf.rhea-db.org/containsNminus1
+  contains2n:
+    range: string
+    examples:
+    - value: Participant_20157_compound_3249|Participant_20157_compound_10350
+    multivalued: true
+    slot_uri: http://rdf.rhea-db.org/contains2n
+  contains10:
+    range: string
+    examples:
+    - value: Participant_27614_compound_2106
+    multivalued: true
+    slot_uri: http://rdf.rhea-db.org/contains10
+  contains22:
+    range: string
+    examples:
+    - value: Participant_58028_compound_3438
+    slot_uri: http://rdf.rhea-db.org/contains22
+  contains24:
+    range: string
+    examples:
+    - value: Participant_58904_compound_3249
+    slot_uri: http://rdf.rhea-db.org/contains24
+  containsNplus1:
+    range: string
+    examples:
+    - value: Participant_22452_compound_5518
+    slot_uri: http://rdf.rhea-db.org/containsNplus1
+  contains27:
+    range: string
+    examples:
+    - value: Participant_50468_compound_3249
+    slot_uri: http://rdf.rhea-db.org/contains27
+  contains18:
+    range: string
+    examples:
+    - value: Participant_15645_compound_3249
+    slot_uri: http://rdf.rhea-db.org/contains18
+  contains28:
+    range: string
+    examples:
+    - value: Participant_34391_compound_3249|Participant_34391_compound_2692
+    multivalued: true
+    slot_uri: http://rdf.rhea-db.org/contains28
+  contains32:
+    range: string
+    examples:
+    - value: Participant_58028_compound_3249
+    slot_uri: http://rdf.rhea-db.org/contains32
+  contains17:
+    range: string
+    examples:
+    - value: Participant_66808_compound_3249
+    slot_uri: http://rdf.rhea-db.org/contains17
+  contains13:
+    range: string
+    examples:
+    - value: Participant_66812_compound_5188
+    slot_uri: http://rdf.rhea-db.org/contains13
+  contains14:
+    range: string
+    examples:
+    - value: Participant_58908_compound_3438
+    slot_uri: http://rdf.rhea-db.org/contains14
+  contains40:
+    range: string
+    examples:
+    - value: Participant_55540_compound_5518|Participant_55540_compound_2710
+    multivalued: true
+    slot_uri: http://rdf.rhea-db.org/contains40
+  contains26:
+    range: string
+    examples:
+    - value: Participant_55540_compound_3249
+    slot_uri: http://rdf.rhea-db.org/contains26
+  contains21:
+    range: string
+    examples:
+    - value: Participant_58908_compound_3249
+    slot_uri: http://rdf.rhea-db.org/contains21
+  contains19:
+    range: string
+    examples:
+    - value: Participant_18565_compound_3249
+    slot_uri: http://rdf.rhea-db.org/contains19
+  substratesOrProducts:
+    range: string
+    examples:
+    - value: 49544_R|49544_L
+    multivalued: true
+    slot_uri: http://rdf.rhea-db.org/substratesOrProducts
+  position:
+    range: string
+    examples:
+    - value: '2457'
+    slot_uri: http://rdf.rhea-db.org/position
+  reactivePart:
+    range: string
+    examples:
+    - value: Compound_10195_rp1
+    multivalued: true
+    slot_uri: http://rdf.rhea-db.org/reactivePart
+  underlyingChebi:
+    range: string
+    examples:
+    - value: CHEBI_131728
+    slot_uri: http://rdf.rhea-db.org/underlyingChebi
+  polymerizationIndex:
+    range: polymerizationIndex_enum
+    examples:
+    - value: n
+    slot_uri: http://rdf.rhea-db.org/polymerizationIndex
+enums:
+  location_enum:
+    permissible_values:
+      Out:
+        description: Out
+        meaning: http://rdf.rhea-db.org/Out
+      In:
+        description: In
+        meaning: http://rdf.rhea-db.org/In
+  status_enum:
+    permissible_values:
+      Approved:
+        description: Approved
+        meaning: http://rdf.rhea-db.org/Approved
+      Obsolete:
+        description: Obsolete
+        meaning: http://rdf.rhea-db.org/Obsolete
+      Preliminary:
+        description: Preliminary
+        meaning: http://rdf.rhea-db.org/Preliminary
+  polymerizationIndex_enum:
+    permissible_values:
+      n-2:
+        description: n-2
+      n+1:
+        description: n+1
+      n-3:
+        description: n-3
+      n-1:
+        description: n-1
+      n:
+        description: n
+      n-5:
+        description: n-5
+      n-4:
+        description: n-4
+      n+2:
+        description: n+2
