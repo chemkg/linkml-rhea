@@ -21,6 +21,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://chemkg.github.io/linkml-rhea/BidirectionalReaction/</loc>
+         <lastmod>2022-01-10</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://chemkg.github.io/linkml-rhea/BidirectionalReaction_ec/</loc>
          <lastmod>2022-01-10</lastmod>
          <changefreq>daily</changefreq>
@@ -37,6 +42,11 @@
     </url>
     <url>
          <loc>https://chemkg.github.io/linkml-rhea/Compound_subClassOf/</loc>
+         <lastmod>2022-01-10</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://chemkg.github.io/linkml-rhea/DirectionalReaction/</loc>
          <lastmod>2022-01-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -122,11 +132,6 @@
     </url>
     <url>
          <loc>https://chemkg.github.io/linkml-rhea/accession/</loc>
-         <lastmod>2022-01-10</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://chemkg.github.io/linkml-rhea/bidirectionalReaction/</loc>
          <lastmod>2022-01-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -326,11 +331,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://chemkg.github.io/linkml-rhea/directionalReaction/</loc>
-         <lastmod>2022-01-10</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://chemkg.github.io/linkml-rhea/ec/</loc>
          <lastmod>2022-01-10</lastmod>
          <changefreq>daily</changefreq>
@@ -342,6 +342,16 @@
     </url>
     <url>
          <loc>https://chemkg.github.io/linkml-rhea/formula/</loc>
+         <lastmod>2022-01-10</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://chemkg.github.io/linkml-rhea/hasBidirectionalReaction/</loc>
+         <lastmod>2022-01-10</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://chemkg.github.io/linkml-rhea/hasDirectionalReaction/</loc>
          <lastmod>2022-01-10</lastmod>
          <changefreq>daily</changefreq>
     </url>

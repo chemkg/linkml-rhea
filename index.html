@@ -125,12 +125,20 @@
                 <h1 id="rhea-linkml-schema">rhea-linkml schema</h1>
 <p>Experimental alpha version of a rendering of Rhea as LinkML</p>
 <p>For additional context, see <a href="https://chemkg.github.io/linkml-rhea/home">linkml-rhea docs</a></p>
+<p>This schema should largely correspond one-to-one with classes and properties in Rhea.
+Modifications:</p>
+<ul>
+<li>Added a AbstractReaction grouping</li>
+<li>prefixed properties directional/bidirectionalReaction with 'has'</li>
+<li>mkdocs requires case-insensitive names, so this avoids name clash with classes</li>
+<li>we retain the true rdf property as slot_uri</li>
+</ul>
 <h3 id="classes">Classes</h3>
 <ul>
 <li><a href="Class/">Class</a> - compounds and reactions are represented as classes in Rhea<ul>
 <li><a href="AbstractReaction/">AbstractReaction</a> - Grouping class for all three reaction forms<ul>
-<li><a href="BidirectionalReaction.md">BidirectionalReaction</a> - A chemical reaction which can happen in one direction or the other, depending on the physiological conditions.</li>
-<li><a href="DirectionalReaction.md">DirectionalReaction</a> - A chemical reaction, with the direction specified by substrates and products.</li>
+<li><a href="BidirectionalReaction/">BidirectionalReaction</a> - A chemical reaction which can happen in one direction or the other, depending on the physiological conditions.</li>
+<li><a href="DirectionalReaction/">DirectionalReaction</a> - A chemical reaction, with the direction specified by substrates and products.</li>
 <li><a href="Reaction/">Reaction</a> - A chemical reaction, with unspecified direction.</li>
 </ul>
 </li>
@@ -154,7 +162,6 @@
 <h3 id="slots">Slots</h3>
 <ul>
 <li><a href="accession/">accession</a></li>
-<li><a href="bidirectionalReaction/">bidirectionalReaction</a></li>
 <li><a href="charge/">charge</a></li>
 <li><a href="chebi/">chebi</a></li>
 <li><a href="citation/">citation</a></li>
@@ -195,13 +202,14 @@
 </ul>
 </li>
 <li><a href="curatedOrder/">curatedOrder</a></li>
-<li><a href="directionalReaction/">directionalReaction</a></li>
 <li><a href="ec/">ec</a><ul>
 <li><a href="AbstractReaction_ec/">AbstractReaction➞ec</a> - EC is always specified for unspecified direction</li>
 </ul>
 </li>
 <li><a href="equation/">equation</a></li>
 <li><a href="formula/">formula</a></li>
+<li><a href="hasBidirectionalReaction/">hasBidirectionalReaction</a></li>
+<li><a href="hasDirectionalReaction/">hasDirectionalReaction</a></li>
 <li><a href="htmlEquation/">htmlEquation</a></li>
 <li><a href="htmlName/">htmlName</a></li>
 <li><a href="id/">id</a></li>
@@ -343,5 +351,5 @@
 
 <!--
 MkDocs version : 1.2.3
-Build Date UTC : 2022-01-10 21:10:57.156818+00:00
+Build Date UTC : 2022-01-10 21:23:07.601674+00:00
 -->
