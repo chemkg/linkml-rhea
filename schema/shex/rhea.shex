@@ -38,24 +38,26 @@ linkml:Objectidentifier IRI
 linkml:Nodeidentifier NONLITERAL
 
 <AbstractReaction>  (
-    CLOSED {
-       (  $<AbstractReaction_tes> (  &<Class_tes> ;
-             rdf:type [ rdfs:Class ] ? ;
-             <status> @<StatusEnum> ? ;
-             <accession> @<DatabaseIdentifier> ? ;
-             rdfs:seeAlso @linkml:String * ;
-             <isTransport> @linkml:Boolean ? ;
-             <isChemicallyBalanced> @linkml:Boolean ? ;
-             <citation> @linkml:Integer * ;
-             <htmlEquation> @linkml:String ? ;
-             <equation> @linkml:String ? ;
-             rdfs:subClassOf @<AbstractReaction> ? ;
-             <ec> @linkml:String *
-          ) ;
-          rdf:type [ <AbstractReaction> ]
-       )
-    } OR @<BidirectionalReaction> OR @<DirectionalReaction> OR @<Reaction>
+    @<BidirectionalReaction> OR @<DirectionalReaction> OR @<Reaction>
 )
+
+<AbstractReaction_struct> {
+    (  $<AbstractReaction_tes> (  &<Class_tes> ;
+          rdf:type [ rdfs:Class ] ? ;
+          <status> @<StatusEnum> ? ;
+          <accession> @<DatabaseIdentifier> ? ;
+          rdfs:seeAlso @linkml:String * ;
+          <isTransport> @linkml:Boolean ? ;
+          <isChemicallyBalanced> @linkml:Boolean ? ;
+          <citation> @linkml:Integer * ;
+          <htmlEquation> @linkml:String ? ;
+          <equation> @linkml:String ? ;
+          rdfs:subClassOf @<AbstractReaction> ? ;
+          <ec> @linkml:String *
+       ) ;
+       rdf:type [ <AbstractReaction> ]
+    )
+}
 
 <BidirectionalReaction> CLOSED {
     (  $<BidirectionalReaction_tes> (  &<AbstractReaction_tes> ;

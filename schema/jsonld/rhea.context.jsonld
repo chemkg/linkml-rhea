@@ -1,6 +1,7 @@
 {
-   "_comments": "Auto generated from rhea.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-01-10T12:46:37\n    Schema: rhea-linkml\n    \n    id: https://w3id.org/rhea\n    description: Experimental alpha version of a rendering of Rhea as LinkML\n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
+   "_comments": "Auto generated from rhea.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-01-10T13:21:44\n    Schema: rhea-linkml\n    \n    id: https://w3id.org/rhea\n    description: Experimental alpha version of a rendering of Rhea as LinkML\n\nFor additional context, see [linkml-rhea docs](https://chemkg.github.io/linkml-rhea/home)\n\nThis schema should largely correspond one-to-one with classes and properties in Rhea.\nModifications:\n  \n* Added a AbstractReaction grouping\n* prefixed properties directional/bidirectionalReaction with 'has'\n   * mkdocs requires case-insensitive names, so this avoids name clash with classes\n   * we retain the true rdf property as slot_uri\n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
    "@context": {
+      "chemrof": "https://w3id.org/chemrof/",
       "linkml": "https://w3id.org/linkml/",
       "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
       "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
@@ -8,9 +9,6 @@
       "skos": "http://www.w3.org/2004/02/skos/core#",
       "@vocab": "http://rdf.rhea-db.org/",
       "accession": {
-         "@type": "@id"
-      },
-      "bidirectionalReaction": {
          "@type": "@id"
       },
       "charge": {
@@ -31,7 +29,10 @@
       "curatedOrder": {
          "@type": "xsd:integer"
       },
-      "directionalReaction": {
+      "hasBidirectionalReaction": {
+         "@type": "@id"
+      },
+      "hasDirectionalReaction": {
          "@type": "@id"
       },
       "id": "@id",

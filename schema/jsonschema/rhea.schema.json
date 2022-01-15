@@ -1,71 +1,5 @@
 {
    "$defs": {
-      "AbstractReaction": {
-         "additionalProperties": false,
-         "description": "",
-         "properties": {
-            "accession": {
-               "type": "string"
-            },
-            "citation": {
-               "items": {
-                  "type": "integer"
-               },
-               "type": "array"
-            },
-            "comment": {
-               "type": "string"
-            },
-            "ec": {
-               "description": "EC is always specified for unspecified direction",
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
-            },
-            "equation": {
-               "type": "string"
-            },
-            "htmlEquation": {
-               "type": "string"
-            },
-            "id": {
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
-            },
-            "isChemicallyBalanced": {
-               "type": "boolean"
-            },
-            "isTransport": {
-               "type": "boolean"
-            },
-            "label": {
-               "type": "string"
-            },
-            "seeAlso": {
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
-            },
-            "status": {
-               "$ref": "#/$defs/StatusEnum"
-            },
-            "subClassOf": {
-               "type": "string"
-            },
-            "type": {
-               "type": "string"
-            }
-         },
-         "required": [
-            "id"
-         ],
-         "title": "AbstractReaction",
-         "type": "object"
-      },
       "BidirectionalReaction": {
          "additionalProperties": false,
          "description": "A chemical reaction which can happen in one direction or the other, depending on the physiological conditions.",
@@ -499,9 +433,6 @@
             "accession": {
                "type": "string"
             },
-            "bidirectionalReaction": {
-               "type": "string"
-            },
             "citation": {
                "items": {
                   "type": "integer"
@@ -511,12 +442,6 @@
             "comment": {
                "type": "string"
             },
-            "directionalReaction": {
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
-            },
             "ec": {
                "items": {
                   "type": "string"
@@ -525,6 +450,15 @@
             },
             "equation": {
                "type": "string"
+            },
+            "hasBidirectionalReaction": {
+               "type": "string"
+            },
+            "hasDirectionalReaction": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "htmlEquation": {
                "type": "string"

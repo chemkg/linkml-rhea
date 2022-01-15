@@ -1,6 +1,6 @@
 {
   "name": "rhea-linkml",
-  "description": "Experimental alpha version of a rendering of Rhea as LinkML",
+  "description": "Experimental alpha version of a rendering of Rhea as LinkML\n\nFor additional context, see [linkml-rhea docs](https://chemkg.github.io/linkml-rhea/home)\n\nThis schema should largely correspond one-to-one with classes and properties in Rhea.\nModifications:\n  \n* Added a AbstractReaction grouping\n* prefixed properties directional/bidirectionalReaction with 'has'\n   * mkdocs requires case-insensitive names, so this avoids name clash with classes\n   * we retain the true rdf property as slot_uri",
   "id": "https://w3id.org/rhea",
   "imports": [
     "linkml:types"
@@ -8,12 +8,16 @@
   "license": "https://creativecommons.org/publicdomain/zero/1.0/",
   "prefixes": [
     {
+      "prefix_prefix": "rhea",
+      "prefix_reference": "http://rdf.rhea-db.org/"
+    },
+    {
       "prefix_prefix": "linkml",
       "prefix_reference": "https://w3id.org/linkml/"
     },
     {
-      "prefix_prefix": "rhea",
-      "prefix_reference": "http://rdf.rhea-db.org/"
+      "prefix_prefix": "chemrof",
+      "prefix_reference": "https://w3id.org/chemrof/"
     }
   ],
   "default_curi_maps": [
@@ -813,8 +817,8 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "bidirectionalReaction",
-      "definition_uri": "http://rdf.rhea-db.org/bidirectionalReaction",
+      "name": "hasBidirectionalReaction",
+      "definition_uri": "http://rdf.rhea-db.org/hasBidirectionalReaction",
       "mappings": [
         "http://rdf.rhea-db.org/bidirectionalReaction"
       ],
@@ -834,8 +838,8 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "directionalReaction",
-      "definition_uri": "http://rdf.rhea-db.org/directionalReaction",
+      "name": "hasDirectionalReaction",
+      "definition_uri": "http://rdf.rhea-db.org/hasDirectionalReaction",
       "mappings": [
         "http://rdf.rhea-db.org/directionalReaction"
       ],
@@ -1976,8 +1980,10 @@
     {
       "name": "AbstractReaction",
       "definition_uri": "http://rdf.rhea-db.org/AbstractReaction",
+      "description": "Grouping class for all three reaction forms",
       "from_schema": "https://w3id.org/rhea",
       "is_a": "Class",
+      "abstract": true,
       "slots": [
         "id",
         "comment",
@@ -2001,8 +2007,14 @@
     {
       "name": "Reaction",
       "definition_uri": "http://rdf.rhea-db.org/Reaction",
+      "aliases": [
+        "direction neutral reaction"
+      ],
       "mappings": [
         "http://rdf.rhea-db.org/Reaction"
+      ],
+      "exact_mappings": [
+        "chemrof:Reaction"
       ],
       "description": "A chemical reaction, with unspecified direction.",
       "from_schema": "https://w3id.org/rhea",
@@ -2020,8 +2032,8 @@
         "citation",
         "htmlEquation",
         "equation",
-        "directionalReaction",
-        "bidirectionalReaction",
+        "hasDirectionalReaction",
+        "hasBidirectionalReaction",
         "side",
         "ec",
         "Reaction_subClassOf"
@@ -2096,6 +2108,9 @@
       "definition_uri": "http://rdf.rhea-db.org/ReactionParticipant",
       "mappings": [
         "http://rdf.rhea-db.org/ReactionParticipant"
+      ],
+      "exact_mappings": [
+        "chemrof:ReactionParticipant"
       ],
       "description": "A reaction participant. Contained in a reaction side.",
       "from_schema": "https://w3id.org/rhea",
@@ -2344,9 +2359,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "rhea.yaml",
-  "source_file_date": "2022-01-10T12:46:28",
-  "source_file_size": 16212,
-  "generation_date": "2022-01-10T12:46:38",
+  "source_file_date": "2022-01-10T13:21:30",
+  "source_file_size": 16948,
+  "generation_date": "2022-01-10T13:21:45",
   "@type": "SchemaDefinition",
   "@context": [
     "schema/jsonld/rhea.context.jsonld",

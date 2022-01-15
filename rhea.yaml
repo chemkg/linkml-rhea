@@ -4,6 +4,15 @@ description: |-
   Experimental alpha version of a rendering of Rhea as LinkML
 
   For additional context, see [linkml-rhea docs](https://chemkg.github.io/linkml-rhea/home)
+
+  This schema should largely correspond one-to-one with classes and properties in Rhea.
+  Modifications:
+    
+  * Added a AbstractReaction grouping
+  * prefixed properties directional/bidirectionalReaction with 'has'
+      - mkdocs requires case-insensitive names, so this avoids name clash with classes
+      - we retain the true rdf property as slot_uri
+  
 imports:
 - linkml:types
 prefixes:
@@ -59,8 +68,8 @@ classes:
       - direction neutral reaction
     description: A chemical reaction, with unspecified direction.
     slots:
-    - directionalReaction
-    - bidirectionalReaction
+    - hasDirectionalReaction
+    - hasBidirectionalReaction
     - side
     - ec
     slot_usage:
@@ -366,12 +375,12 @@ slots:
     multivalued: true
     slot_uri: http://rdf.rhea-db.org/side
 
-  bidirectionalReaction:
+  hasBidirectionalReaction:
     range: BidirectionalReaction
     examples:
     - value: '28846'
     slot_uri: http://rdf.rhea-db.org/bidirectionalReaction
-  directionalReaction:
+  hasDirectionalReaction:
     range: DirectionalReaction
     examples:
     - value: 28844|28845

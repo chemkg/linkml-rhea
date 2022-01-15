@@ -1,9 +1,14 @@
 # Auto generated from rhea.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-01-10T12:46:42
+# Generation date: 2022-01-10T13:21:49
 # Schema: rhea-linkml
 #
 # id: https://w3id.org/rhea
-# description: Experimental alpha version of a rendering of Rhea as LinkML
+# description: Experimental alpha version of a rendering of Rhea as LinkML For additional context, see
+#              [linkml-rhea docs](https://chemkg.github.io/linkml-rhea/home) This schema should largely correspond
+#              one-to-one with classes and properties in Rhea. Modifications: * Added a AbstractReaction grouping
+#              * prefixed properties directional/bidirectionalReaction with 'has' * mkdocs requires
+#              case-insensitive names, so this avoids name clash with classes * we retain the true rdf property as
+#              slot_uri
 # license: https://creativecommons.org/publicdomain/zero/1.0/
 
 import dataclasses
@@ -31,6 +36,7 @@ metamodel_version = "1.7.0"
 dataclasses._init_fn = dataclasses_init_fn_with_kwargs
 
 # Namespaces
+CHEMROF = CurieNamespace('chemrof', 'https://w3id.org/chemrof/')
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
 RDF = CurieNamespace('rdf', 'http://www.w3.org/1999/02/22-rdf-syntax-ns#')
 RDFS = CurieNamespace('rdfs', 'http://www.w3.org/2000/01/rdf-schema#')
@@ -149,6 +155,9 @@ class Class(YAMLRoot):
 
 @dataclass
 class AbstractReaction(Class):
+    """
+    Grouping class for all three reaction forms
+    """
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = RHEA.AbstractReaction
@@ -169,12 +178,6 @@ class AbstractReaction(Class):
     ec: Optional[Union[str, List[str]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, list):
-            self.id = [self.id] if self.id is not None else []
-        self.id = [v if isinstance(v, AbstractReactionId) else AbstractReactionId(v) for v in self.id]
-
         if self.status is not None and not isinstance(self.status, StatusEnum):
             self.status = StatusEnum(self.status)
 
@@ -224,8 +227,8 @@ class Reaction(AbstractReaction):
     class_model_uri: ClassVar[URIRef] = RHEA.Reaction
 
     id: Union[Union[str, ReactionId], List[Union[str, ReactionId]]] = None
-    directionalReaction: Optional[Union[Union[str, DirectionalReactionId], List[Union[str, DirectionalReactionId]]]] = empty_list()
-    bidirectionalReaction: Optional[Union[str, BidirectionalReactionId]] = None
+    hasDirectionalReaction: Optional[Union[Union[str, DirectionalReactionId], List[Union[str, DirectionalReactionId]]]] = empty_list()
+    hasBidirectionalReaction: Optional[Union[str, BidirectionalReactionId]] = None
     side: Optional[Union[Union[str, ReactionSideId], List[Union[str, ReactionSideId]]]] = empty_list()
     ec: Optional[Union[str, List[str]]] = empty_list()
     subClassOf: Optional[Union[str, ReactionId]] = None
@@ -237,12 +240,12 @@ class Reaction(AbstractReaction):
             self.id = [self.id] if self.id is not None else []
         self.id = [v if isinstance(v, ReactionId) else ReactionId(v) for v in self.id]
 
-        if not isinstance(self.directionalReaction, list):
-            self.directionalReaction = [self.directionalReaction] if self.directionalReaction is not None else []
-        self.directionalReaction = [v if isinstance(v, DirectionalReactionId) else DirectionalReactionId(v) for v in self.directionalReaction]
+        if not isinstance(self.hasDirectionalReaction, list):
+            self.hasDirectionalReaction = [self.hasDirectionalReaction] if self.hasDirectionalReaction is not None else []
+        self.hasDirectionalReaction = [v if isinstance(v, DirectionalReactionId) else DirectionalReactionId(v) for v in self.hasDirectionalReaction]
 
-        if self.bidirectionalReaction is not None and not isinstance(self.bidirectionalReaction, BidirectionalReactionId):
-            self.bidirectionalReaction = BidirectionalReactionId(self.bidirectionalReaction)
+        if self.hasBidirectionalReaction is not None and not isinstance(self.hasBidirectionalReaction, BidirectionalReactionId):
+            self.hasBidirectionalReaction = BidirectionalReactionId(self.hasBidirectionalReaction)
 
         if not isinstance(self.side, list):
             self.side = [self.side] if self.side is not None else []
@@ -956,11 +959,11 @@ slots.products = Slot(uri=RHEA.products, name="products", curie=RHEA.curie('prod
 slots.side = Slot(uri=RHEA.side, name="side", curie=RHEA.curie('side'),
                    model_uri=RHEA.side, domain=None, range=Optional[Union[Union[str, ReactionSideId], List[Union[str, ReactionSideId]]]])
 
-slots.bidirectionalReaction = Slot(uri=RHEA.bidirectionalReaction, name="bidirectionalReaction", curie=RHEA.curie('bidirectionalReaction'),
-                   model_uri=RHEA.bidirectionalReaction, domain=None, range=Optional[Union[str, BidirectionalReactionId]])
+slots.hasBidirectionalReaction = Slot(uri=RHEA.bidirectionalReaction, name="hasBidirectionalReaction", curie=RHEA.curie('bidirectionalReaction'),
+                   model_uri=RHEA.hasBidirectionalReaction, domain=None, range=Optional[Union[str, BidirectionalReactionId]])
 
-slots.directionalReaction = Slot(uri=RHEA.directionalReaction, name="directionalReaction", curie=RHEA.curie('directionalReaction'),
-                   model_uri=RHEA.directionalReaction, domain=None, range=Optional[Union[Union[str, DirectionalReactionId], List[Union[str, DirectionalReactionId]]]])
+slots.hasDirectionalReaction = Slot(uri=RHEA.directionalReaction, name="hasDirectionalReaction", curie=RHEA.curie('directionalReaction'),
+                   model_uri=RHEA.hasDirectionalReaction, domain=None, range=Optional[Union[Union[str, DirectionalReactionId], List[Union[str, DirectionalReactionId]]]])
 
 slots.transformableTo = Slot(uri=RHEA.transformableTo, name="transformableTo", curie=RHEA.curie('transformableTo'),
                    model_uri=RHEA.transformableTo, domain=None, range=Optional[Union[str, ReactionSideId]])

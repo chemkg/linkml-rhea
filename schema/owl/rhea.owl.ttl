@@ -1,4 +1,5 @@
 @prefix IAO: <http://purl.obolibrary.org/obo/IAO_> .
+@prefix chemrof: <https://w3id.org/chemrof/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix linkml: <https://w3id.org/linkml/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -20,12 +21,22 @@ linkml:topValue a owl:DatatypeProperty ;
     IAO:0000700 rhea:Class,
         rhea:ReactionSide ;
     dcterms:license "https://creativecommons.org/publicdomain/zero/1.0/" ;
-    skos:definition "Experimental alpha version of a rendering of Rhea as LinkML" ;
-    linkml:generation_date "2022-01-10T12:46:39" ;
+    skos:definition """Experimental alpha version of a rendering of Rhea as LinkML
+
+For additional context, see [linkml-rhea docs](https://chemkg.github.io/linkml-rhea/home)
+
+This schema should largely correspond one-to-one with classes and properties in Rhea.
+Modifications:
+  
+* Added a AbstractReaction grouping
+* prefixed properties directional/bidirectionalReaction with 'has'
+   * mkdocs requires case-insensitive names, so this avoids name clash with classes
+   * we retain the true rdf property as slot_uri""" ;
+    linkml:generation_date "2022-01-10T13:21:46" ;
     linkml:metamodel_version "1.7.0" ;
     linkml:source_file "rhea.yaml" ;
-    linkml:source_file_date "2022-01-10T12:46:28" ;
-    linkml:source_file_size 16212 .
+    linkml:source_file_date "2022-01-10T13:21:30" ;
+    linkml:source_file_size 16948 .
 
 rhea:GenericPolynucleotide a owl:Class,
         linkml:ClassDefinition ;
@@ -46,16 +57,16 @@ rhea:Polymer a owl:Class,
     rdfs:label "Polymer" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
+            owl:onClass rhea:CHEBIIdentifier ;
+            owl:onProperty rhea:underlyingChebi ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
             owl:onClass rhea:PolymerizationIndexEnum ;
             owl:onProperty rhea:polymerizationIndex ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Integer ;
             owl:onProperty rhea:charge ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass rhea:CHEBIIdentifier ;
-            owl:onProperty rhea:underlyingChebi ],
         rhea:Compound ;
     skos:definition "A chemical compound that is a polymer. Described by a polymerization index, and an underlying polymer from ChEBI." ;
     skos:exactMatch rhea:Polymer .
@@ -66,31 +77,31 @@ rhea:ReactivePart a owl:Class,
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty rhea:name ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Integer ;
-            owl:onProperty rhea:position ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
             owl:onProperty rhea:chebi ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty rhea:formula ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty rhea:htmlName ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass rhea:Compound ;
             owl:onProperty rdfs:subClassOf ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty rhea:htmlName ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Integer ;
             owl:onProperty rhea:charge ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty rhea:name ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty rhea:formula ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Integer ;
+            owl:onProperty rhea:position ],
         rhea:Class ;
     skos:definition "A reactive part in a generic compound, with a defined chemical structure. A subclass of a given ChEBI chemical entity." ;
     skos:exactMatch rhea:ReactivePart .
@@ -169,48 +180,50 @@ rhea:Reaction a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Reaction" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty rhea:ec ],
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass rhea:BidirectionalReaction ;
+            owl:onProperty rhea:bidirectionalReaction ],
         [ a owl:Restriction ;
             owl:allValuesFrom rhea:ReactionSide ;
             owl:onProperty rhea:side ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass rhea:BidirectionalReaction ;
-            owl:onProperty rhea:bidirectionalReaction ],
+            owl:onClass rhea:Reaction ;
+            owl:onProperty rdfs:subClassOf ],
         [ a owl:Restriction ;
             owl:allValuesFrom rhea:DirectionalReaction ;
             owl:onProperty rhea:directionalReaction ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass rhea:Reaction ;
-            owl:onProperty rdfs:subClassOf ],
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty rhea:ec ],
         rhea:AbstractReaction ;
+    skos:altLabel "direction neutral reaction" ;
     skos:definition "A chemical reaction, with unspecified direction." ;
-    skos:exactMatch rhea:Reaction .
+    skos:exactMatch rhea:Reaction,
+        chemrof:Reaction .
 
 rhea:SmallMolecule a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "SmallMolecule" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty rhea:chebi ],
+            owl:onClass linkml:Integer ;
+            owl:onProperty rhea:charge ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass rhea:SmallMolecule ;
             owl:onProperty rdfs:subClassOf ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Integer ;
-            owl:onProperty rhea:charge ],
+            owl:onClass linkml:String ;
+            owl:onProperty rhea:chebi ],
         rhea:Compound ;
     skos:definition "A chemical compound that is a small molecule. A subclass of a given ChEBI chemical entity." ;
     skos:exactMatch rhea:SmallMolecule .
 
 rhea:bidirectionalReaction a owl:ObjectProperty,
         linkml:SlotDefinition ;
-    rdfs:label "bidirectionalReaction" ;
+    rdfs:label "hasBidirectionalReaction" ;
     rdfs:range rhea:BidirectionalReaction ;
     skos:exactMatch rhea:bidirectionalReaction ;
     linkml:examples "Example(value='28846', description=None)" .
@@ -486,7 +499,7 @@ rhea:curatedOrder a owl:ObjectProperty,
 
 rhea:directionalReaction a owl:ObjectProperty,
         linkml:SlotDefinition ;
-    rdfs:label "directionalReaction" ;
+    rdfs:label "hasDirectionalReaction" ;
     rdfs:range rhea:DirectionalReaction ;
     skos:exactMatch rhea:directionalReaction ;
     linkml:examples "Example(value='28844|28845', description=None)" .
@@ -634,15 +647,16 @@ rhea:ReactionParticipant a owl:Class,
             owl:onProperty rdfs:subClassOf ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass rhea:LocationEnum ;
-            owl:onProperty rhea:location ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
             owl:onClass rhea:Compound ;
             owl:onProperty rhea:compound ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass rhea:LocationEnum ;
+            owl:onProperty rhea:location ],
         rhea:Class ;
     skos:definition "A reaction participant. Contained in a reaction side." ;
-    skos:exactMatch rhea:ReactionParticipant .
+    skos:exactMatch rhea:ReactionParticipant,
+        chemrof:ReactionParticipant .
 
 rhea:accession a owl:ObjectProperty,
         linkml:SlotDefinition ;
@@ -697,11 +711,34 @@ rhea:AbstractReaction a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "AbstractReaction" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty rhea:ec ],
+        [ a owl:Restriction ;
             owl:allValuesFrom linkml:Integer ;
             owl:onProperty rhea:citation ],
         [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty rhea:equation ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Boolean ;
+            owl:onProperty rhea:isTransport ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Boolean ;
+            owl:onProperty rhea:isChemicallyBalanced ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass rhea:AbstractReaction ;
+            owl:onProperty rdfs:subClassOf ],
+        [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty rdfs:seeAlso ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass rhea:DatabaseIdentifier ;
+            owl:onProperty rhea:accession ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass rhea:StatusEnum ;
@@ -710,30 +747,8 @@ rhea:AbstractReaction a owl:Class,
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty rhea:htmlEquation ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty rhea:equation ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty rhea:ec ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass rhea:AbstractReaction ;
-            owl:onProperty rdfs:subClassOf ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Boolean ;
-            owl:onProperty rhea:isChemicallyBalanced ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass rhea:DatabaseIdentifier ;
-            owl:onProperty rhea:accession ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Boolean ;
-            owl:onProperty rhea:isTransport ],
-        rhea:Class .
+        rhea:Class ;
+    skos:definition "Grouping class for all three reaction forms" .
 
 rhea:BidirectionalReaction a owl:Class,
         linkml:ClassDefinition ;
@@ -790,11 +805,7 @@ rhea:charge a owl:ObjectProperty,
 rhea:Class a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Class" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Uriorcurie ;
-            owl:onProperty rdf:type ],
-        [ a owl:Class ;
+    rdfs:subClassOf [ a owl:Class ;
             owl:intersectionOf ( [ a owl:Restriction ;
                         owl:allValuesFrom linkml:Uriorcurie ;
                         owl:onProperty rhea:id ] [ a owl:Restriction ;
@@ -802,12 +813,16 @@ rhea:Class a owl:Class,
                         owl:someValuesFrom linkml:Uriorcurie ] ) ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty rdfs:comment ],
+            owl:onClass linkml:Uriorcurie ;
+            owl:onProperty rdf:type ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty rdfs:label ] ;
+            owl:onProperty rdfs:label ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty rdfs:comment ] ;
     skos:definition "compounds and reactions are represented as classes in Rhea" ;
     skos:exactMatch rdfs:Class .
 
@@ -835,10 +850,6 @@ rhea:Compound a owl:Class,
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty rhea:name ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
             owl:onProperty rhea:htmlName ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
@@ -846,12 +857,16 @@ rhea:Compound a owl:Class,
             owl:onProperty rdfs:subClassOf ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass rhea:DatabaseIdentifier ;
-            owl:onProperty rhea:accession ],
+            owl:onClass linkml:String ;
+            owl:onProperty rhea:formula ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty rhea:formula ],
+            owl:onProperty rhea:name ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass rhea:DatabaseIdentifier ;
+            owl:onProperty rhea:accession ],
         rhea:Class ;
     skos:definition "A chemical compound" ;
     skos:exactMatch rhea:Compound .
@@ -874,57 +889,86 @@ rhea:ReactionSide a owl:Class,
     rdfs:label "ReactionSide" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty rhea:contains1 ],
+            owl:onProperty rhea:contains8 ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Integer ;
-            owl:onProperty rhea:curatedOrder ],
+            owl:onClass rhea:ReactionSide ;
+            owl:onProperty rhea:transformableTo ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty rhea:contains14 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty rhea:contains2n ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty rhea:containsNplus1 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty rhea:contains16 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty rhea:contains6 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty rhea:contains2 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty rhea:contains22 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty rhea:contains21 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty rhea:contains40 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty rhea:contains8 ],
+            owl:onProperty rhea:contains3 ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty rhea:contains7 ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
+            owl:onProperty rhea:contains14 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty rhea:contains40 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty rhea:contains11 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty rhea:contains10 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty rhea:contains2n ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty rhea:contains13 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty rhea:contains27 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty rhea:containsNminus1 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
             owl:onProperty rhea:contains5 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty rhea:contains22 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty rhea:contains24 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty rhea:contains9 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty rhea:contains6 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty rhea:contains26 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty rhea:contains18 ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty rhea:contains32 ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty rhea:contains18 ],
+            owl:onProperty rhea:contains20 ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass rhea:ReactionSide ;
-            owl:onProperty rhea:transformableTo ],
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty rhea:containsNplus1 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty rhea:contains1 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty rhea:containsN ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty rhea:contains2 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom rhea:ReactionParticipant ;
+            owl:onProperty rhea:contains ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty rhea:contains28 ],
         [ a owl:Class ;
             owl:intersectionOf ( [ a owl:Restriction ;
                         owl:allValuesFrom linkml:Uriorcurie ;
@@ -933,59 +977,30 @@ rhea:ReactionSide a owl:Class,
                         owl:someValuesFrom linkml:Uriorcurie ] ) ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty rhea:contains17 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty rhea:contains27 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty rhea:contains3 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty rhea:contains13 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty rhea:contains10 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty rhea:containsN ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty rhea:contains12 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom rhea:ReactionParticipant ;
-            owl:onProperty rhea:contains ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty rhea:containsNminus1 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty rhea:contains24 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty rhea:contains26 ],
+            owl:onProperty rhea:contains21 ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty rhea:contains4 ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty rhea:contains9 ],
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Integer ;
+            owl:onProperty rhea:curatedOrder ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty rhea:contains11 ],
+            owl:onProperty rhea:contains17 ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty rhea:contains20 ],
+            owl:onProperty rhea:contains12 ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty rhea:contains28 ],
+            owl:onProperty rhea:contains19 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty rhea:contains16 ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Uriorcurie ;
-            owl:onProperty rdf:type ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty rhea:contains19 ] ;
+            owl:onProperty rdf:type ] ;
     skos:definition "A reaction side in a chemical reaction. Contains one or more reaction participants." ;
     skos:exactMatch rhea:ReactionSide .
 
